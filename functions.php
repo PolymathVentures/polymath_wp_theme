@@ -26,3 +26,17 @@ foreach ($sage_includes as $file) {
   require_once $filepath;
 }
 unset($file, $filepath);
+
+
+$script_dirs = [
+    'scripts/helpers',
+    'scripts/custom_post_types',
+    'scripts/short_codes'
+];
+
+foreach ($script_dirs as $dir) {
+    $files = glob(__DIR__ . "/" . $dir . "/*.php");
+    foreach ($files as $file) {
+        require_once $file;
+    }
+}

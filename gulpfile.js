@@ -19,6 +19,8 @@ var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
+var gutil        = require('gulp-util');
+var ftp          = require('vinyl-ftp');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -285,4 +287,30 @@ gulp.task('wiredep', function() {
 // `gulp` - Run a complete build. To compile for production run `gulp --production`.
 gulp.task('default', ['clean'], function() {
   gulp.start('build');
+});
+
+// Deploy to Godaddy with FTP
+gulp.task( 'deploy', ['clean', 'build'], function () {
+
+    var conn = ftp.create( {
+        host:     argv.host,
+        user:     argv.user,
+        password: argv.password,
+        parallel: 5,
+        log:      gutil.log
+    } );
+
+    var globs = [
+        'dist/**',
+        '**/*.php',
+        'style.css'
+    ];
+
+    // using base = '.' will transfer everything to /public_html correctly
+    // turn off buffering in gulp.src for best performance
+
+    return gulp.src( globs, { base: '.', buffer: false } )
+        .pipe( conn.newer( '/new/wp-content/themes/polymath_wp_theme' ) ) // only upload newer files
+        .pipe( conn.dest( '/new/wp-content/themes/polymath_wp_theme' ) );
+
 });
