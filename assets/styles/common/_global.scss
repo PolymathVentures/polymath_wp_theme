@@ -1,9 +1,26 @@
+@include font-face("Irma Regular", "../fonts/IrmaTextSlab-Regular", null, null, eot otf svg ttf woff);
+@include font-face("Whitney HTF SemiBold", "../fonts/WhitneyHTF-SemiBold", null, null, eot otf svg ttf woff);
+
 // Offset for fixed nav bar
 body {
+    font-family: 'Open Sans', sans-serif;
     padding-top: 70px;
+}
+
+@include headings() {
+    font-family:'Whitney HTF SemiBold';
 }
 
 // Mixitup filter view
 .mix{
     display: none;
+}
+
+// Custom bootstrap carousel styling
+.carousel {
+    .carousel-control {
+        &.right, &.left {
+            background-image:none;
+        }
+    }
 }
