@@ -11,6 +11,24 @@ function carousel_shortcode( $atts , $content = null ) {
 		), $atts )
 	);
 
+	$i = 0;
+	$indicators = '';
+	$slides = '';
+	foreach ($items as $val) {
+		$indicators .= 	'<li data-target="#' . $category . '" data-slide-to="' . $i . '"' .
+						'class="' . ($i == 0 ? 'active' : '') . '"></li>';
+
+		$slides .= 	'<div class="item ' . ($i == 0 ? 'active' : '') . '">' .
+						'<img src="http://www.polymathv.com/wp-content/uploads/2014/02/Homepage_Slider_11.jpg" alt="' . $val['title'] . '">' .
+						'<div class="carousel-caption">' .
+							'<h3>' . $val['title'] . '</h3>' .
+							'<p>' . $val['description'] . '</p>' .
+						'</div>' .
+					'</div>';
+		$i++;
+	};
+
+
     //Code
     /* Turn on buffering */
 	ob_start(); ?>
@@ -18,27 +36,11 @@ function carousel_shortcode( $atts , $content = null ) {
     <div id="<?php echo $category; ?>" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-			<?php
-			$i = 0;
-			foreach ($items as $val) { ?>
-				<li data-target="#<?php echo $category; ?>" data-slide-to="<?php echo $i; ?>" class="<?php echo ($i == 0 ? 'active' : ''); ?>"></li>
-				<?php $i++;
-			}; ?>
+			<?php echo $indicators; ?>
         </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-			<?php
-			$i = 0;
-			foreach ($items as $val) { ?>
-				<div class="item <?php echo ($i == 0 ? 'active' : ''); ?>">
-	                <img src="http://www.polymathv.com/wp-content/uploads/2014/02/Homepage_Slider_11.jpg" alt="<?php echo $val['title']; ?>">
-	                <div class="carousel-caption">
-	                    <h3><?php echo $val['title']; ?></h3>
-						<p><?php echo $val['description']; ?></p>
-	                </div>
-	            </div>
-				<?php $i++;
-			}; ?>
+			<?php echo $slides; ?>
         </div>
         <!-- Controls -->
         <a class="left carousel-control" href="#<?php echo $category; ?>" role="button" data-slide="prev">
