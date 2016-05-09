@@ -1,28 +1,30 @@
 <?php
 
 // Add Shortcode
-function carousel_shortcode( $atts , $content = null ) {
+function carousel( $atts , $content = null ) {
 
 	// Attributes
 	extract( shortcode_atts(
 		array(
-			'category' => false,
+			'id' => '',
 			'items' => array()
 		), $atts )
 	);
 
+	if (!$items) return;
+
 	$i = 0;
 	$indicators = '';
 	$slides = '';
-	foreach ($items as $val) {
-		$indicators .= 	'<li data-target="#' . $category . '" data-slide-to="' . $i . '"' .
+	foreach ($items as $item) {
+		$indicators .= 	'<li data-target="#' . $id . '" data-slide-to="' . $i . '"' .
 						'class="' . ($i == 0 ? 'active' : '') . '"></li>';
 
 		$slides .= 	'<div class="item ' . ($i == 0 ? 'active' : '') . '">' .
-						'<img src="http://www.polymathv.com/wp-content/uploads/2014/02/Homepage_Slider_11.jpg" alt="' . $val['title'] . '">' .
+						'<img src="' . $item['image'] . '" alt="' . $item['title'] . '">' .
 						'<div class="carousel-caption">' .
-							'<h3>' . $val['title'] . '</h3>' .
-							'<p>' . $val['description'] . '</p>' .
+							'<h3>' . $item['title'] . '</h3>' .
+							'<p>' . $item['description'] . '</p>' .
 						'</div>' .
 					'</div>';
 		$i++;
@@ -33,7 +35,7 @@ function carousel_shortcode( $atts , $content = null ) {
     /* Turn on buffering */
 	ob_start(); ?>
 
-    <div id="<?php echo $category; ?>" class="carousel slide" data-ride="carousel">
+    <div id="<?php echo $id; ?>" class="carousel slide col-md-12" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
 			<?php echo $indicators; ?>
@@ -43,24 +45,17 @@ function carousel_shortcode( $atts , $content = null ) {
 			<?php echo $slides; ?>
         </div>
         <!-- Controls -->
-        <a class="left carousel-control" href="#<?php echo $category; ?>" role="button" data-slide="prev">
+        <a class="left carousel-control" href="#<?php echo $id; ?>" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#<?php echo $category; ?>" role="button" data-slide="next">
+        <a class="right carousel-control" href="#<?php echo $id; ?>" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
         </a>
     </div>
 
 	<?php
-	/* Get the buffered content into a var */
-	$sc = ob_get_contents();
-
-	/* Clean buffer */
-	ob_end_clean();
-
-	/* Return the content as usual */
-	return $sc;
+	return ob_get_clean();
 }
-add_shortcode( 'carousel', 'carousel_shortcode' );
+add_shortcode( 'carousel', 'carousel' );
