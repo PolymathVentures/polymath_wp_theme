@@ -13,26 +13,17 @@
   </article>
 <?php endwhile; ?>
 
-<?php
+<div class="row">
+    <?php echo carousel(array('id' => 'venture-slider', 'items' => get_field('milestones'))); ?>
+</div>
 
-$items = array();
+<div class="row">
+    <?php echo team_members_matrix(array('filter' => 'ventures', 'value' => get_the_ID())); ?>
+</div>
 
-// check if the repeater field has rows of data
-if( have_rows('milestones') ):
-
- 	// loop through the rows of data
-    while ( have_rows('milestones') ) : the_row();
-
-        $items[] = array('title' => get_sub_field('title'),
-                         'description' => get_sub_field('description'));
-
-    endwhile;
-
-else :
-
-endif;
+<div class="row">
+    <?php echo quote(array('quote' => get_field('quote'))); ?>
+</div>
 
 
-echo carousel_shortcode(array('category' => 'venture-slider', 'items' => $items)); 
 
-?>
