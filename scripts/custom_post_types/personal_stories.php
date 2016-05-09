@@ -1,19 +1,19 @@
 <?php
 
-if ( ! function_exists('ventures') ) {
+if ( ! function_exists('personal_stories') ) {
 
 // Register Custom Post Type
-function ventures() {
+function personal_stories() {
 
 	$labels = array(
-		'name'                  => 'Ventures',
-		'singular_name'         => 'Venture',
-		'menu_name'             => 'Ventures',
-		'name_admin_bar'        => 'Venture',
+		'name'                  => 'Personal Stories',
+		'singular_name'         => 'Personal Story',
+		'menu_name'             => 'Personal Stories',
+		'name_admin_bar'        => 'Personal Story',
 	);
 	$args = array(
-		'label'                 => 'Venture',
-		'description'           => 'Polymath ventures',
+		'label'                 => 'Personal Story',
+		'description'           => 'Personal Stories',
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'thumbnail', ),
 		'taxonomies'            => array(),
@@ -30,9 +30,9 @@ function ventures() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 	);
-	register_post_type( 'ventures', $args );
+	register_post_type( 'personal_stories', $args );
 
 }
-add_action( 'init', 'ventures', 0 );
+add_action( 'init', 'personal_stories', 0 );
 
 }

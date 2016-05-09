@@ -1,19 +1,19 @@
 <?php
 
-if ( ! function_exists('ventures') ) {
+if ( ! function_exists('seeds') ) {
 
 // Register Custom Post Type
-function ventures() {
+function seeds() {
 
 	$labels = array(
-		'name'                  => 'Ventures',
-		'singular_name'         => 'Venture',
-		'menu_name'             => 'Ventures',
-		'name_admin_bar'        => 'Venture',
+		'name'                  => 'Seeds',
+		'singular_name'         => 'Seed',
+		'menu_name'             => 'Seeds',
+		'name_admin_bar'        => 'Seed',
 	);
 	$args = array(
-		'label'                 => 'Venture',
-		'description'           => 'Polymath ventures',
+		'label'                 => 'Seed',
+		'description'           => 'Seeds',
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'thumbnail', ),
 		'taxonomies'            => array(),
@@ -30,9 +30,9 @@ function ventures() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 	);
-	register_post_type( 'ventures', $args );
+	register_post_type( 'seeds', $args );
 
 }
-add_action( 'init', 'ventures', 0 );
+add_action( 'init', 'seeds', 0 );
 
 }

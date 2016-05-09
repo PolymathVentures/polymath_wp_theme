@@ -1,21 +1,21 @@
 <?php
 
-if ( ! function_exists('ventures') ) {
+if ( ! function_exists('statistics') ) {
 
 // Register Custom Post Type
-function ventures() {
+function statistics() {
 
 	$labels = array(
-		'name'                  => 'Ventures',
-		'singular_name'         => 'Venture',
-		'menu_name'             => 'Ventures',
-		'name_admin_bar'        => 'Venture',
+		'name'                  => 'Statistics',
+		'singular_name'         => 'Statistic',
+		'menu_name'             => 'Statistics',
+		'name_admin_bar'        => 'Statistic',
 	);
 	$args = array(
-		'label'                 => 'Venture',
-		'description'           => 'Polymath ventures',
+		'label'                 => 'Statistic',
+		'description'           => 'Statistics',
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'thumbnail', ),
+		'supports'              => array( 'title', ),
 		'taxonomies'            => array(),
 		'hierarchical'          => false,
 		'public'                => true,
@@ -30,9 +30,9 @@ function ventures() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 	);
-	register_post_type( 'ventures', $args );
+	register_post_type( 'statistics', $args );
 
 }
-add_action( 'init', 'ventures', 0 );
+add_action( 'init', 'statistics', 0 );
 
 }
