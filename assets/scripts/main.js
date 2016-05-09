@@ -18,15 +18,28 @@
     // All pages
     'common': {
       init: function() {
-        // JavaScript to be fired on all pages
-        $('.carousel').hammer().on('swipeleft', function(){
-  			$(this).carousel('next');
-  		});
-  		$('.carousel').hammer().on('swiperight', function(){
-  			$(this).carousel('prev');
-  		});
+
       },
       finalize: function() {
+          //TODO: This causes a depreciation warning XMLhttprequest because script is loaded in footer. Switch to header
+          //Also jumps to top of page before loading new content on mobile
+          $('#smoothstate').smoothState({
+              debug: true,
+              prefetch: true,
+              cacheLength: 4
+          });
+
+        $('.carousel').hammer().on('swipeleft', function(){
+        	$(this).carousel('next');
+        });
+        $('.carousel').hammer().on('swiperight', function(){
+        	$(this).carousel('prev');
+        });
+        $('.mixitup-container').mixItUp({
+            // animation: {
+            //     enable: false
+            // }
+        });
         // JavaScript to be fired on all pages, after page specific JS is fired
       }
     },
@@ -42,7 +55,6 @@
     // About us page, note the change from about-us to about_us.
     'post_type_archive_team_members': {
       init: function() {
-          $('#mixitup-container').mixItUp();
       }
     }
   };
