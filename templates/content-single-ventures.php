@@ -25,5 +25,9 @@
     <?php echo quote(array('quote' => get_field('quote'))); ?>
 </div>
 
+<div class="row">
+    <?php echo statistics_list(array('filter' => 'ventures', 'value' => get_the_ID())); ?>
+</div>
+
 
 

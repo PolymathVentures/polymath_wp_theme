@@ -18,6 +18,7 @@ if (isset($job)):
 else:
 
     foreach ($jobs as $job): ?>
+    <div class="col-md-6">
         <article <?php post_class(); ?>>
           <header>
             <h2 class="entry-title">
@@ -31,6 +32,7 @@ else:
               <?php echo find_custom_field($job, '161876'); ?>
           </div>
         </article>
+    </div>
     <?php endforeach; ?>
 
 <?php endif; ?>

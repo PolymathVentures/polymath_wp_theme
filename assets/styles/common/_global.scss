@@ -3,11 +3,11 @@
 
 // Offset for fixed nav bar
 body {
-    font-family: 'Open Sans', sans-serif;
+    // font-family: 'Open Sans', sans-serif;
     padding-top: 70px;
 }
 
-@include headings() {
+h1, h2, h3, h4, h5, h6 {
     font-family:'Whitney HTF SemiBold';
 }
 
@@ -30,18 +30,18 @@ body {
  * CSS Animations
  * Don't forget to add vendor prefixes!
  */
-.m-scene .scene_element {
-  animation-duration: 0.5s;
-  transition-timing-function: ease-in;
-  animation-fill-mode: both;
-}
-
-.m-scene .scene_element--fadein {
-  animation-name: fadeIn;
-}
-
-.m-scene.is-exiting .scene_element {
-  animation-direction: alternate-reverse;
+.m-scene {
+    .scene_element {
+        animation-duration: 0.25s;
+        transition-timing-function: ease-in;
+        animation-fill-mode: both;
+        &--fadein {
+            animation-name: fadeIn;
+        }
+    }
+    &.is-exiting .scene_element {
+      animation-direction: alternate-reverse;
+    }
 }
 
 /*

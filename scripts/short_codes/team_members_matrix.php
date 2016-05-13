@@ -37,10 +37,12 @@ function team_members_matrix( $atts = array(), $content = null ) {
 	if( $posts->have_posts() ):
 	?>
 
-	<div class="mixitup-container row">
-		<?php while( $posts->have_posts() ) : $posts->the_post(); ?>
-			<?php get_template_part('templates/content', get_post_type()); ?>
-		<?php endwhile; ?>
+	<div class="mixitup-container">
+		<?php
+		while( $posts->have_posts() ) : $posts->the_post();
+			get_template_part('templates/content', get_post_type());
+		endwhile;
+		?>
 	</div>
 
 	<?php

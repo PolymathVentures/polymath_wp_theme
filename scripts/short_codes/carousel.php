@@ -1,7 +1,7 @@
 <?php
 
 // Add Shortcode
-function carousel( $atts , $content = null ) {
+function carousel_shortcode( $atts , $content = null ) {
 
 	// Attributes
 	extract( shortcode_atts(
@@ -58,4 +58,4 @@ function carousel( $atts , $content = null ) {
 	<?php
 	return ob_get_clean();
 }
-add_shortcode( 'carousel', 'carousel' );
+add_shortcode( 'carousel', 'carousel_shortcode' );

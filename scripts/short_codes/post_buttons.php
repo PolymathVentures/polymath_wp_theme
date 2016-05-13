@@ -22,7 +22,7 @@ function post_buttons( $atts , $content = null ) {
 
 	$buttons = '';
 	foreach($posts as $post) {
-		$buttons .= ' <button class="btn btn-primary filter" data-filter=".' . $post->ID . '">' . $post->post_title . '</button>';
+		$buttons .= '<button class="btn btn-primary filter" data-filter=".' . $post->ID . '">' . $post->post_title . '</button> ';
 	};
 
 	return $buttons;

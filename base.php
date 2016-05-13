@@ -9,7 +9,7 @@ use Roots\Sage\Wrapper;
 <html <?php language_attributes(); ?>>
   <?php get_template_part('templates/head'); ?>
   <body <?php body_class(); ?>>
-  <div id="smoothstate">
+  <div id="smoothstate" class="m-scene">
     <!--[if IE]>
       <div class="alert alert-warning">
         <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'sage'); ?>
@@ -19,15 +19,15 @@ use Roots\Sage\Wrapper;
       do_action('get_header');
       get_template_part('templates/header');
     ?>
-    <div class="wrap container m-scene" role="document">
-      <div class="content row scene_element scene_element--fadein">
+    <div class="wrap container scene_element scene_element--fadein" role="document">
+      <div class="content row">
         <main class="main">
           <?php include Wrapper\template_path(); ?>
         </main><!-- /.main -->
         <?php if (Setup\display_sidebar()) : ?>
           <aside class="sidebar">
             <?php include Wrapper\sidebar_path(); ?>
-          </aside><!-- /.sidebar -->
+          </aside>
         <?php endif; ?>
       </div><!-- /.content -->
     </div><!-- /.wrap -->

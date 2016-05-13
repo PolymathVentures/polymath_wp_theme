@@ -60,12 +60,14 @@ $brand-primary: $red;
 }
 
 // =============================================================================
-// Font Face
+// Select all headers
 // =============================================================================
-@mixin headings($from: 1, $to: 6) {
-    @for $i from $from through $to {
-      h#{$i}{
-        @content
-      }
-    }
-}
+// @mixin headings($from: 1, $to: 6) {
+// 	@for $i from $from through $to {
+// 		h#{$i}{
+// 			@content
+// 		}
+// 	}
+// }
+
+

@@ -18,17 +18,39 @@
     // All pages
     'common': {
       init: function() {
-
-      },
-      finalize: function() {
-          //TODO: This causes a depreciation warning XMLhttprequest because script is loaded in footer. Switch to header
-          //Also jumps to top of page before loading new content on mobile
-          $('#smoothstate').smoothState({
+          var ssOptions = {
               debug: true,
               prefetch: true,
-              cacheLength: 4
-          });
+              cacheLength: 4,
+              scroll: false,
+              onStart: {
+                  duration: 250,
+                  render: function ($container) {
+                      $container.addClass('is-exiting');
+                      smoothState.restartCSSAnimations();
+                  }
+              },
+              onProgress: {
+                duration: 0,
+                render: function ($container) {
 
+                }
+              },
+              onReady: {
+                  duration: 0,
+                  render: function ($container, $newContent) {
+                      $container.removeClass('is-exiting');
+                      $container.html($newContent);
+
+                      //body_classes is passed to this script from setup.php
+                      $('body').removeClass().addClass(body_classes.join(' '));
+                  }
+              }
+          };
+          //TODO: This causes a depreciation warning XMLhttprequest because script is loaded in footer. Switch to header
+          smoothState = $('#smoothstate').smoothState(ssOptions).data('smoothState');
+      },
+      finalize: function() {
         $('.carousel').hammer().on('swipeleft', function(){
         	$(this).carousel('next');
         });
@@ -52,9 +74,10 @@
         // JavaScript to be fired on the home page, after the init JS
       }
     },
-    // About us page, note the change from about-us to about_us.
+    // About us page, note the change from about-us to about_us
+    //TODO: This is currently not working because of smoothstate. The body classes will always be one page behind.
     'post_type_archive_team_members': {
-      init: function() {
+      finalize: function() {
       }
     }
   };
