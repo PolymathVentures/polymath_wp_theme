@@ -5,15 +5,39 @@ $icon-font-path:        "../fonts/";
 $main-sm-columns:       12;
 $sidebar-sm-columns:    4;
 
-$red: #F7403A;
-$aqua: #49C3B1;
-$dark_blue: #1F1A33;
-$yellow: #FFC627;
-$gray: #9D9D9C;
-
+// Fonts
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$headings-font-family: 'Whitney HTF SemiBold';
+$extra-letter-spacing: 3px;
 
 // Colors
+$red: #F7403A;
+$aqua: #49C3B1;
+$lila: #C2BEC7;
+$dark-lila: #938E9C;
+$dark-blue: #1F1A33;
+$yellow: #FFC627;
+$gray: #9D9D9C;
+$light-gray: #f4f4f6;
 $brand-primary: $red;
+$text-color: $dark-blue;
+
+// Buttons
+$btn-primary-color: white;
+$btn-primary-bg: $dark-blue;
+
+// Navbar
+$navbar-height: 100px;
+
+$navbar-default-bg: white;
+$navbar-default-link-active-bg: $navbar-default-bg;
+$navbar-default-link-color: $dark-blue;
+$navbar-default-link-active-color: $dark-blue;
+
+// Navbar toggle
+$navbar-default-toggle-hover-bg: $light-gray;
+$navbar-default-toggle-icon-bar-bg: $dark-blue;
+$navbar-default-toggle-border-color: white;
 
 
 // =============================================================================
@@ -70,4 +94,5 @@ $brand-primary: $red;
 // 	}
 // }
 
-
+@include font-face("Irma Regular", "../fonts/IrmaTextSlab-Regular", null, null, eot otf svg ttf woff);
+@include font-face("Whitney HTF SemiBold", "../fonts/WhitneyHTF-SemiBold", null, null, eot otf svg ttf woff);

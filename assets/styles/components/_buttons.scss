@@ -1,0 +1,10 @@
+.btn {
+
+    text-transform: uppercase;
+    border-radius: $border-radius-base * 1.5;
+
+    @media(min-width: $screen-sm-min) {
+        letter-spacing: $extra-letter-spacing;
+        padding: $padding-base-vertical ($padding-base-horizontal * 3);
+    }
+}

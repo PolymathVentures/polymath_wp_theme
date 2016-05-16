@@ -14,7 +14,8 @@
 <?php endwhile; ?>
 
 <div class="row">
-    <?php echo carousel(array('id' => 'venture-slider', 'items' => get_field('milestones'))); ?>
+    <?php $slides_post = get_post_with_custom_fields(get_field('milestones')); ?>
+    <?php echo carousel(array('id' => 'venture-slider', 'items' => $slides_post['slides'], 'show' => $slides_post['slides_in_view'])); ?>
 </div>
 
 <div class="row">

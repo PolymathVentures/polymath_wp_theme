@@ -1,7 +1,7 @@
 <?php
 
 // Add Shortcode
-function team_members_matrix( $atts = array(), $content = null ) {
+function team_members_slider( $atts = array(), $content = null ) {
 
 	// Attributes
 	extract( shortcode_atts(
@@ -30,25 +30,19 @@ function team_members_matrix( $atts = array(), $content = null ) {
 	}
 
 	$posts = new WP_query($args);
-	
-	ob_start();
 
+	$items = [];
 	if( $posts->have_posts() ):
-	?>
-
-	<div class="mixitup-container">
-		<?php
 		while( $posts->have_posts() ) : $posts->the_post();
-			get_template_part('templates/content', get_post_type());
+			$person = get_post_with_custom_fields(get_post());
+			$person['image'] = get_thumbnail_url(get_the_ID(), 'large');
+			$person['title'] = $person['post_title'];
+			$items[] = $person;
 		endwhile;
-		?>
-	</div>
-
-	<?php
 	endif;
 
 	wp_reset_query();
-	return ob_get_clean();
+	return carousel(array('id' => 'team_slider', 'items' => $items, 'show' => 4, 'height' => '300px'));
 }
 
-add_shortcode( 'team_members_matrix', 'team_members_matrix' );
+add_shortcode( 'team_members_slider', 'team_members_slider' );

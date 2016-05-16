@@ -44,6 +44,9 @@
 
                       //body_classes is passed to this script from setup.php
                       $('body').removeClass().addClass(body_classes.join(' '));
+
+                      //reset slider for correct display
+                      $('.slick').slick('setPosition');
                   }
               }
           };
@@ -51,18 +54,20 @@
           smoothState = $('#smoothstate').smoothState(ssOptions).data('smoothState');
       },
       finalize: function() {
-        $('.carousel').hammer().on('swipeleft', function(){
-        	$(this).carousel('next');
-        });
-        $('.carousel').hammer().on('swiperight', function(){
-        	$(this).carousel('prev');
-        });
+
         $('.mixitup-container').mixItUp({
             // animation: {
             //     enable: false
             // }
         });
-        // JavaScript to be fired on all pages, after page specific JS is fired
+
+        $('.slick').slick({
+            prevArrow: '.prev',
+            nextArrow: '.next',
+            mobileFirst: true,
+            slidesToShow: 1
+        });
+
       }
     },
     // Home page

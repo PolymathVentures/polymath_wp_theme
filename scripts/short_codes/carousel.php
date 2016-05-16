@@ -1,15 +1,19 @@
 <?php
 
 // Add Shortcode
-function carousel_shortcode( $atts , $content = null ) {
+function carousel( $atts , $content = null ) {
 
 	// Attributes
 	extract( shortcode_atts(
 		array(
 			'id' => '',
-			'items' => array()
+			'items' => array(),
+			'show' => 1,
+			'height' => 'auto'
 		), $atts )
 	);
+
+	$show = wp_is_mobile() ? 1 : $show;
 
 	if (!$items) return;
 
@@ -17,15 +21,12 @@ function carousel_shortcode( $atts , $content = null ) {
 	$indicators = '';
 	$slides = '';
 	foreach ($items as $item) {
-		$indicators .= 	'<li data-target="#' . $id . '" data-slide-to="' . $i . '"' .
-						'class="' . ($i == 0 ? 'active' : '') . '"></li>';
-
-		$slides .= 	'<div class="item ' . ($i == 0 ? 'active' : '') . '">' .
-						'<img src="' . $item['image'] . '" alt="' . $item['title'] . '">' .
-						'<div class="carousel-caption">' .
-							'<h3>' . $item['title'] . '</h3>' .
-							'<p>' . $item['description'] . '</p>' .
-						'</div>' .
+		$slides .= 	'<div class="slide slide--has-caption slick-slide" style="height: ' . $height . '">';
+		$slides .= 	isset($item['image']) ? '<img src="' . $item['image'] . '" alt="' . $item['title'] . '">' : '';
+		$slides .= 	'<div class="slide__caption">' .
+					'<h3>' . $item['title'] . '</h3>' .
+						'<p>' . $item['description'] . '</p>' .
+					'</div>' .
 					'</div>';
 		$i++;
 	};
@@ -35,27 +36,22 @@ function carousel_shortcode( $atts , $content = null ) {
     /* Turn on buffering */
 	ob_start(); ?>
 
-    <div id="<?php echo $id; ?>" class="carousel slide col-md-12" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-			<?php echo $indicators; ?>
-        </ol>
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
+    <div id="<?php echo $id; ?>" class="slick-container col-md-12">
+        <div class="slick" data-slick='{"slidesToShow": <?php echo $show; ?>, "slidesToScroll": 1}'>
 			<?php echo $slides; ?>
         </div>
         <!-- Controls -->
-        <a class="left carousel-control" href="#<?php echo $id; ?>" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <a class="left carousel-control prev" href="#" role="button">
+	        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	        <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#<?php echo $id; ?>" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <a class="right carousel-control next" href="#" role="button">
+	        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	        <span class="sr-only">Next</span>
         </a>
     </div>
 
 	<?php
-	return ob_get_clean();
+	// return ob_get_clean();
 }
-add_shortcode( 'carousel', 'carousel_shortcode' );
+add_shortcode( 'carousel', 'carousel' );

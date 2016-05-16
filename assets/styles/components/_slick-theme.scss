@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+$slick-arrow-color: $red !default;
+$slick-dot-color: black !default;
+$slick-dot-size: 6px !default;
+$slick-opacity-default: 0.75 !default;
+$slick-opacity-on-hover: 1 !default;
+$slick-opacity-not-active: 0.25 !default;
+// Custom bootstrap carousel styling
+
+.slick-container {
+    @extend .carousel;
+
+    .slick {
+        @extend .carousel-inner;
+
+        .slide {
+            @extend .item;
+            position: relative;
+
+            img {
+                width:100%;
+            }
+        }
+    }
+
+    .slide__caption {
+        @extend .carousel-caption;
+        bottom: 0;
+        min-height: 80px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .slick-arrow {
+        background-image:none;
+    }
+}
