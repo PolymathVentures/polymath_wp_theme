@@ -1,0 +1,16 @@
+.featured-image {
+    min-height: 300px;
+    background-size: cover;
+    background-position: center center;
+    display: table;
+    width: 100%;
+
+    // @media(min-width: $screen-sm-min) {
+    //     margin-bottom: $line-height-computed * 3;
+    // }
+
+    .featured-image-inner {
+        background:rgba(white, 0.5);
+        display: table-cell;
+    }
+}

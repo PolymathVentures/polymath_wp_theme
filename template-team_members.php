@@ -1,4 +1,8 @@
-<?php get_template_part('templates/page', 'header'); ?>
+<?php
+/**
+ * Template Name: Team template
+ */
+?>
 
 <div class="row">
     <div class="col-md-12">
@@ -11,5 +15,3 @@
 <div class="row">
     <?php echo team_members_matrix(); ?>
 </div>
-
-<?php the_posts_navigation(); ?>

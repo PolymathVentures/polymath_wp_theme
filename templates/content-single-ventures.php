@@ -13,9 +13,11 @@
   </article>
 <?php endwhile; ?>
 
+<?php get_search_form(); ?>
+
 <div class="row">
     <?php $slides_post = get_post_with_custom_fields(get_field('milestones')); ?>
-    <?php echo carousel(array('id' => 'venture-slider', 'items' => $slides_post['slides'], 'show' => $slides_post['slides_in_view'])); ?>
+    <?php echo carousel(array('items' => $slides_post['slides'], 'show' => $slides_post['slides_in_view'], 'height' => '300px')); ?>
 </div>
 
 <div class="row">

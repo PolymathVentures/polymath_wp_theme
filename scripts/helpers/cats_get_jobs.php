@@ -99,3 +99,22 @@ function find_custom_field($job, $custom_field_id) {
         }
     }
 };
+
+/**
+ * Register the custom query params "job_id" and "job_title" and rewrite the url so it's pretty
+ */
+function register_job_params() {
+    add_rewrite_tag('%job_id%', '([^&]+)');
+    add_rewrite_tag('%job_title%', '([^&]+)');
+
+    $pages = get_pages(array(
+    	'meta_key' => '_wp_page_template',
+    	'meta_value' => 'template-jobs.php'
+    ));
+    foreach($pages as $page){
+        add_rewrite_rule('jobs/([^/]*)/([^/]*)/?',
+                         'index.php?page_id=' . $page->ID . '&job_id=$matches[1]&job_title=$matches[2]',
+                         'top');
+    }
+}
+add_action('init', 'register_job_params', 10, 0);

@@ -36,13 +36,14 @@ function team_members_slider( $atts = array(), $content = null ) {
 		while( $posts->have_posts() ) : $posts->the_post();
 			$person = get_post_with_custom_fields(get_post());
 			$person['image'] = get_thumbnail_url(get_the_ID(), 'large');
-			$person['title'] = $person['post_title'];
+			$person['title'] = $person['post_title'] . '<br/><span class="small">' . $person['job_title'] . '</span>';
 			$items[] = $person;
 		endwhile;
 	endif;
 
 	wp_reset_query();
-	return carousel(array('id' => 'team_slider', 'items' => $items, 'show' => 4, 'height' => '300px'));
+
+	return carousel(array('items' => $items, 'show' => 3, 'height' => '300px'));
 }
 
 add_shortcode( 'team_members_slider', 'team_members_slider' );

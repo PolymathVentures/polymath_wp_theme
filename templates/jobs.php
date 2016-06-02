@@ -8,8 +8,8 @@
 
 $jobs = cats_jobs();
 
-if (isset($_GET["id"])):
-    $job = get_job($jobs, $_GET["id"]);
+if (isset($wp_query->query_vars['job_id'])):
+    $job = get_job($jobs, $wp_query->query_vars['job_id']);
 endif;
 
 if (isset($job)):
@@ -22,7 +22,7 @@ else:
         <article <?php post_class(); ?>>
           <header>
             <h2 class="entry-title">
-                <a href="<?php echo get_permalink() . '?id=' . $job['id']; ?>">
+                <a href="<?php echo get_permalink() . $job['id'] . '/' . urlencode($job['title']); ?>">
                     <?php echo $job['title']; ?>
                 </a>
             </h2>

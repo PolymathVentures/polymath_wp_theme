@@ -3,8 +3,79 @@
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
+	'key' => 'group_573b83d5bab2d',
+	'title' => 'About info',
+	'fields' => array (
+		array (
+			'key' => 'field_573b83e2cad47',
+			'label' => 'Story',
+			'name' => 'story',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'sliders',
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'page_template',
+				'operator' => '==',
+				'value' => 'template-about.php',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
+	'key' => 'group_573a1fcd0e3db',
+	'title' => 'Front-page info',
+	'fields' => array (
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'page_template',
+				'operator' => '==',
+				'value' => 'front-page.php',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
 	'key' => 'group_5737a0cc013a0',
-	'title' => 'Featured image info',
+	'title' => 'General page elements',
 	'fields' => array (
 		array (
 			'key' => 'field_5737a0d1b6790',
@@ -23,7 +94,7 @@ acf_add_local_field_group(array (
 			'placeholder' => '',
 			'prepend' => '',
 			'append' => '',
-			'maxlength' => 80,
+			'maxlength' => '',
 			'readonly' => 0,
 			'disabled' => 0,
 		),
@@ -42,7 +113,7 @@ acf_add_local_field_group(array (
 			),
 			'default_value' => '',
 			'placeholder' => '',
-			'maxlength' => 400,
+			'maxlength' => '',
 			'rows' => '',
 			'new_lines' => 'br',
 			'readonly' => 0,
@@ -90,6 +161,52 @@ acf_add_local_field_group(array (
 			'readonly' => 0,
 			'disabled' => 0,
 		),
+		array (
+			'key' => 'field_573c9bb2e8877',
+			'label' => 'Quote',
+			'name' => 'quote',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'quotes',
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
+		),
+		array (
+			'key' => 'field_573c9bfce8878',
+			'label' => 'Promo',
+			'name' => 'promo',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'promos',
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
+		),
 	),
 	'location' => array (
 		array (
@@ -120,30 +237,9 @@ acf_add_local_field_group(array (
 				'value' => 'ventures',
 			),
 		),
-		array (
-			array (
-				'param' => 'page_template',
-				'operator' => '==',
-				'value' => 'default',
-			),
-		),
-		array (
-			array (
-				'param' => 'page_template',
-				'operator' => '==',
-				'value' => 'front-page.php',
-			),
-		),
-		array (
-			array (
-				'param' => 'page_template',
-				'operator' => '==',
-				'value' => 'template-jobs.php',
-			),
-		),
 	),
 	'menu_order' => 0,
-	'position' => 'normal',
+	'position' => 'acf_after_title',
 	'style' => 'default',
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',
@@ -153,102 +249,9 @@ acf_add_local_field_group(array (
 ));
 
 acf_add_local_field_group(array (
-	'key' => 'group_573a1fcd0e3db',
-	'title' => 'Front-page info',
-	'fields' => array (
-		array (
-			'key' => 'field_573a2002aef2c',
-			'label' => 'Quote',
-			'name' => 'quote',
-			'type' => 'post_object',
-			'instructions' => '',
-			'required' => 1,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'post_type' => array (
-				0 => 'quotes',
-			),
-			'taxonomy' => array (
-			),
-			'allow_null' => 0,
-			'multiple' => 0,
-			'return_format' => 'object',
-			'ui' => 1,
-		),
-		array (
-			'key' => 'field_573a20c6ed7e5',
-			'label' => 'Promo',
-			'name' => 'promo',
-			'type' => 'post_object',
-			'instructions' => '',
-			'required' => 1,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'post_type' => array (
-				0 => 'promos',
-			),
-			'taxonomy' => array (
-			),
-			'allow_null' => 0,
-			'multiple' => 0,
-			'return_format' => 'object',
-			'ui' => 1,
-		),
-	),
-	'location' => array (
-		array (
-			array (
-				'param' => 'page_template',
-				'operator' => '==',
-				'value' => 'front-page.php',
-			),
-		),
-	),
-	'menu_order' => 0,
-	'position' => 'normal',
-	'style' => 'default',
-	'label_placement' => 'top',
-	'instruction_placement' => 'label',
-	'hide_on_screen' => '',
-	'active' => 1,
-	'description' => '',
-));
-
-acf_add_local_field_group(array (
 	'key' => 'group_572beced5aab9',
 	'title' => 'Job info',
 	'fields' => array (
-		array (
-			'key' => 'field_572becf2b1d76',
-			'label' => 'Quote',
-			'name' => 'quote',
-			'type' => 'post_object',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'post_type' => array (
-				0 => 'quotes',
-			),
-			'taxonomy' => array (
-			),
-			'allow_null' => 0,
-			'multiple' => 0,
-			'return_format' => 'object',
-			'ui' => 1,
-		),
 	),
 	'location' => array (
 		array (
@@ -270,9 +273,107 @@ acf_add_local_field_group(array (
 ));
 
 acf_add_local_field_group(array (
+	'key' => 'group_573cb6f392800',
+	'title' => 'Personal story info',
+	'fields' => array (
+		array (
+			'key' => 'field_573cb6f857abf',
+			'label' => 'Team member',
+			'name' => 'team_member',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'team_members',
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
+		),
+		array (
+			'key' => 'field_573cb70f57ac0',
+			'label' => 'Story',
+			'name' => 'story',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'sliders',
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'personal_stories',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
 	'key' => 'group_573a241a5c0b9',
 	'title' => 'Promo info',
 	'fields' => array (
+		array (
+			'key' => 'field_575075f4ced1c',
+			'label' => 'Type',
+			'name' => 'type',
+			'type' => 'select',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => array (
+				'Promo' => 'Promo',
+				'Statistic' => 'Statistic',
+				'Quote' => 'Quote',
+			),
+			'default_value' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'ui' => 0,
+			'ajax' => 0,
+			'placeholder' => '',
+			'disabled' => 0,
+			'readonly' => 0,
+		),
 		array (
 			'key' => 'field_573a247b313c2',
 			'label' => 'Description',
@@ -298,8 +399,8 @@ acf_add_local_field_group(array (
 			'key' => 'field_573a241e887ff',
 			'label' => 'Link',
 			'name' => 'link',
-			'type' => 'text',
-			'instructions' => 'Relative path to page in website. Don\'t use first slash',
+			'type' => 'page_link',
+			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
@@ -307,13 +408,12 @@ acf_add_local_field_group(array (
 				'class' => '',
 				'id' => '',
 			),
-			'default_value' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
-			'maxlength' => '',
-			'readonly' => 0,
-			'disabled' => 0,
+			'post_type' => array (
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
 		),
 		array (
 			'key' => 'field_573a243c88800',
@@ -336,38 +436,22 @@ acf_add_local_field_group(array (
 			'readonly' => 0,
 			'disabled' => 0,
 		),
-	),
-	'location' => array (
 		array (
-			array (
-				'param' => 'post_type',
-				'operator' => '==',
-				'value' => 'promos',
-			),
-		),
-	),
-	'menu_order' => 0,
-	'position' => 'normal',
-	'style' => 'default',
-	'label_placement' => 'top',
-	'instruction_placement' => 'label',
-	'hide_on_screen' => '',
-	'active' => 1,
-	'description' => '',
-));
-
-acf_add_local_field_group(array (
-	'key' => 'group_572beb3851d96',
-	'title' => 'Quote info',
-	'fields' => array (
-		array (
-			'key' => 'field_572beb47cda0c',
+			'key' => 'field_57507636ced1d',
 			'label' => 'Team member',
 			'name' => 'team_member',
-			'type' => 'post_object',
+			'type' => 'relationship',
 			'instructions' => '',
-			'required' => 1,
-			'conditional_logic' => 0,
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => 'field_575075f4ced1c',
+						'operator' => '==',
+						'value' => 'Quote',
+					),
+				),
+			),
 			'wrapper' => array (
 				'width' => '',
 				'class' => '',
@@ -378,10 +462,15 @@ acf_add_local_field_group(array (
 			),
 			'taxonomy' => array (
 			),
-			'allow_null' => 0,
-			'multiple' => 0,
+			'filters' => array (
+				0 => 'search',
+				1 => 'post_type',
+				2 => 'taxonomy',
+			),
+			'elements' => '',
+			'min' => '',
+			'max' => '',
 			'return_format' => 'object',
-			'ui' => 1,
 		),
 	),
 	'location' => array (
@@ -389,7 +478,7 @@ acf_add_local_field_group(array (
 			array (
 				'param' => 'post_type',
 				'operator' => '==',
-				'value' => 'quotes',
+				'value' => 'promos',
 			),
 		),
 	),
@@ -426,9 +515,32 @@ acf_add_local_field_group(array (
 			'append' => '',
 			'min' => 2000,
 			'max' => 2050,
-			'step' => 2,
+			'step' => 1,
 			'readonly' => 0,
 			'disabled' => 0,
+		),
+		array (
+			'key' => 'field_573c9a6d1533b',
+			'label' => 'Story',
+			'name' => 'story',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'sliders',
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
 		),
 	),
 	'location' => array (
@@ -479,7 +591,7 @@ acf_add_local_field_group(array (
 					'name' => 'title',
 					'type' => 'text',
 					'instructions' => '',
-					'required' => 1,
+					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array (
 						'width' => '',
@@ -511,7 +623,7 @@ acf_add_local_field_group(array (
 					'placeholder' => '',
 					'maxlength' => '',
 					'rows' => '',
-					'new_lines' => 'wpautop',
+					'new_lines' => 'br',
 					'readonly' => 0,
 					'disabled' => 0,
 				),
@@ -609,82 +721,6 @@ acf_add_local_field_group(array (
 ));
 
 acf_add_local_field_group(array (
-	'key' => 'group_5733a08a5f33d',
-	'title' => 'Statistics info',
-	'fields' => array (
-		array (
-			'key' => 'field_5733a099c03d5',
-			'label' => 'Number',
-			'name' => 'number',
-			'type' => 'number',
-			'instructions' => '',
-			'required' => 1,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'placeholder' => 101,
-			'prepend' => '',
-			'append' => '',
-			'min' => '',
-			'max' => '',
-			'step' => '0.1',
-			'readonly' => 0,
-			'disabled' => 0,
-		),
-		array (
-			'key' => 'field_5733a0b5c03d6',
-			'label' => 'Type',
-			'name' => 'type',
-			'type' => 'select',
-			'instructions' => '',
-			'required' => 1,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'choices' => array (
-				'number' => 'number',
-				'currency' => 'currency',
-				'percentage' => 'percentage',
-			),
-			'default_value' => array (
-				0 => 'number',
-			),
-			'allow_null' => 0,
-			'multiple' => 0,
-			'ui' => 0,
-			'ajax' => 0,
-			'placeholder' => '',
-			'disabled' => 0,
-			'readonly' => 0,
-		),
-	),
-	'location' => array (
-		array (
-			array (
-				'param' => 'post_type',
-				'operator' => '==',
-				'value' => 'statistics',
-			),
-		),
-	),
-	'menu_order' => 0,
-	'position' => 'normal',
-	'style' => 'default',
-	'label_placement' => 'top',
-	'instruction_placement' => 'label',
-	'hide_on_screen' => '',
-	'active' => 1,
-	'description' => '',
-));
-
-acf_add_local_field_group(array (
 	'key' => 'group_572bd90f4512f',
 	'title' => 'Team member info',
 	'fields' => array (
@@ -758,7 +794,7 @@ acf_add_local_field_group(array (
 			),
 			'default_value' => '',
 			'placeholder' => '',
-			'maxlength' => 400,
+			'maxlength' => '',
 			'rows' => '',
 			'new_lines' => '',
 			'readonly' => 0,
@@ -892,29 +928,6 @@ acf_add_local_field_group(array (
 			'ui' => 1,
 		),
 		array (
-			'key' => 'field_5730c68bbd04a',
-			'label' => 'Quote',
-			'name' => 'quote',
-			'type' => 'post_object',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'post_type' => array (
-				0 => 'quotes',
-			),
-			'taxonomy' => array (
-			),
-			'allow_null' => 0,
-			'multiple' => 0,
-			'return_format' => 'object',
-			'ui' => 1,
-		),
-		array (
 			'key' => 'field_5737c5ecca233',
 			'label' => 'Milestones',
 			'name' => 'milestones',
@@ -997,7 +1010,14 @@ acf_add_local_field_group(array (
 			array (
 				'param' => 'post_type',
 				'operator' => '==',
-				'value' => 'statistics',
+				'value' => 'post',
+			),
+		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'promos',
 			),
 		),
 	),
@@ -1051,7 +1071,14 @@ acf_add_local_field_group(array (
 			array (
 				'param' => 'post_type',
 				'operator' => '==',
-				'value' => 'statistics',
+				'value' => 'promos',
+			),
+		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'post',
 			),
 		),
 	),

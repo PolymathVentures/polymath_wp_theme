@@ -30,25 +30,42 @@ function team_members_matrix( $atts = array(), $content = null ) {
 	}
 
 	$posts = new WP_query($args);
-	
-	ob_start();
 
 	if( $posts->have_posts() ):
-	?>
 
-	<div class="mixitup-container">
-		<?php
+	$output = '';
+
+	$output .= '<div class="mixitup-container">';
+
 		while( $posts->have_posts() ) : $posts->the_post();
-			get_template_part('templates/content', get_post_type());
-		endwhile;
-		?>
-	</div>
 
-	<?php
+			$ventures = implode(' ', get_field( "ventures" ) ?: []);
+			$seeds = implode(' ', get_field( "seeds" ) ?: []);
+			$title = get_the_title();
+			$permalink = get_the_permalink();
+			$experience = get_field( "experience" );
+
+			$output .= <<<HTML
+				<div class="col-md-3 col-sm-6 col-xs-12 mix $ventures $seeds">
+					<article class="implode(' ', get_post_class())">
+					  <header>
+						<h2 class="entry-title"><a href="$permalink">$title</a></h2>
+					  </header>
+					  <div class="entry-summary">
+						$experience
+					  </div>
+					</article>
+				</div>
+HTML;
+
+		endwhile;
+
+	$output .= '</div>';
+
 	endif;
 
 	wp_reset_query();
-	return ob_get_clean();
+	return $output;
 }
 
 add_shortcode( 'team_members_matrix', 'team_members_matrix' );

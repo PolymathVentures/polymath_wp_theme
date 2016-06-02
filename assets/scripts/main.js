@@ -61,11 +61,36 @@
             // }
         });
 
-        $('.slick').slick({
-            prevArrow: '.prev',
-            nextArrow: '.next',
-            mobileFirst: true,
-            slidesToShow: 1
+        $('.slick').each(function (idx, item) {
+            var carouselId = "carousel" + idx;
+            this.id = carouselId;
+            $(this).slick({
+                slide: "#" + carouselId +" .slide",
+                appendArrows: $("#" + carouselId).parent(".slick-container"),
+                prevArrow: '<a class="left prev" href="#" role="button">' +
+                    	        '<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>' +
+                    	        '<span class="sr-only">Previous</span>' +
+                            '</a>',
+                nextArrow: '<a class="right next" href="#" role="button">' +
+                    	        '<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>' +
+                    	        '<span class="sr-only">Next</span>' +
+                            '</a>',
+                responsive: [{
+                    breakpoint: 767,
+                    settings: {
+                    slidesToShow: 1,
+                    arrows: false
+                    }
+                }]
+            });
+
+            var self = $(this);
+            $('.slick-control a').click(function (e) {
+                var slideIndex = $(this).parent('li').index();
+                self.slick( 'slickGoTo', parseInt( slideIndex ) );
+                e.preventDefault();
+            });
+
         });
 
       }

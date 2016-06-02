@@ -9,13 +9,16 @@ function post_list( $atts = array(), $content = null ) {
 			'filter' => false,
 			'value' => false,
 			'maximum' => -1,
+			'post_type' => 'post',
+			'show_image' => true,
+			'title_class' => ''
 		), $atts )
 	);
 
 	$args = array(
 		'posts_per_page'   => $maximum,
 		'orderby'          => 'published',
-		'post_type'		   => 'post',
+		'post_type'		   => $post_type,
 		'order'            => 'DESC',
 		'post_status'      => 'publish',
 	);
@@ -35,37 +38,47 @@ function post_list( $atts = array(), $content = null ) {
 	$i = 0;
 	$colors = array('red', 'dark-blue', 'aqua');
 	$output = '';
-	while( $posts->have_posts() ) : $posts->the_post();
-		if ($i % 3 == 0) {
-			$output .= '<div class="post-list">';
-		}
 
-		$thumb = get_thumbnail_url(get_the_ID(), 'post-list-thumb');
-		$output .= '<div class="col-sm-4 post-list-item ' . $colors[$i] . '">';
-		$output .= 	'<article class="' . implode(' ', get_post_class()) . '">' .
-						'<header>' .
-							'<h4 class="entry-title">' . get_the_title() . '</h4>' .
-						'</header>' .
-						'<div class="entry-summary">' .
-							get_the_excerpt() .
-						'</div>' .
-						'<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>' .
-					'</article>' .
-					'<img src="' . $thumb . '">' .
-					'</div>';
+		while( $posts->have_posts() ) : $posts->the_post();
 
-		$i++;
-		if ($i % 3 == 0) {
-			$output .= '</div>';
-			$i = 0;
-			array_push($colors, array_shift($colors));
-		}
-	endwhile;
+			$post_class = implode(' ', get_post_class());
+			$title = get_the_title();
+			$permalink = get_field( "link" ) ?: get_the_permalink();
+			$button_text = get_field( "button_text" ) ?: 'More';
+			$excerpt = get_field( "description" ) ?: get_the_excerpt();
+			$thumb_url = has_post_thumbnail() ?
+							get_thumbnail_url(get_the_ID(), 'post-list-thumb') :
+							"http://www.polymathv.com/wp-content/uploads/2014/09/Polymath_Logo_transparent.png";
 
+			$image = $show_image ? '<div class="post-list-image" style="background-image: url(' . $thumb_url . ')"></div>' : '';
+			$output .= $i % 3 == 0 ? '<div class="post-list">' : '';
+			$output .= 	<<<HTML
+						<div class="col-sm-4 post-list-item $colors[$i]">
+							<article class="$post_class col-xs-12 text-center">
+								<header>
+									<div class="entry-title $title_class"><a href="$permalink">$title</a></div>
+								</header>
+								<div class="entry-summary big">
+									$excerpt<br />
+									<a class="text-underline" href="$permalink">$button_text</a>
+									<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+								</div>
+							</article>
+							$image
+						</div>
+HTML;
+
+			$i++;
+			if ($i % 3 == 0 || $i + 1 == $posts->found_posts) {
+				$output .= '</div>';
+				$i = 0;
+				array_push($colors, array_shift($colors));
+			}
+
+		endwhile;
 	endif;
 
 	wp_reset_query();
-
 	return $output;
 }
 

@@ -6,52 +6,46 @@ function carousel( $atts , $content = null ) {
 	// Attributes
 	extract( shortcode_atts(
 		array(
-			'id' => '',
 			'items' => array(),
 			'show' => 1,
-			'height' => 'auto'
+			'height' => 'auto',
+			'show_caption' => true,
+			'background' => ''
 		), $atts )
 	);
-
-	$show = wp_is_mobile() ? 1 : $show;
 
 	if (!$items) return;
 
 	$i = 0;
-	$indicators = '';
 	$slides = '';
+	$controls = '';
 	foreach ($items as $item) {
 		$slides .= 	'<div class="slide slide--has-caption slick-slide" style="height: ' . $height . '">';
-		$slides .= 	isset($item['image']) ? '<img src="' . $item['image'] . '" alt="' . $item['title'] . '">' : '';
-		$slides .= 	'<div class="slide__caption">' .
-					'<h3>' . $item['title'] . '</h3>' .
-						'<p>' . $item['description'] . '</p>' .
-					'</div>' .
-					'</div>';
+		$slides .= 	$item['image'] != '' ?
+					'<img src="' . $item['image'] . '" alt="' . $item['title'] . '">' : '';
+
+		if ($show_caption) {
+			$slides .= 	'<div class="slide__caption"><div class="caption-content">' .
+							'<h3>' . $item['title'] . '</h3>' .
+							'<p>' . $item['description'] . '</p>' .
+						'</div></div>';
+		}
+
+		$slides .= '</div>';
+
+		$controls .= '<li class="slick-control"><a href="#">' . $item['title'] . '</a></li>'; // <ul class="links">$controls</ul>
 		$i++;
 	};
 
 
-    //Code
-    /* Turn on buffering */
-	ob_start(); ?>
-
-    <div id="<?php echo $id; ?>" class="slick-container col-md-12">
-        <div class="slick" data-slick='{"slidesToShow": <?php echo $show; ?>, "slidesToScroll": 1}'>
-			<?php echo $slides; ?>
+    $output = <<<HTML
+	<div class="slick-container" style="background-image:url($background)">
+        <div class="slick" data-slick='{"slidesToShow": $show, "slidesToScroll": 1}'>
+			$slides
         </div>
-        <!-- Controls -->
-        <a class="left carousel-control prev" href="#" role="button">
-	        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-	        <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control next" href="#" role="button">
-	        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-	        <span class="sr-only">Next</span>
-        </a>
     </div>
+HTML;
 
-	<?php
-	// return ob_get_clean();
+	return $output;
 }
 add_shortcode( 'carousel', 'carousel' );

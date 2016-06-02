@@ -1,0 +1,46 @@
+.navbar-default {
+
+    border-color: white;
+    margin-bottom: 0;
+
+    .navbar-header {
+
+        .brand img {
+            height: $navbar-height / 2;
+            margin: ($navbar-height / 4) 0;
+        }
+    }
+    .navbar-nav {
+
+        @media(min-width: $screen-sm-min) {
+            float: right;
+        }
+
+        li {
+           $v: ($navbar-height - $line-height-computed) / 2;
+           $h: floor(($grid-gutter-width / 2));
+           $o: 5px;
+           a {
+               @extend .text-uppercase;
+               font-weight: 400;
+               letter-spacing: $extra-letter-spacing;
+               font-size: $font-size-small;
+           }
+
+           @media(min-width: $screen-sm-min) {
+               a {
+                   padding: 0 0 $o 0;
+                   margin-top: $v;
+                   margin-bottom: $v - $o;
+                   margin-right: $h;
+                   margin-left: $h;
+                   border-bottom: 1px solid $dark-blue;
+               }
+
+               &.active a, &:hover a {
+                   border-bottom: 1px solid $aqua;
+               }
+           }
+       }
+    }
+}

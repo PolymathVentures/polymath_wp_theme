@@ -29,20 +29,43 @@ function statistics_list( $atts = array(), $content = null ) {
 
 	$posts = new WP_query($args);
 
-	ob_start();
+
 
 	if( $posts->have_posts() ):
-	?>
 
-	<?php while( $posts->have_posts() ) : $posts->the_post(); ?>
-		<?php get_template_part('templates/content', get_post_type()); ?>
-	<?php endwhile; ?>
+		$output = '';
+		while( $posts->have_posts() ) : $posts->the_post();
 
-	<?php
+		    $ventures = implode(' ', get_field( "ventures" ) ?: []);
+		    $seeds = implode(' ', get_field( "seeds" ) ?: []);
+			$number = get_field( "number" );
+			$type = get_field( "type" );
+			$title = get_field( "description" );
+
+			switch ($type) {
+				case 'currency':
+					$stat = '$' . $number . ' ' . $title;
+					break;
+				case 'percentage':
+					$stat = $number . '% ' . $title;
+					break;
+				default:
+					$stat = $number . ' ' . $title;
+			}
+
+			$output .= <<<HTML
+						<div class="col-md-4 col-sm-4 $ventures $seeds">
+						    <h3>
+						        $stat
+						    </h3>
+						</div>
+HTML;
+
+		endwhile;
 	endif;
 
 	wp_reset_query();
-	return ob_get_clean();
+	return $output;
 }
 
 add_shortcode( 'statistics_list', 'statistics_list' );
