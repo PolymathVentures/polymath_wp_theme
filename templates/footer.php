@@ -1,5 +1,5 @@
-<footer class="content-info dark-blue">
-  <div class="container extra-padding">
+<footer class="content-info purple text-center">
+  <div class="container extra-padding-vertical">
     <?php dynamic_sidebar('sidebar-footer'); ?>
   </div>
 </footer>

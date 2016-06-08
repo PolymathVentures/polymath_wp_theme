@@ -38,6 +38,7 @@ function setup() {
 
   // Size for post-list images
   add_image_size( 'post-list-thumb', 380, 220, true );
+  add_image_size( 'team-member-thumb', 285, 350, true );
 
   // Enable post formats
   // http://codex.wordpress.org/Post_Formats
@@ -69,10 +70,10 @@ function widgets_init() {
   register_sidebar([
     'name'          => __('Footer', 'sage'),
     'id'            => 'sidebar-footer',
-    'before_widget' => '<section class="widget %1$s %2$s">',
+    'before_widget' => '<section class="widget %1$s %2$s col-sm-4 extra-padding-horizontal">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h3>',
-    'after_title'   => '</h3>'
+    'before_title'  => '<h5 class="text-bold">',
+    'after_title'   => '</h5>'
   ]);
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');

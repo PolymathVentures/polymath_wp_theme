@@ -33,7 +33,7 @@
               onProgress: {
                 duration: 0,
                 render: function ($container) {
-
+                    $('#smoothstate').append('<div class="text-center"><h1>Loading, one second please...</h1></div>');
                 }
               },
               onReady: {
@@ -91,6 +91,12 @@
                 e.preventDefault();
             });
 
+        });
+
+        // Little hack because initializing slick slider on display: none elements doesn't work.
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+            var id = $(this).attr('href').replace('#', '');
+            $('#' + id + ' .slick').slick('setPosition');
         });
 
       }

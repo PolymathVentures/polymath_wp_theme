@@ -9,7 +9,23 @@ $slick-opacity-not-active: 0.25 !default;
 // Custom bootstrap carousel styling
 
 
-$arrow-width: 7%;
+$arrow-width: 5%;
+
+
+.team .caption {
+    @extend .team-member-info-overlay;
+
+}
+
+.personal_story .caption {
+    position: absolute;
+    bottom: 40px;
+    background: $red;
+    color: white;
+    text-align: center;
+    padding: 0 10px 30px 10px;
+    width: 100%;
+}
 
 .slick-container {
     @extend .carousel;
@@ -23,9 +39,9 @@ $arrow-width: 7%;
             @extend .item;
             position: relative;
 
-            img {
-                height: 100%;
-                overflow: hidden;
+            .slide-content {
+                background-size: cover;
+                background-position: center center;
             }
         }
 
@@ -35,28 +51,6 @@ $arrow-width: 7%;
             margin-right: $arrow-width;
         }
 
-    }
-
-    .slide__caption {
-        @extend .carousel-caption;
-        opacity: 0;
-        text-align: left;
-        background: rgba($dark-blue, 0.7);
-        text-shadow: none;
-        bottom: 0;
-        height: 100%;
-        left: 0;
-        position: absolute;
-        width: 100%;
-        z-index: 2;
-
-        .caption-content {
-            padding: 0 $padding-base-horizontal * 2;
-        }
-
-        &:hover {
-            opacity: 1;
-        }
     }
 
     .slick-arrow {
@@ -82,6 +76,22 @@ $arrow-width: 7%;
             &.glyphicon-menu-right {
                 right: 50%;
                 margin-right: -10px;
+            }
+        }
+    }
+
+    .slick-dots {
+        @extend .carousel-indicators;
+        text-align: center;
+        padding-bottom: 20px;
+        li {
+            margin: 0 3px;
+            button {
+                display: none;
+            }
+
+            &.slick-active {
+                background: white;
             }
         }
     }

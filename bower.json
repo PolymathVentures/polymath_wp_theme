@@ -10,7 +10,8 @@
     "bootstrap-sass": "3.3.6",
     "mixitup": "^2.1.11",
     "smoothstate": "^0.7.2",
-    "slick-carousel": "^1.6.0"
+    "slick-carousel": "^1.6.0",
+    "bourbon": "^4.2.7"
   },
   "overrides": {
     "bootstrap-sass": {

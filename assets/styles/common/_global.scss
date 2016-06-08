@@ -4,6 +4,10 @@ body {
     padding-top: $navbar-height;
 }
 
+img {
+    max-width:100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 }
@@ -64,17 +68,40 @@ $extra-padding: $line-height-computed * 1.5;
 .red {
     background-color: $red;
 }
+
+.overlay-red {
+    background-color: rgba($red, 0.5);
+}
+
 .dark-blue {
     background-color: $dark-blue;
 }
+
+.overlay-dark-blue {
+    background-color: rgba($dark-blue, 0.5);
+}
+
 .aqua {
     background-color: $aqua;
 }
+
+.overlay-aqua {
+    background-color: rgba($aqua, 0.5);
+}
+
 .lila {
     background-color: $lila;
 }
 .dark-lila {
     background-color: $dark-lila;
+}
+
+.purple {
+    background-color: $purple;
+}
+
+.light-gray {
+    background-color: $light-gray;
 }
 
 .text-white {
@@ -103,7 +130,36 @@ $extra-padding: $line-height-computed * 1.5;
 // Mixitup filter view
 .mix{
     display: none;
-    background: $aqua;
+    background-position: center center;
+    background-size: cover;
+    height: 350px;
+}
+
+.tabs {
+    li {
+        list-style: none;
+    }
+}
+
+.team-member-info-overlay {
+    @include transition(opacity 0.2s ease-in 0s);
+    opacity: 0;
+    text-align: left;
+    background: rgba($dark-blue, 0.7);
+    text-shadow: none;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    z-index: 2;
+    color: white;
+    padding: 0 $padding-base-horizontal * 2;
+    overflow: hidden;
+
+    &:hover {
+        opacity: 1;
+    }
 }
 
 /*

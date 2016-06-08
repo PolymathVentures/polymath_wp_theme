@@ -1,3 +1,39 @@
 footer {
-    color: white;
+    color: rgba(white, 0.5);
+
+    a {
+        color: rgba(white, 0.5);
+
+        &:hover {
+            color: rgba(white, 0.8);
+        }
+    }
+    .widget {
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        .menu-item {
+            font-size: $font-size-small;
+            letter-spacing: $extra-letter-spacing;
+            text-transform: uppercase;
+            line-height: $line-height-computed;
+
+        }
+
+    }
+
+    .widget_tp_widget_recent_tweets {
+
+        @media(min-width: $screen-sm-min) {
+            border-left: 1px solid;
+            border-right: 1px solid;
+        }
+
+
+        .tp_recent_tweets {
+            text-align: left;
+            font-size: $font-size-small;
+        }
+    }
 }

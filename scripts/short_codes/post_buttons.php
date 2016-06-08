@@ -6,24 +6,48 @@ function post_buttons( $atts , $content = null ) {
 	// Attributes
 	extract( shortcode_atts(
 		array(
-			'post_type' => '',
+			'title' => '',
+			'post_type' => false,
+			'taxonomy' => false,
 		), $atts )
 	);
 
-	$args = array(
-		'posts_per_page'   => -1,
-		'orderby'          => 'post_title',
-		'order'            => 'ASC',
-		'post_type'        => $post_type,
-		'post_status'      => array('publish', 'pending'),
-	);
+	if($post_type) {
 
-	$posts = get_posts( $args );
+		$args = array(
+			'posts_per_page'   => -1,
+			'orderby'          => 'post_title',
+			'order'            => 'ASC',
+			'post_type'        => $post_type,
+			'post_status'      => array('publish', 'pending'),
+		);
 
-	$buttons = '';
-	foreach($posts as $post) {
-		$buttons .= '<button class="btn btn-primary filter" data-filter=".' . $post->ID . '">' . $post->post_title . '</button> ';
+		$list = get_posts( $args );
+
+	} else if($taxonomy) {
+
+		$list = get_terms( array(
+		    'taxonomy' => $taxonomy,
+		) );
+
+	}
+
+	$buttons = <<<HTML
+					<div class="btn-group">
+  			   			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							$title
+						</button>
+						<ul class="dropdown-menu">
+HTML;
+
+
+	foreach($list as $item) {
+		$key = isset($item->ID) ? $item->ID : $item->slug;
+		$val = isset($item->post_title) ? $item->post_title : $item->name;
+		$buttons .= '<li><a href="#" class="filter" data-filter=".' . $key . '">' . $val . '</a></li>';
 	};
+
+	$buttons .= '</ul></div>';
 
 	return $buttons;
 }

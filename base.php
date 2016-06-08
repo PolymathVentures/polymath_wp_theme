@@ -22,23 +22,6 @@ use Roots\Sage\Wrapper;
 
     <div class="scene_element scene_element--fadein">
 
-        <?php if (has_post_thumbnail()): ?>
-            <div class="featured-image" style="background-image:url(<?php the_post_thumbnail_url( dependent_image_size() ); ?>)">
-                <div class="featured-image-inner">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <?php echo get_field('tagline') ? '<h1 class="extra-big">' . get_field('tagline') . '</h1>': ''; ?>
-                                <?php echo get_field('description') ? '<p class="big">' . get_field('description') . '</p>': ''; ?>
-                                <?php echo get_field('link') ? '<p class="big extra-padding-vertical"><a class="btn btn-primary" href="' . get_home_url() . '/' . get_field('link') . '">' .
-                                           get_field('link_title') . '</a></p>': ''; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>
-
         <div class="wrap" role="document">
           <div class="content">
             <main>
@@ -50,19 +33,6 @@ use Roots\Sage\Wrapper;
               </aside>
             <?php endif; ?>
           </div><!-- /.content -->
-
-          <div class="container adjust-height text-white">
-                  <div class="col-sm-8 extra-padding-vertical extra-padding-horizontal dark-lila">
-                      <?php if (get_field('quote')): ?>
-                          <?php echo quote(array('quote' => get_field('quote'))); ?>
-                      <?php endif; ?>
-                  </div>
-                  <div class="col-sm-4 extra-padding-vertical extra-padding-horizontal red">
-                      <?php if (get_field('promo')): ?>
-                          <?php echo promo(array('promo' => get_field('promo'))); ?>
-                      <?php endif; ?>
-                  </div>
-          </div>
 
         </div><!-- /.wrap -->
 

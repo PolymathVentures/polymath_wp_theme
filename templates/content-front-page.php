@@ -2,6 +2,8 @@
     <div class="row extra-padding-vertical">
         <div class="col-md-12">
             <?php echo post_list(array('maximum' => 3,
+                                       'filter' => 'type',
+                                       'value' => 'Statistic',
                                        'post_type' => 'promos',
                                        'title_class' => 'extra-big text-center')); ?>
         </div>
