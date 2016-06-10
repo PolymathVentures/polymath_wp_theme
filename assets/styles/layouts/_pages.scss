@@ -1,7 +1,6 @@
 .featured-image {
+    @extend .background-position;
     min-height: 300px;
-    background-size: cover;
-    background-position: center center;
     display: table;
     width: 100%;
 

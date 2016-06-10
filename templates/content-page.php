@@ -12,26 +12,30 @@ if( have_rows('content') ):
 
     <?php else: ?>
 
-        <div class="<?php the_sub_field('background_color'); ?>">
+        <div class="<?php the_sub_field('background_color'); ?> <?php echo $template_name; ?>">
             <div class="container">
-                <div class="row extra-padding-vertical text-center">
-                    <div class="col-md-12">
-                        <?php if(get_sub_field('title')): ?>
+                <?php if(get_sub_field('title')): ?>
+                    <div class="row extra-padding-vertical text-center">
+                        <div class="col-xs-12">
+
                             <h2 class="text-bold"><?php the_sub_field('title'); ?></h2>
-                        <? endif; ?>
 
-                        <?php if(get_sub_field('sub_title')): ?>
-                            <p class="big"><?php the_sub_field('sub_title'); ?></p>
-                        <? endif; ?>
+                            <?php if(get_sub_field('sub_title')): ?>
+                                <p class="big"><?php the_sub_field('sub_title'); ?></p>
+                            <? endif; ?>
 
+                        </div>
+                    </div>
+                <? endif; ?>
+                <div class="row extra-padding-vertical text-center">
+                    <div class="col-xs-12">
                         <?php get_template_part('templates/' . $template_name); ?>
-
                     </div>
                 </div>
 
                 <?php if(get_sub_field('button_text')): ?>
                     <div class="row extra-padding-vertical text-center">
-                        <div class="col-sm-12">
+                        <div class="col-xs-12">
                             <p>
                                 <a href="<?php the_sub_field('button_link'); ?>" class="btn btn-primary">
                                     <?php the_sub_field('button_text'); ?>

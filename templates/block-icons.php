@@ -1,6 +1,11 @@
-<?php $icons = get_sub_field('icons'); ?>
-<?php $i = 0; foreach($icons as $icon) { ?>
-    <div class="col-sm-2 <?php echo $i == 0 ? 'col-sm-offset-1' : ''; ?> col-xs-6 text-uppercase extra-letter-spacing">
+<?php
+$icons = get_sub_field('icons');
+$count = count($icons);
+$offset = (12 - $count * 2) / 2;
+?>
+
+<?php $i = 0; foreach($icons as $icon): ?>
+    <div class="col-sm-2 <?php echo $i == 0 ? 'active col-sm-offset-' . $offset: ''; ?> col-xs-6 text-uppercase extra-letter-spacing">
 
         <?php if(get_sub_field('link')): ?>
             <a href="<?php the_sub_field('link'); ?>">
@@ -14,4 +19,4 @@
 
         <?php echo $icon['text']; ?>
     </div>
-<?php $i++; }; ?>
+<?php $i++; endforeach; ?>

@@ -29,8 +29,7 @@ $arrow-width: 5%;
 
 .slick-container {
     @extend .carousel;
-    background-size: cover;
-    background-position: center center;
+    @extend .background-position;
 
     .slick {
         @extend .carousel-inner;
@@ -40,8 +39,7 @@ $arrow-width: 5%;
             position: relative;
 
             .slide-content {
-                background-size: cover;
-                background-position: center center;
+                @extend .background-position;
             }
         }
 

@@ -34,7 +34,7 @@ $show_images = get_sub_field('show_images');
 		<div class="col-sm-4 post-list-item <?php echo $colors[$i]; ?>">
 			<article class="<?php post_class(); ?> col-xs-12 text-center">
 				<header>
-					<div class="entry-title $title_class"><a href="<?php echo get_field( "link" ) ?: get_the_permalink(); ?>"><?php the_title(); ?></a></div>
+					<div class="entry-title <?php the_sub_field('post_title_size'); ?>"><a href="<?php echo get_field( "link" ) ?: get_the_permalink(); ?>"><?php the_title(); ?></a></div>
 				</header>
 				<div class="entry-summary big">
 					<?php echo get_field( "description" ) ?: get_the_excerpt(); ?><br />

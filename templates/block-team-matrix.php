@@ -42,7 +42,8 @@ $people = new WP_query($args);
 				</h2>
 			  </header>
 			  <div class="entry-summary">
-				<?php the_field( "description" ); ?>
+				<?php the_field( "description" ); ?><br />
+				<script type="IN/MemberProfile" data-id="<?php the_field( "linkedin" ); ?>" data-format="hover"></script>
 			  </div>
 			</article>
 		</div>

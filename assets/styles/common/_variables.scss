@@ -1,3 +1,4 @@
+@import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss";
 // Glyphicons font path
 $icon-font-path:        "../fonts/";
 
@@ -7,10 +8,9 @@ $sidebar-sm-columns:    4;
 
 // Fonts
 $font-size-base: 14px;
-$font-family-sans-serif: 'Open Sans', sans-serif;
-$headings-font-family: 'Open Sans', sans-serif;
-// $headings-font-family: 'Whitney HTF SemiBold';
-$headings-font-weight: 200;
+$font-family-sans-serif: 'Source Sans Pro', sans-serif;
+$headings-font-family: 'Source Sans Pro', sans-serif;
+$headings-font-weight: 300;
 $extra-letter-spacing: 2px;
 
 // Colors
@@ -44,13 +44,6 @@ $navbar-default-toggle-hover-bg: $light-gray;
 $navbar-default-toggle-icon-bar-bg: $dark-blue;
 $navbar-default-toggle-border-color: white;
 
-// Jumbotron
-$jumbotron-padding:              30px !default;
-$jumbotron-bg:                   transparent;
-$jumbotron-heading-color:        inherit !default;
-$jumbotron-font-size:            ceil(($font-size-base * 1.3)) !default;
-$jumbotron-heading-font-size:    ceil(($font-size-base * 2.5)) !default;
-
 // =============================================================================
 // String Replace
 // =============================================================================
@@ -64,46 +57,7 @@ $jumbotron-heading-font-size:    ceil(($font-size-base * 2.5)) !default;
 	@return $string;
 }
 
-// =============================================================================
-// Font Face
-// =============================================================================
-@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
-	$src: null;
-
-	$extmods: (
-		eot: "?",
-		svg: "#" + str-replace($name, " ", "_")
-	);
-
-	$formats: (
-		otf: "opentype",
-		ttf: "truetype"
-	);
-
-	@each $ext in $exts {
-		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
-		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
-		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
-	}
-
-	@font-face {
-		font-family: quote($name);
-		font-style: $style;
-		font-weight: $weight;
-		src: $src;
-	}
-}
-
-// =============================================================================
-// Select all headers
-// =============================================================================
-// @mixin headings($from: 1, $to: 6) {
-// 	@for $i from $from through $to {
-// 		h#{$i}{
-// 			@content
-// 		}
-// 	}
-// }
-
-@include font-face("Irma Regular", "../fonts/IrmaTextSlab-Regular", null, null, eot otf svg ttf woff);
-@include font-face("Whitney HTF SemiBold", "../fonts/WhitneyHTF-SemiBold", null, null, eot otf svg ttf woff);
+@include font-face("Whitney", "../fonts/WhitneyHTF-Medium", normal, normal, null, eot otf svg ttf woff);
+@include font-face("Whitney", "../fonts/WhitneyHTF-MediumItalicSC", normal, italic, null, eot otf svg ttf woff);
+@include font-face("Whitney", "../fonts/WhitneyHTF-Bold", bold, normal, null, eot otf svg ttf woff);
+@include font-face("Whitney", "../fonts/WhitneyHTF-BoldItalic", bold, italic, null, eot otf svg ttf woff);

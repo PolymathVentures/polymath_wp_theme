@@ -43,5 +43,6 @@ use Roots\Sage\Wrapper;
       wp_footer();
     ?>
   </div>
+  <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
   </body>
 </html>

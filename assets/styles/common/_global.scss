@@ -40,6 +40,19 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.huge {
+    font-size: $font-size-base * 3;
+
+    @media(min-width: $screen-sm-min) {
+        font-size: $font-size-base * 8;
+    }
+}
+
+.background-position {
+    background-position: center center;
+    background-size: cover;
+}
+
 $extra-padding: $line-height-computed * 1.5;
 .extra-padding-vertical {
     padding-top: $line-height-computed;
@@ -112,10 +125,8 @@ $extra-padding: $line-height-computed * 1.5;
     }
 }
 
-.icons {
-    img {
-        max-width:150px;
-    }
+.text-dark {
+    color: $dark-blue;
 }
 
 .adjust-height {
@@ -129,15 +140,28 @@ $extra-padding: $line-height-computed * 1.5;
 
 // Mixitup filter view
 .mix{
+    @extend .background-position;
     display: none;
-    background-position: center center;
-    background-size: cover;
     height: 350px;
 }
 
-.tabs {
-    li {
-        list-style: none;
+.block-tabs {
+    .tabs {
+        li {
+            list-style: none;
+            opacity: 0.3;
+
+            &.active {
+                opacity:1;
+            }
+
+        }
+    }
+
+    .tab-content {
+        .image {
+            @extend .background-position;
+        }
     }
 }
 
@@ -155,7 +179,6 @@ $extra-padding: $line-height-computed * 1.5;
     z-index: 2;
     color: white;
     padding: 0 $padding-base-horizontal * 2;
-    overflow: hidden;
 
     &:hover {
         opacity: 1;
