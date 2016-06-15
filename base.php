@@ -43,6 +43,8 @@ use Roots\Sage\Wrapper;
       wp_footer();
     ?>
   </div>
+  <!-- Modal -->
+    <div class="modal fade" id="loading-modal" tabindex="-1" role="dialog"></div>
   <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
   </body>
 </html>

@@ -32,7 +32,7 @@ $people = new WP_query($args);
 		<?php $seeds = implode(' ', get_field( "seeds" ) ?: []); ?>
 		<?php $roles = implode(' ', array_map(function($role) {return $role->slug;}, get_the_terms(get_the_ID(), 'job_role') ?: [])); ?>
 
-		<div class="col-md-3 col-sm-6 col-xs-12 mix <?php echo $ventures; ?> <?php echo $seeds; ?> <?php echo $roles; ?>"
+		<div id="<?php the_ID(); ?>" class="col-md-3 col-sm-6 col-xs-12 mix <?php echo $ventures; ?> <?php echo $seeds; ?> <?php echo $roles; ?>"
              style="background-image: url(<?php echo get_thumbnail_url(get_the_ID(), 'team-member-thumb'); ?>)">
 			<article class="team-member-info-overlay">
 			  <header>

@@ -33,12 +33,13 @@
               onProgress: {
                 duration: 0,
                 render: function ($container) {
-                    $('#smoothstate').append('<div class="text-center"><h1>Loading, one second please...</h1></div>');
+                    $('#loading-modal').modal('show');
                 }
               },
               onReady: {
                   duration: 0,
                   render: function ($container, $newContent) {
+                      $('#loading-modal').modal('hide');
                       $container.removeClass('is-exiting');
                       $container.html($newContent);
 
@@ -68,11 +69,11 @@
                 slide: "#" + carouselId +" .slide",
                 appendArrows: $("#" + carouselId).parent(".slick-container"),
                 prevArrow: '<a class="left prev" href="#" role="button">' +
-                    	        '<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>' +
+                    	        '<i class="icon-arrow-left icons"></i>' +
                     	        '<span class="sr-only">Previous</span>' +
                             '</a>',
                 nextArrow: '<a class="right next" href="#" role="button">' +
-                    	        '<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>' +
+                    	        '<i class="icon-arrow-right icons"></i>' +
                     	        '<span class="sr-only">Next</span>' +
                             '</a>',
                 responsive: [{

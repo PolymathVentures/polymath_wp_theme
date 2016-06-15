@@ -3,7 +3,7 @@
 if(get_sub_field('type') == 'team') {
     $args = array(
     	'posts_per_page'   => -1,
-    	'orderby'          => 'post_title',
+    	'orderby'          => 'published',
     	'post_type'		   => 'team_members',
     	'order'            => 'ASC',
     	'post_status'      => 'publish',

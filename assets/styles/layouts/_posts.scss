@@ -26,7 +26,7 @@
         .entry-summary {
             padding-bottom: $padding-base-vertical * 4;
 
-            .glyphicon {
+            .icons {
                 vertical-align: middle;
             }
         }
@@ -56,5 +56,35 @@
                 }
             }
         }
+    }
+}
+
+.post-grid-item-wrapper-wrapper {
+    @extend .no-padding;
+    @extend .background-position;
+
+    .post-grid-item-wrapper {
+        @include transition(opacity 0.2s ease-in 0s);
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        $content-height: 100px;
+
+        @extend .overlay-dark-blue;
+        @include calc(padding-bottom, "50% - (#{$content-height} / 2)");
+        @include calc(padding-top, "50% - (#{$content-height} / 2)");
+    	width: 100%;
+    	position: relative;
+        display: table;
+
+        .post-grid-item {
+            display:table-cell;
+            vertical-align: middle;
+            height: $content-height;
+
+        }
+
     }
 }

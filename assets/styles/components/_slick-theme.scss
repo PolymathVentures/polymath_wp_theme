@@ -9,12 +9,11 @@ $slick-opacity-not-active: 0.25 !default;
 // Custom bootstrap carousel styling
 
 
-$arrow-width: 5%;
+$arrow-width: 6%;
 
 
 .team .caption {
     @extend .team-member-info-overlay;
-
 }
 
 .personal_story .caption {
@@ -60,20 +59,20 @@ $arrow-width: 5%;
         z-index: 99;
         text-shadow: none;
 
-        .glyphicon {
+        .icons {
             position: absolute;
-            font-size: 30px;
-            top: 50%;
+            font-size: 40px;
+            top: 47%;
             margin-top: -10px;
             z-index: 5;
             display: inline-block;
-            &.glyphicon-menu-left {
+            &.icon-arrow-left {
                 left: 50%;
-                margin-left: -10px;
+                margin-left: -20px;
             }
-            &.glyphicon-menu-right {
+            &.icon-arrow-right {
                 right: 50%;
-                margin-right: -10px;
+                margin-right: -20px;
             }
         }
     }

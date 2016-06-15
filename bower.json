@@ -11,9 +11,27 @@
     "mixitup": "^2.1.11",
     "smoothstate": "^0.7.2",
     "slick-carousel": "^1.6.0",
-    "bourbon": "^4.2.7"
+    "bourbon": "^4.2.7",
+    "bootstrap_dropdowns_enhancement": "https://github.com/behigh/bootstrap_dropdowns_enhancement.git#1c0f45446703992787f71492d2b68927d736f370",
+    "simple-line-icons": "^2.3.2"
   },
   "overrides": {
+    "bootstrap_dropdowns_enhancement": {
+      "main": [
+        "./dist/css/dropdowns-enhancement.css",
+        "./dist/js/dropdowns-enhancement.js"
+      ]
+    },
+    "simple-line-icons": {
+      "main": [
+        "./scss/simple-line-icons.scss",
+        "./fonts/Simple-Line-Icons.eot",
+        "./fonts/Simple-Line-Icons.svg",
+        "./fonts/Simple-Line-Icons.ttf",
+        "./fonts/Simple-Line-Icons.woff",
+        "./fonts/Simple-Line-Icons.woff2"
+      ]
+    },
     "bootstrap-sass": {
       "main": [
         "./assets/stylesheets/_bootstrap.scss",
@@ -22,18 +40,12 @@
         "./assets/javascripts/bootstrap/button.js",
         "./assets/javascripts/bootstrap/carousel.js",
         "./assets/javascripts/bootstrap/collapse.js",
-        "./assets/javascripts/bootstrap/dropdown.js",
         "./assets/javascripts/bootstrap/modal.js",
         "./assets/javascripts/bootstrap/tooltip.js",
         "./assets/javascripts/bootstrap/popover.js",
         "./assets/javascripts/bootstrap/scrollspy.js",
         "./assets/javascripts/bootstrap/tab.js",
-        "./assets/javascripts/bootstrap/affix.js",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.eot",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.svg",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
+        "./assets/javascripts/bootstrap/affix.js"
       ]
     }
   }

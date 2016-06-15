@@ -20,8 +20,16 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
 }
 
+.text-italic {
+    font-style: italic;
+}
+
 .extra-letter-spacing {
     letter-spacing: $extra-letter-spacing;
+}
+
+.no-padding {
+    padding: 0;
 }
 
 .big {
@@ -91,6 +99,7 @@ $extra-padding: $line-height-computed * 1.5;
 }
 
 .overlay-dark-blue {
+    @extend .text-white;
     background-color: rgba($dark-blue, 0.5);
 }
 
@@ -179,6 +188,10 @@ $extra-padding: $line-height-computed * 1.5;
     z-index: 2;
     color: white;
     padding: 0 $padding-base-horizontal * 2;
+
+    .small {
+        color: white;
+    }
 
     &:hover {
         opacity: 1;

@@ -13,10 +13,11 @@ $items = new WP_query($args);
 
 
 <div class="btn-group">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <?php the_sub_field('dropdown_text'); ?> <span class="caret"></span>
+    <button type="button" class="btn btn-default custom-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span><?php the_sub_field('dropdown_text'); ?></span>
+		<!-- <span class="caret"></span> -->
     </button>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu bullet pull-center custom-dropdown">
 
         <?php if( $items->have_posts() ): ?>
             <?php while( $items->have_posts() ) : $items->the_post(); ?>
