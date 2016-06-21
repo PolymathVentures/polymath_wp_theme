@@ -16,6 +16,7 @@ function load_select_options( $field ) {
             'normal' => 'Normal',
             'big' => 'Big',
             'extra-big' => 'Extra big',
+            'super-big' => 'Super big',
             'huge text-italic' => 'Huge',
         );
     } else if(strpos($field['name'], 'post_type') !== false) {
@@ -30,8 +31,8 @@ function load_select_options( $field ) {
     return $field;
 
 }
-
 add_filter('acf/load_field', 'load_select_options');
+
 
 if( function_exists('acf_add_local_field_group') ):
 
@@ -496,6 +497,61 @@ acf_add_local_field_group(array (
 							),
 							'default_value' => array (
 								0 => 'normal',
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_5762c6dac6e3c',
+							'label' => 'Alternating colors',
+							'name' => 'alternating_colors',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 1,
+						),
+						array (
+							'key' => 'field_5762c705c6e3d',
+							'label' => 'Post background color',
+							'name' => 'post_background_color',
+							'type' => 'select',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field' => 'field_5762c6dac6e3c',
+										'operator' => '!=',
+										'value' => '1',
+									),
+								),
+							),
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => array (
+								'none text-dark' => 'None',
+								'red text-white' => 'Red',
+								'aqua text-white' => 'Aqua',
+								'dark-blue text-white' => 'Blue',
+								'white' => 'White',
+								'lila text-white' => 'Lila',
+							),
+							'default_value' => array (
 							),
 							'allow_null' => 0,
 							'multiple' => 0,
@@ -2084,6 +2140,130 @@ acf_add_local_field_group(array (
 					'max' => '',
 				),
 				array (
+					'key' => '5762cacc8207f',
+					'name' => 'blog',
+					'label' => 'Blog',
+					'display' => 'block',
+					'sub_fields' => array (
+						array (
+							'key' => 'field_5762cacc82080',
+							'label' => 'Title',
+							'name' => 'title',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+						array (
+							'key' => 'field_5762cacc82081',
+							'label' => 'Sub title',
+							'name' => 'sub_title',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+						array (
+							'key' => 'field_5762cacc82082',
+							'label' => 'Background color',
+							'name' => 'background_color',
+							'type' => 'select',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => array (
+								'none text-dark' => 'None',
+								'red text-white' => 'Red',
+								'aqua text-white' => 'Aqua',
+								'dark-blue text-white' => 'Blue',
+								'white' => 'White',
+								'lila text-white' => 'Lila',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_5762cacc8208b',
+							'label' => 'Button text',
+							'name' => 'button_text',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+						array (
+							'key' => 'field_5762cacc8208c',
+							'label' => 'Button link',
+							'name' => 'button_link_copy',
+							'type' => 'page_link',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'post_type' => array (
+							),
+							'taxonomy' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+				array (
 					'key' => '575b4d5ba450f',
 					'name' => 'post_dropdown',
 					'label' => 'Post dropdown',
@@ -2154,25 +2334,27 @@ acf_add_local_field_group(array (
 				'value' => 'page',
 			),
 		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'seeds',
+			),
+		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'ventures',
+			),
+		),
 	),
 	'menu_order' => 0,
 	'position' => 'acf_after_title',
 	'style' => 'default',
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',
-	'hide_on_screen' => array (
-		0 => 'the_content',
-		1 => 'excerpt',
-		2 => 'custom_fields',
-		3 => 'discussion',
-		4 => 'comments',
-		5 => 'revisions',
-		6 => 'slug',
-		7 => 'author',
-		8 => 'format',
-		9 => 'featured_image',
-		10 => 'send-trackbacks',
-	),
+	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
 ));
@@ -2349,29 +2531,6 @@ acf_add_local_field_group(array (
 			'readonly' => 0,
 			'disabled' => 0,
 		),
-		array (
-			'key' => 'field_573c9a6d1533b',
-			'label' => 'Story',
-			'name' => 'story',
-			'type' => 'post_object',
-			'instructions' => '',
-			'required' => 1,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'post_type' => array (
-				0 => 'sliders',
-			),
-			'taxonomy' => array (
-			),
-			'allow_null' => 0,
-			'multiple' => 0,
-			'return_format' => 'object',
-			'ui' => 1,
-		),
 	),
 	'location' => array (
 		array (
@@ -2383,7 +2542,7 @@ acf_add_local_field_group(array (
 		),
 	),
 	'menu_order' => 0,
-	'position' => 'normal',
+	'position' => 'acf_after_title',
 	'style' => 'default',
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',
@@ -2717,7 +2876,7 @@ acf_add_local_field_group(array (
 			'name' => 'seed',
 			'type' => 'post_object',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
 				'width' => '',
@@ -2734,29 +2893,6 @@ acf_add_local_field_group(array (
 			'return_format' => 'id',
 			'ui' => 1,
 		),
-		array (
-			'key' => 'field_5737c5ecca233',
-			'label' => 'Milestones',
-			'name' => 'milestones',
-			'type' => 'post_object',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'post_type' => array (
-				0 => 'sliders',
-			),
-			'taxonomy' => array (
-			),
-			'allow_null' => 0,
-			'multiple' => 0,
-			'return_format' => 'object',
-			'ui' => 1,
-		),
 	),
 	'location' => array (
 		array (
@@ -2768,7 +2904,7 @@ acf_add_local_field_group(array (
 		),
 	),
 	'menu_order' => 0,
-	'position' => 'normal',
+	'position' => 'acf_after_title',
 	'style' => 'default',
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',

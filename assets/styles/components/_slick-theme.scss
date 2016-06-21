@@ -22,7 +22,6 @@ $arrow-width: 6%;
     background: $red;
     color: white;
     text-align: center;
-    padding: 0 10px 30px 10px;
     width: 100%;
 }
 
@@ -80,7 +79,7 @@ $arrow-width: 6%;
     .slick-dots {
         @extend .carousel-indicators;
         text-align: center;
-        padding-bottom: 20px;
+        bottom: 0;
         li {
             margin: 0 3px;
             button {

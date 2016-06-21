@@ -56,6 +56,22 @@
       },
       finalize: function() {
 
+        // Disable jump to top for buttons with href #
+        $('[href="#"]').click(function(e) {
+            e.preventDefault();
+        });
+
+        //Populate button text with selected option
+        $('.custom-dropdown a').click(function(e) {
+
+            $('.custom-button').each(function() {
+                $(this).text($(this).data('label'));
+            });
+
+            var button = $(this).parents('ul').prev();
+            button.text(button.data('label') + ': ' + $(this).text());
+        });
+
         $('.mixitup-container').mixItUp({
             // animation: {
             //     enable: false
@@ -68,6 +84,7 @@
             $(this).slick({
                 slide: "#" + carouselId +" .slide",
                 appendArrows: $("#" + carouselId).parent(".slick-container"),
+                dots: true,
                 prevArrow: '<a class="left prev" href="#" role="button">' +
                     	        '<i class="icon-arrow-left icons"></i>' +
                     	        '<span class="sr-only">Previous</span>' +

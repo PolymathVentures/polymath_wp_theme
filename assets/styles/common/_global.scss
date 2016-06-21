@@ -4,7 +4,7 @@ body {
     padding-top: $navbar-height;
 }
 
-img {
+img, input {
     max-width:100%;
 }
 
@@ -24,6 +24,10 @@ h1, h2, h3, h4, h5, h6 {
     font-style: italic;
 }
 
+.text-extra-small {
+    font-size: 0.6em;
+}
+
 .extra-letter-spacing {
     letter-spacing: $extra-letter-spacing;
 }
@@ -41,10 +45,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .extra-big {
-    font-size: $font-size-base * 2;
+    font-size: 5vw;
+
+    @media(max-width: $screen-xs-max) {
+        font-size: $font-size-base * 2;
+    }
+
+    @media(min-width: $screen-md-min) {
+        font-size: $font-size-base * 3;
+    }
+}
+
+.super-big {
+    font-size: $font-size-base * 3;
 
     @media(min-width: $screen-sm-min) {
-        font-size: $font-size-base * 4;
+        font-size: $font-size-base * 6;
     }
 }
 
@@ -61,25 +77,43 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
 }
 
-$extra-padding: $line-height-computed * 1.5;
+.content-padding-wrapper {
+    padding: 1px;
+
+    .content-padding {
+        margin: $grid-gutter-width;
+    }
+}
+
+$extra-padding: $grid-gutter-width;
 .extra-padding-vertical {
-    padding-top: $line-height-computed;
-    padding-bottom: $line-height-computed;
+    margin-top: $grid-gutter-width;
+    margin-bottom: $grid-gutter-width;
 
     @media(min-width: $screen-sm-min) {
-        padding-top: $extra-padding;
-        padding-bottom: $extra-padding;
+        margin-top: $grid-gutter-width * 2;
+        margin-bottom: $grid-gutter-width * 2;
+    }
+
+    &:after {
+        clear: both;
+        content: "";
+        display: block;
     }
 }
 
 .extra-padding-horizontal {
-    padding-left: $line-height-computed;
-    padding-right: $line-height-computed;
+    padding-left: $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
 
     @media(min-width: $screen-sm-min) {
-        padding-left: $extra-padding;
-        padding-right: $extra-padding;
+        padding-left: $grid-gutter-width;
+        padding-right: $grid-gutter-width;
     }
+}
+
+.margin-bottom {
+    margin-bottom: $grid-gutter-width;
 }
 
 .white {
@@ -138,11 +172,23 @@ $extra-padding: $line-height-computed * 1.5;
     color: $dark-blue;
 }
 
+.text-red {
+    color: $red;
+}
+
+.text-aqua {
+    color: $aqua;
+}
+
+.text-dark-blue {
+    color: $dark-blue;
+}
+
 .adjust-height {
     overflow: hidden;
 
     [class*="col-"] {
-        margin-bottom: -99999 + $extra-padding;
+        margin-bottom: -99999px;
         padding-bottom: 99999px;
     }
 }
@@ -151,11 +197,13 @@ $extra-padding: $line-height-computed * 1.5;
 .mix{
     @extend .background-position;
     display: none;
-    height: 350px;
+    height: 400px;
 }
 
 .block-tabs {
     .tabs {
+        overflow: hidden;
+        margin-bottom: $grid-gutter-width;
         li {
             list-style: none;
             opacity: 0.3;
@@ -187,7 +235,6 @@ $extra-padding: $line-height-computed * 1.5;
     position: absolute;
     z-index: 2;
     color: white;
-    padding: 0 $padding-base-horizontal * 2;
 
     .small {
         color: white;

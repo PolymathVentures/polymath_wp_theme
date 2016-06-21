@@ -11,7 +11,7 @@ $font-size-base: 14px;
 $font-family-sans-serif: 'Source Sans Pro', sans-serif;
 $headings-font-family: 'Source Sans Pro', sans-serif;
 $headings-font-weight: 300;
-$extra-letter-spacing: 2px;
+$extra-letter-spacing: 0.2em;
 
 // Colors
 $red: #F7403A;
@@ -22,7 +22,7 @@ $purple: #302C45;
 $dark-blue: #1F1A33;
 $yellow: #FFC627;
 $gray: #9D9D9C;
-$light-gray: #f4f4f6;
+$light-gray: rgba($dark-blue, 0.06);
 $brand-primary: $red;
 $text-color: $dark-blue;
 
@@ -32,7 +32,7 @@ $btn-primary-bg: $dark-blue;
 $link-hover-decoration: none !default;
 
 // Navbar
-$navbar-height: 120px;
+$navbar-height: 90px;
 
 $navbar-default-bg: white;
 $navbar-default-link-active-bg: $navbar-default-bg;
@@ -55,6 +55,35 @@ $navbar-default-toggle-border-color: white;
 	}
 
 	@return $string;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin arrow($size, $direction: 'down') {
+	width: 0;
+    height: 0;
+	border-left: $size solid transparent;
+    border-right: $size solid transparent;
+	position: absolute;
+
+	@if $direction == 'up' {
+		border-bottom: $size solid;
+		border-top: 0;
+		bottom: 50%;
+	} @else {
+		border-top: $size solid;
+		border-bottom: 0;
+	}
 }
 
 @include font-face("Whitney", "../fonts/WhitneyHTF-Medium", normal, normal, null, eot otf svg ttf woff);

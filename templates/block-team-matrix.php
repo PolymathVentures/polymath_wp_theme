@@ -21,6 +21,31 @@ if (get_sub_field('category')) {
 $people = new WP_query($args);
 ?>
 
+<?php
+
+$args = array(
+	'posts_per_page'   => -1,
+	'orderby'          => 'post_title',
+	'order'            => 'ASC',
+	'post_type'        => 'ventures',
+	'post_status'      => array('publish', 'pending'),
+);
+
+$items = get_posts( $args );
+$items[0]->button_text = 'Ventures';
+?>
+
+<?php include(locate_template('templates/element-matrix-filter.php')); ?><span class="custom-button">&middot;</span>
+
+<?
+
+$items = get_terms( array(
+	'taxonomy' => 'job_role',
+) );
+$items[0]->button_text = 'Role';
+?>
+
+<?php include(locate_template('templates/element-matrix-filter.php')); ?>
 
 <?php if( $people->have_posts() ): ?>
 
@@ -34,18 +59,20 @@ $people = new WP_query($args);
 
 		<div id="<?php the_ID(); ?>" class="col-md-3 col-sm-6 col-xs-12 mix <?php echo $ventures; ?> <?php echo $seeds; ?> <?php echo $roles; ?>"
              style="background-image: url(<?php echo get_thumbnail_url(get_the_ID(), 'team-member-thumb'); ?>)">
-			<article class="team-member-info-overlay">
-			  <header>
-				<h2 class="entry-title">
-					<?php the_title(); ?><br />
-					<span class="small"><?php the_field( "job_title" ); ?></span>
-				</h2>
-			  </header>
-			  <div class="entry-summary">
-				<?php the_field( "description" ); ?><br />
-				<script type="IN/MemberProfile" data-id="<?php the_field( "linkedin" ); ?>" data-format="hover"></script>
-			  </div>
-			</article>
+				 <article class="team-member-info-overlay content-padding-wrapper">
+				 <div class="content-padding">
+				  	 <header>
+						<h2 class="entry-title">
+							<?php the_title(); ?><br />
+							<span class="small"><?php the_field( "job_title" ); ?></span>
+						</h2>
+					  </header>
+					  <div class="entry-summary">
+						<?php the_field( "description" ); ?><br />
+						<script type="IN/MemberProfile" data-id="<?php the_field( "linkedin" ); ?>" data-format="hover"></script>
+					  </div>
+			  		</div>
+				</article>
 		</div>
 
 	<?php endwhile; ?>

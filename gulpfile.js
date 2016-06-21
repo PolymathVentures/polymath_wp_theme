@@ -21,6 +21,7 @@ var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 var gutil        = require('gulp-util');
 var ftp          = require('vinyl-ftp');
+var bootlint     = require('gulp-bootlint');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -313,4 +314,9 @@ gulp.task( 'deploy', ['clean', 'build'], function () {
         .pipe( conn.newer( '/new/wp-content/themes/polymath_wp_theme' ) ) // only upload newer files
         .pipe( conn.dest( '/new/wp-content/themes/polymath_wp_theme' ) );
 
+});
+
+gulp.task('bootlint', function() {
+    return gulp.src('**/*.php')
+        .pipe(bootlint());
 });

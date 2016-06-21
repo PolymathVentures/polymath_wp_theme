@@ -28,13 +28,14 @@ if(get_sub_field('type') == 'team') {
     		$person['image'] = get_thumbnail_url(get_the_ID(), 'team-member-thumb');
 
     		$person['title'] = $person['post_title'] . '<br/><span class="small">' . $person['job_title'] . '</span>';
+            $person['description'] = '<a href="' . get_home_url() . '/team#' . $person['ID'] . '">' .
+                                     'more <i class="icon-arrow-right icons text-extra-small"></i></a>';
     		$slides[] = $person;
     	endwhile;
     endif;
 
     $slides_object = array(
         'slides' => $slides,
-        'dots'  => 'false',
         'arrows' => 'true'
     );
 
@@ -43,7 +44,6 @@ if(get_sub_field('type') == 'team') {
 } else {
 
     $slides_object = get_post_with_custom_fields(get_sub_field('slider'));
-    $slides_object['dots'] = 'true';
     $slides_object['arrows'] = 'false';
 
 }

@@ -12,3 +12,13 @@
         display: table-cell;
     }
 }
+
+.block-content {
+    @extend .extra-padding-vertical;
+
+    margin-top: $grid-gutter-width * 2;
+
+    @media(min-width: $screen-sm-min) {
+        margin-top: $grid-gutter-width * 3;
+    }
+}

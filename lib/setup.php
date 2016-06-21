@@ -37,8 +37,8 @@ function setup() {
   add_theme_support('post-thumbnails');
 
   // Size for post-list images
-  add_image_size( 'post-list-thumb', 380, 220, true );
-  add_image_size( 'team-member-thumb', 380, 400, true );
+  add_image_size( 'post-list-thumb', 380, 260, true );
+  add_image_size( 'team-member-thumb', 285, 400, true );
 
   // Enable post formats
   // http://codex.wordpress.org/Post_Formats
@@ -77,6 +77,8 @@ function widgets_init() {
   ]);
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
+
+add_filter('widget_text', 'do_shortcode');
 
 /**
  * Determine which pages should NOT display the sidebar
