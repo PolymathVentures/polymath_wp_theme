@@ -68,8 +68,7 @@ $items[0]->button_text = 'Role';
 						</h2>
 					  </header>
 					  <div class="entry-summary">
-						<?php the_field( "description" ); ?><br />
-						<script type="IN/MemberProfile" data-id="<?php the_field( "linkedin" ); ?>" data-format="hover"></script>
+						<?php the_field( "description" ); ?>
 					  </div>
 			  		</div>
 				</article>

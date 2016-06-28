@@ -12,6 +12,10 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 }
 
+hr {
+    border-color: inherit;
+}
+
 .text-underline {
     border-bottom: 1px solid;
 }
@@ -112,16 +116,23 @@ $extra-padding: $grid-gutter-width;
     }
 }
 
+.outer-circle {
+    border: 2px solid;
+    border-radius: 50%;
+    padding: 5px;
+}
+
 .margin-bottom {
     margin-bottom: $grid-gutter-width;
+    display: inline-block;
 }
 
 .white {
-    background-color: white;
+    background-color: white !important;
 }
 
 .red {
-    background-color: $red;
+    background-color: $red !important;
 }
 
 .overlay-red {
@@ -129,7 +140,7 @@ $extra-padding: $grid-gutter-width;
 }
 
 .dark-blue {
-    background-color: $dark-blue;
+    background-color: $dark-blue !important;
 }
 
 .overlay-dark-blue {
@@ -138,7 +149,7 @@ $extra-padding: $grid-gutter-width;
 }
 
 .aqua {
-    background-color: $aqua;
+    background-color: $aqua !important;
 }
 
 .overlay-aqua {
@@ -146,22 +157,22 @@ $extra-padding: $grid-gutter-width;
 }
 
 .lila {
-    background-color: $lila;
+    background-color: $lila !important;
 }
 .dark-lila {
-    background-color: $dark-lila;
+    background-color: $dark-lila !important;
 }
 
 .purple {
-    background-color: $purple;
+    background-color: $purple !important;
 }
 
 .light-gray {
-    background-color: $light-gray;
+    background-color: $light-gray !important;
 }
 
 .text-white {
-    color: white;
+    color: white !important;
 
     a {
         color: white;
@@ -169,7 +180,7 @@ $extra-padding: $grid-gutter-width;
 }
 
 .text-dark {
-    color: $dark-blue;
+    color: $dark-blue !important;
 }
 
 .text-red {
@@ -180,6 +191,10 @@ $extra-padding: $grid-gutter-width;
     color: $aqua;
 }
 
+.text-gray {
+    color: $gray;
+}
+
 .text-dark-blue {
     color: $dark-blue;
 }
@@ -187,7 +202,7 @@ $extra-padding: $grid-gutter-width;
 .adjust-height {
     overflow: hidden;
 
-    [class*="col-"] {
+    & > div {
         margin-bottom: -99999px;
         padding-bottom: 99999px;
     }
@@ -200,27 +215,6 @@ $extra-padding: $grid-gutter-width;
     height: 400px;
 }
 
-.block-tabs {
-    .tabs {
-        overflow: hidden;
-        margin-bottom: $grid-gutter-width;
-        li {
-            list-style: none;
-            opacity: 0.3;
-
-            &.active {
-                opacity:1;
-            }
-
-        }
-    }
-
-    .tab-content {
-        .image {
-            @extend .background-position;
-        }
-    }
-}
 
 .team-member-info-overlay {
     @include transition(opacity 0.2s ease-in 0s);

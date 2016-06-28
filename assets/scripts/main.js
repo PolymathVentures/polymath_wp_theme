@@ -85,11 +85,11 @@
                 slide: "#" + carouselId +" .slide",
                 appendArrows: $("#" + carouselId).parent(".slick-container"),
                 dots: true,
-                prevArrow: '<a class="left prev" href="#" role="button">' +
+                prevArrow: '<a class="left prev ' + $("#" + carouselId).parent(".slick-container").data('arrow-bg') + '" href="#" role="button">' +
                     	        '<i class="icon-arrow-left icons"></i>' +
                     	        '<span class="sr-only">Previous</span>' +
                             '</a>',
-                nextArrow: '<a class="right next" href="#" role="button">' +
+                nextArrow: '<a class="right next ' + $("#" + carouselId).parent(".slick-container").data('arrow-bg') + '" href="#" role="button">' +
                     	        '<i class="icon-arrow-right icons"></i>' +
                     	        '<span class="sr-only">Next</span>' +
                             '</a>',
@@ -103,10 +103,16 @@
             });
 
             var self = $(this);
-            $('.slick-control a').click(function (e) {
-                var slideIndex = $(this).parent('li').index();
-                self.slick( 'slickGoTo', parseInt( slideIndex ) );
+            $(this).parent().prev('.slick-control').on('click', 'a', function (e) {
+                var tab = $(this).parent('li');
+                self.slick( 'slickGoTo', parseInt( tab.index() ) );
                 e.preventDefault();
+            });
+
+            $(this).on('beforeChange', function(event, slick, currentSlide, nextSlide){
+                $('.slick-control li').removeClass('active');
+                $('.slick-control li:eq(' + nextSlide + ')').addClass('active');
+
             });
 
         });
@@ -114,7 +120,9 @@
         // Little hack because initializing slick slider on display: none elements doesn't work.
         $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
             var id = $(this).attr('href').replace('#', '');
-            $('#' + id + ' .slick').slick('setPosition');
+            if(id) {
+                $('#' + id + ' .slick').slick('setPosition');
+            }
         });
 
       }

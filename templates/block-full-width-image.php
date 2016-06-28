@@ -5,7 +5,7 @@
                 <div class="<?php echo get_sub_field('alignment'); ?>">
                     <div class="extra-padding-horizontal extra-padding-vertical">
                         <?php if(get_sub_field('title')): ?>
-                            <h1 class="<?php the_sub_field('title_size'); ?> extra-letter-spacing"><?php the_sub_field('title'); ?></h1>
+                            <h1 class="<?php the_sub_field('title_text_size'); ?> extra-letter-spacing"><?php the_sub_field('title'); ?></h1>
                         <?php endif; ?>
 
                         <?php if(get_sub_field('text')): ?>

@@ -39,6 +39,7 @@ function setup() {
   // Size for post-list images
   add_image_size( 'post-list-thumb', 380, 260, true );
   add_image_size( 'team-member-thumb', 285, 400, true );
+  add_image_size( 'blog-post-image', 700, 400, true );
 
   // Enable post formats
   // http://codex.wordpress.org/Post_Formats

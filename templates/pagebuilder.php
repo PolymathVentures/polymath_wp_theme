@@ -22,7 +22,11 @@ if( have_rows('content') ):
                             <h2 class="text-bold"><?php the_sub_field('title'); ?></h2>
 
                             <?php if(get_sub_field('sub_title')): ?>
-                                <p class="big"><?php the_sub_field('sub_title'); ?></p>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <p class="big"><?php the_sub_field('sub_title'); ?></p>
+                                    </div>
+                                </div>
                             <? endif; ?>
 
                         <? endif; ?>

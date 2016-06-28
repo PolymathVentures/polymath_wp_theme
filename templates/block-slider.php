@@ -26,7 +26,7 @@ if(get_sub_field('type') == 'team') {
     	while( $people->have_posts() ) : $people->the_post();
     		$person = get_post_with_custom_fields(get_post());
     		$person['image'] = get_thumbnail_url(get_the_ID(), 'team-member-thumb');
-
+            $person['icon'] = false;
     		$person['title'] = $person['post_title'] . '<br/><span class="small">' . $person['job_title'] . '</span>';
             $person['description'] = '<a href="' . get_home_url() . '/team#' . $person['ID'] . '">' .
                                      'more <i class="icon-arrow-right icons text-extra-small"></i></a>';
@@ -44,7 +44,8 @@ if(get_sub_field('type') == 'team') {
 } else {
 
     $slides_object = get_post_with_custom_fields(get_sub_field('slider'));
-    $slides_object['arrows'] = 'false';
+    $slides_object['arrows'] = get_sub_field('arrows') ? 'true' : 'false';
+    $slides_object['arrow_background_color'] = get_sub_field('arrow_background_color');
 
 }
 

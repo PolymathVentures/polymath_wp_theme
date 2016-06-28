@@ -22,6 +22,7 @@ if( $items->have_posts() ):
 					<header>
 						<h2 class="text-bold">
 							<?php the_title(); ?><br/>
+							<span class="small">Seed <?php the_field('year'); ?></span><br/>
 							<i class="icon-magnifier icons"></i>
 						</h2>
 					</header>

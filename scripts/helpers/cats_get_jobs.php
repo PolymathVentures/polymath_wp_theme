@@ -12,16 +12,13 @@ function cats_jobs() {
     $job_array = [];
     $sort_array = [];
     foreach ($jobs as $job) {
-        if (is_published_on_website($job)) {
+        $job['description'] = strip_tags($job['description'],
+                                '<p><ul><ol><li><br><br/><h1><h2><h3><h4><h5><a><b><strong>');
 
-            $job['description'] = strip_tags($job['description'],
-                                    '<p><ul><ol><li><br><br/><h1><h2><h3><h4><h5><a><b><strong>');
+        $job['description'] = preg_replace('/style=".*?"/i', '', $job['description']);
 
-            $job['description'] = preg_replace('/style=".*?"/i', '', $job['description']);
-
-            $job_array[] = $job;
-            $sort_array[] = find_custom_field($job, '164169');
-        }
+        $job_array[] = $job;
+        $sort_array[] = find_custom_field($job, '164169');
     }
 
     array_multisort($sort_array, $job_array);
@@ -60,7 +57,7 @@ function get_cats_jobs() {
         };
 
         // TODO: 100 is the maximum number of jobs per page. This should loop through all pages
-        $url = 'https://api.catsone.com/v3/jobs?per_page=100';
+        $url = 'https://api.catsone.com/v3/portals/38546/jobs?per_page=100';
 
         $args = array(
             'timeout'     => 15,
@@ -77,17 +74,6 @@ function get_cats_jobs() {
     return $result;
 }
 
-
-/**
- * Checks if a job is published based on a custom field set in cats_jobs.
- * Returns a boolean.
- */
-function is_published_on_website($job) {
-    if (!isset($job['_embedded']['custom_fields'])) return false;
-    return find_custom_field($job, '173304') == '373878';
-};
-
-
 /**
  * Gets the value of a custom field from a job in cats
  * Returns the value or null if it doesn't exist
@@ -100,6 +86,20 @@ function find_custom_field($job, $custom_field_id) {
     }
 };
 
+function custom_field_options($custom_field_id) {
+    $jobs = cats_jobs();
+    $list = [];
+
+    foreach($jobs as $job) {
+        $val = find_custom_field($job, $custom_field_id);
+        if($val) {
+            $list[] = find_custom_field($job, $custom_field_id);
+        }
+    }
+
+    return $list;
+}
+
 /**
  * Register the custom query params "job_id" and "job_title" and rewrite the url so it's pretty
  */
@@ -107,14 +107,35 @@ function register_job_params() {
     add_rewrite_tag('%job_id%', '([^&]+)');
     add_rewrite_tag('%job_title%', '([^&]+)');
 
-    $pages = get_pages(array(
-    	'meta_key' => '_wp_page_template',
-    	'meta_value' => 'template-jobs.php'
-    ));
+    $pages = get_pages();
     foreach($pages as $page){
-        add_rewrite_rule('jobs/([^/]*)/([^/]*)/?',
+
+        $meta = get_post_meta($page->ID);
+        if(!isset($meta['content'])) continue;
+        if(!strpos($meta['content'][0], 'jobs')) continue;
+        add_rewrite_rule($page->post_name . '/([^/]*)/([^/]*)/?',
                          'index.php?page_id=' . $page->ID . '&job_id=$matches[1]&job_title=$matches[2]',
                          'top');
     }
 }
 add_action('init', 'register_job_params', 10, 0);
+
+/**
+ * Redirect single job to single-job template
+ */
+function prefix_url_rewrite_templates() {
+
+    $job = get_job(cats_jobs(), get_query_var( 'job_id' ));
+
+    if (get_query_var( 'job_id' )) {
+
+        $template =  $job ? '/templates/job-single.php' : '/404.php';
+
+        add_filter( 'template_include', function() use ($template) {
+            return get_template_directory() . $template;
+        });
+    }
+
+}
+
+add_action( 'template_redirect', 'prefix_url_rewrite_templates' );

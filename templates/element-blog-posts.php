@@ -17,20 +17,22 @@ $blog_posts = new WP_query($args);
 
 	<?php $i = 0; while( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
 
+		<?php if($i % 3 == 0): ?>
+	        <div class="row">
+	    <?php endif; ?>
+
 		<?php if($current_id == get_the_ID()) continue; ?>
 		<?php $ventures = implode(' ', get_field( "ventures" ) ?: []); ?>
 		<?php $seeds = implode(' ', get_field( "seeds" ) ?: []); ?>
 		<?php $tags = implode(' ', array_map(function($tag) {return $tag->slug;}, get_the_tags() ?: [])); ?>
 
-		<?php //if($i == 0): ?>
-			<?php //include(locate_template('templates/element-blog-post.php')); ?>
-		<?php //else: ?>
 		<div class="col-sm-4 post-list-item margin-bottom">
 			<div class="col-xs-12">
-				<div class="post-list-image" style="background-image: url(<?php the_post_thumbnail_url('post-list-thumb'); ?>)"></div>
-                <a href="<?php the_permalink(); ?>">
-	                <div class="blog-post-more-button"><span class="plus text-center">+</span></div>
-                </a>
+				<div class="post-list-image" style="background-image: url(<?php the_post_thumbnail_url('post-list-thumb'); ?>)">
+					<a href="<?php the_permalink(); ?>">
+						<div class="blog-post-more-button"><span class="plus text-center">+</span></div>
+					</a>
+				</div>
 				<article class="white text-left content-padding-wrapper">
 					<div class="content-padding">
 						<header>
@@ -41,8 +43,12 @@ $blog_posts = new WP_query($args);
 				</article>
 			</div>
 		</div>
-		<?php //endif; ?>
-	<?php $i++; endwhile; ?>
+
+		<?php $i++; if ($i % 3 == 0 || $i == $blog_posts->found_posts): ?>
+	        </div>
+	    <?php endif; ?>
+
+	<?php endwhile; ?>
 
 <?php endif; ?>
 <?php wp_reset_query(); ?>

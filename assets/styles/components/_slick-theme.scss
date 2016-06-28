@@ -12,17 +12,38 @@ $slick-opacity-not-active: 0.25 !default;
 $arrow-width: 6%;
 
 
-.team .caption {
+.slick-container.team .caption {
     @extend .team-member-info-overlay;
 }
 
-.personal_story .caption {
+.slick-container.personal_story .caption {
     position: absolute;
     bottom: 40px;
     background: $red;
     color: white;
     text-align: center;
-    width: 100%;
+    width: 80%;
+    left: 10%;
+}
+
+.slick-container {
+    .adjust-height {
+        overflow: visible;
+    }
+}
+
+.slider-tabs {
+    overflow: hidden;
+    margin-bottom: $grid-gutter-width;
+    li {
+        list-style: none;
+        opacity: 0.3;
+
+        &.active {
+            opacity:1;
+        }
+
+    }
 }
 
 .slick-container {
@@ -41,12 +62,25 @@ $arrow-width: 6%;
             }
         }
 
-        @media(min-width: $screen-sm-min) {
-            width:100% - ($arrow-width * 2);
-            margin-left: $arrow-width;
-            margin-right: $arrow-width;
+        .caption {
+            p {
+                @media(min-width: $screen-sm-min) {
+                    display: inline-block;
+                    width:80%;
+                }
+            }
         }
+    }
 
+    &.arrows {
+
+        .slick {
+            @media(min-width: $screen-sm-min) {
+                width:100% - ($arrow-width * 2);
+                margin-left: $arrow-width;
+                margin-right: $arrow-width;
+            }
+        }
     }
 
     .slick-arrow {
@@ -54,7 +88,6 @@ $arrow-width: 6%;
         opacity: 1;
         width: $arrow-width;
         background-image: none !important;
-        background-color: $aqua;
         z-index: 99;
         text-shadow: none;
 
@@ -79,7 +112,8 @@ $arrow-width: 6%;
     .slick-dots {
         @extend .carousel-indicators;
         text-align: center;
-        bottom: 0;
+        bottom: 5px;
+        margin-bottom: 0;
         li {
             margin: 0 3px;
             button {

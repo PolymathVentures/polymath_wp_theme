@@ -32,12 +32,12 @@ $show_images = get_sub_field('show_images');
     <?php endif; ?>
 
 	<?php $color = get_sub_field('alternating_colors') ? $colors[$i % 3] : get_sub_field('post_background_color'); ?>
-		<div class="col-sm-4 post-list-item <?php echo $color; ?> text-white">
-			<article class="col-xs-12 text-center no-padding">
+		<div class="col-sm-4 post-list-item flex <?php echo $color; ?> text-white">
+			<article class="col-xs-12 text-center no-padding equal-height">
 				<div class="content-padding-wrapper">
 					<div class="content-padding">
 						<header>
-							<div class="h2 <?php the_sub_field('post_title_size'); ?>"><a href="<?php echo get_field( "link" ) ?: get_the_permalink(); ?>"><?php the_title(); ?></a></div>
+							<div class="h2 <?php the_sub_field('post_title_text_size'); ?>"><a href="<?php echo get_field( "link" ) ?: get_the_permalink(); ?>"><?php the_title(); ?></a></div>
 						</header>
 						<div class="entry-summary big">
 							<?php echo get_field( "description" ) ?: get_the_excerpt(); ?><br />
