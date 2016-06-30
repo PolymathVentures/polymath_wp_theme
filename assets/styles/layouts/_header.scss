@@ -20,11 +20,11 @@
             float: right;
         }
 
-        li {
+        li.main-menu-item {
            $v: ($navbar-height - $line-height-computed) / 2;
            $h: floor(($grid-gutter-width / 2));
            $o: 5px;
-           a {
+           > a {
                @extend .text-uppercase;
                font-weight: 400;
                letter-spacing: $extra-letter-spacing;
@@ -32,7 +32,7 @@
            }
 
            @media(min-width: $screen-sm-min) {
-               a {
+               > a {
                    padding: 0 0 $o 0;
                    margin-top: $v;
                    margin-bottom: $v - $o;
@@ -41,10 +41,42 @@
                    border-bottom: 1px solid $dark-blue;
                }
 
-               &.active a, &:hover a {
-                   border-bottom: 1px solid $aqua;
+               &.active, &:hover, &.current-menu-ancestor {
+                   > a {
+                       border-bottom: 1px solid $aqua;
+                   }
                }
            }
        }
+    }
+}
+
+.dropdown-menu.custom-dropdown {
+    @extend .text-center;
+    padding: 10px $line-height-computed;
+    border-radius: 0;
+    border: 0px;
+    background: $lila;
+
+    a {
+        @extend .text-underline;
+        @extend .extra-letter-spacing;
+        color: white !important;
+        line-height: $line-height-computed * 1.5 !important;
+
+    }
+
+    li.active, li:hover {
+        a {
+            background: darken($lila, 5%) !important;
+        }
+    }
+
+    li:last-of-type > a {
+        border-bottom: 0px;
+    }
+
+    &.bullet:after {
+        border-bottom-color: $lila;
     }
 }

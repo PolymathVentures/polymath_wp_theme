@@ -28,7 +28,7 @@ $ventures = new WP_query($args);
 		<div class="col-sm-4 post-list-item margin-bottom">
 			<div class="col-xs-12">
 				<div class="venture-logo" style="border-bottom: 4px solid <?php the_field('brand_color'); ?>;">
-					<img src="<?php echo get_field('logo')['sizes']['post-list-thumb']; ?>"/>
+					<img src="<?php echo get_field('logo')['sizes']['post_list_thumb']; ?>"/>
 					<a href="<?php the_permalink(); ?>">
 						<div class="blog-post-more-button"><span class="plus text-center">+</span></div>
 					</a>
@@ -37,7 +37,9 @@ $ventures = new WP_query($args);
 					<div class="content-padding">
 						<header>
 							<h3 class="text-bold">
-								<?php the_title(); ?><br />
+								<a href="<?php the_permalink(); ?>">
+									<?php the_title(); ?><br />
+								</a>
 								<span class="small">Launched: <?php the_field('year_launched'); ?></span>
 							</h3>
 						</header>

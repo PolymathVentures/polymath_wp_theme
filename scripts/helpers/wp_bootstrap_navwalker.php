@@ -21,7 +21,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
-		$output .= "\n$indent<ul role=\"menu\" class=\" dropdown-menu\">\n";
+		$output .= "\n$indent<ul role=\"menu\" class=\" dropdown-menu custom-dropdown bullet pull-center\">\n";
 	}
 
 	/**
@@ -59,6 +59,10 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			$classes[] = 'menu-item-' . $item->ID;
+
+			if ( $depth === 0 ) {
+				$classes[] = 'main-menu-item';
+			}
 
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
 

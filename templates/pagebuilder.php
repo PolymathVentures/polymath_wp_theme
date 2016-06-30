@@ -1,14 +1,16 @@
 <?php
 if( have_rows('content') ):
 
+    $content_block_index = 0;
     while ( have_rows('content') ) : the_row();
 
     $template_name = 'block-' . str_replace('_', '-', get_row_layout());
 ?>
 
+    <?php $params = get_fields()['content'][$content_block_index]; ?>
     <?php if(strpos($template_name, 'full-width') > 0): ?>
 
-        <?php get_template_part('templates/' . $template_name); ?>
+        <?php include(locate_template('templates/' . $template_name . '.php')); ?>
 
     <?php else: ?>
 
@@ -31,7 +33,7 @@ if( have_rows('content') ):
 
                         <? endif; ?>
                         <div class="extra-padding-vertical">
-                            <?php get_template_part('templates/' . $template_name); ?>
+                            <?php include(locate_template('templates/' . $template_name . '.php')); ?>
                         </div>
                         <?php if(get_sub_field('button_text')): ?>
                             <div class="extra-padding-vertical">
@@ -51,6 +53,8 @@ if( have_rows('content') ):
 <?php
 
         endif;
+
+        $content_block_index++;
     endwhile;
 else:
 

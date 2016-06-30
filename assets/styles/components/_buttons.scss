@@ -28,30 +28,3 @@
     }
 
 }
-
-.dropdown-menu.custom-dropdown {
-    @extend .text-center;
-    padding: 10px $line-height-computed;
-    border-radius: 0;
-    border: 0px;
-    background: $lila;
-
-    a {
-        @extend .text-underline;
-        @extend .extra-letter-spacing;
-        color: white !important;
-        line-height: $line-height-computed * 1.5 !important;
-
-        &:hover {
-            background: darken($lila, 5%) !important;
-        }
-    }
-
-    li:last-of-type > a {
-        border-bottom: 0px;
-    }
-
-    &.bullet:after {
-        border-bottom-color: $lila;
-    }
-}

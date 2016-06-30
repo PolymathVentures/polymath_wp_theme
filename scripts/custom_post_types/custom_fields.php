@@ -1022,7 +1022,15 @@ acf_add_local_field_group(array (
 							'type' => 'select',
 							'instructions' => '',
 							'required' => 0,
-							'conditional_logic' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field' => 'field_575624525a3f0',
+										'operator' => '!=',
+										'value' => 'team',
+									),
+								),
+							),
 							'wrapper' => array (
 								'width' => '',
 								'class' => '',
@@ -1054,7 +1062,15 @@ acf_add_local_field_group(array (
 							'type' => 'select',
 							'instructions' => '',
 							'required' => 0,
-							'conditional_logic' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field' => 'field_575624525a3f0',
+										'operator' => '!=',
+										'value' => 'team',
+									),
+								),
+							),
 							'wrapper' => array (
 								'width' => '',
 								'class' => '',
@@ -2786,6 +2802,29 @@ acf_add_local_field_group(array (
 			'readonly' => 0,
 			'disabled' => 0,
 		),
+		array (
+			'key' => 'field_577417c41141c',
+			'label' => 'Seed story',
+			'name' => 'seed_story',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'sliders',
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
+		),
 	),
 	'location' => array (
 		array (
@@ -2905,7 +2944,7 @@ acf_add_local_field_group(array (
 						'class' => '',
 						'id' => '',
 					),
-					'return_format' => 'url',
+					'return_format' => 'array',
 					'preview_size' => 'thumbnail',
 					'library' => 'all',
 					'min_width' => '',
@@ -2976,7 +3015,7 @@ acf_add_local_field_group(array (
 				'class' => '',
 				'id' => '',
 			),
-			'return_format' => 'url',
+			'return_format' => 'array',
 			'preview_size' => 'thumbnail',
 			'library' => 'all',
 			'min_width' => '',
@@ -3296,6 +3335,75 @@ acf_add_local_field_group(array (
 				'id' => '',
 			),
 			'default_value' => '',
+		),
+		array (
+			'key' => 'field_577307d1f2aa8',
+			'label' => 'Venture story',
+			'name' => 'venture_story',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'sliders',
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
+		),
+		array (
+			'key' => 'field_577436e256e72',
+			'label' => 'Promo 1',
+			'name' => 'promo_1',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'promos',
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
+		),
+		array (
+			'key' => 'field_577436f156e73',
+			'label' => 'Promo 2',
+			'name' => 'promo_2',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'promos',
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
 		),
 		array (
 			'key' => 'field_576dfc15e8143',

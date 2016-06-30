@@ -62,7 +62,7 @@
         });
 
         //Populate button text with selected option
-        $('.custom-dropdown a').click(function(e) {
+        $('.show-selected a').click(function(e) {
 
             $('.custom-button').each(function() {
                 $(this).text($(this).data('label'));
@@ -85,6 +85,8 @@
                 slide: "#" + carouselId +" .slide",
                 appendArrows: $("#" + carouselId).parent(".slick-container"),
                 dots: true,
+                lazyLoad: 'ondemand',
+                autoplay: true,
                 prevArrow: '<a class="left prev ' + $("#" + carouselId).parent(".slick-container").data('arrow-bg') + '" href="#" role="button">' +
                     	        '<i class="icon-arrow-left icons"></i>' +
                     	        '<span class="sr-only">Previous</span>' +
@@ -94,10 +96,12 @@
                     	        '<span class="sr-only">Next</span>' +
                             '</a>',
                 responsive: [{
-                    breakpoint: 767,
+                    breakpoint: 500,
                     settings: {
-                    slidesToShow: 1,
-                    arrows: false
+                        slidesToShow: 1,
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '10px'
                     }
                 }]
             });
@@ -110,8 +114,8 @@
             });
 
             $(this).on('beforeChange', function(event, slick, currentSlide, nextSlide){
-                $('.slick-control li').removeClass('active');
-                $('.slick-control li:eq(' + nextSlide + ')').addClass('active');
+                self.parent().prev('.slick-control').find('li').removeClass('active');
+                self.parent().prev('.slick-control').find('li:eq(' + nextSlide + ')').addClass('active');
 
             });
 
@@ -123,6 +127,50 @@
             if(id) {
                 $('#' + id + ' .slick').slick('setPosition');
             }
+        });
+
+        // Get appropriate image size for screen
+        $('.responsive-bg').each(function() {
+            var el = $(this);
+            var url = false;
+            var largest = {'size': 0};
+
+            var elWidth = el.width();
+            var elHeight = el.height();
+
+            var bgJSON = el.data('bgJson');
+
+            if(bgJSON) { el.css('background-image', 'url(' + bgJSON.medium + ')'); }
+
+            if(!bgJSON) { return true; }
+
+            $.each(bgJSON, function(k, v) {
+
+                if(k.indexOf('-') > -1) { return true; }
+
+                var w = bgJSON[k + '-width'];
+                var h = bgJSON[k + '-height'];
+                var wM = w / 10;
+                var hM = h / 10;
+
+                if(w > largest.size) { largest = {'size': w, 'name': k}; }
+
+                if(w + wM > elWidth && h + hM > elHeight) {
+                    url = v;
+                    return false;
+                }
+
+            });
+
+            if(!url) { url = bgJSON[largest.name]; }
+            // el.removeAttr('data-bg-json');
+
+            var img = new Image();
+            img.src = url;
+            img.onload = function() {
+                el.css('background-image', 'url(' + url + ')');
+            };
+
         });
 
       }

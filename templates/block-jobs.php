@@ -32,6 +32,8 @@ foreach($result->posts as $r) {
     </a><br/>
 <?php endif; ?>
 
+Filter by: <br />
+
 <?php
 $items = $result->posts;
 $items[0]->button_text = 'Venture';
@@ -49,10 +51,10 @@ $items[0]->button_text = 'Venture';
 
 <?php foreach ($jobs as $job): ?>
 
-<div class="col-sm-4 post-list-item margin-bottom mix <?php echo find_custom_field($job, '208901'); ?> <?php echo $ventures[$job['company_id']]; ?>">
+<div class="col-sm-4 post-list-item margin-bottom mix <?php echo find_custom_field_value($job, '208901'); ?> <?php echo $ventures[$job['company_id']]; ?>">
     <div class="col-xs-12">
         <div class="venture-logo" style="border-bottom: 4px solid <?php the_field('brand_color', $ventures[$job['company_id']]); ?>;">
-            <img src="<?php echo get_field('logo', $ventures[$job['company_id']])['sizes']['post-list-thumb']; ?>"/>
+            <img src="<?php echo get_field('logo', $ventures[$job['company_id']])['sizes']['post_list_thumb']; ?>"/>
             <a href="<?php echo get_permalink() . $job['id'] . '/' . urlencode($job['title']); ?>">
                 <div class="blog-post-more-button"><span class="plus text-center">+</span></div>
             </a>
@@ -61,7 +63,9 @@ $items[0]->button_text = 'Venture';
             <div class="content-padding text-left">
                 <header>
                     <h3 class="text-bold">
-                        <?php echo $job['title']; ?><br />
+						<a href="<?php echo get_permalink() . $job['id'] . '/' . urlencode($job['title']); ?>">
+	                        <?php echo $job['title']; ?><br />
+						</a>
                         <span class="small"><?php echo get_field('post_title', $ventures[$job['company_id']]); ?></span>
                         <span class="small text-title"><?php echo $job['location']['city']; ?></span>
                     </h3>

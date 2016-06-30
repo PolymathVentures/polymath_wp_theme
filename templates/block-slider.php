@@ -1,6 +1,5 @@
 <?php
-
-if(get_sub_field('type') == 'team') {
+if($params['type'] == 'team') {
     $args = array(
     	'posts_per_page'   => -1,
     	'orderby'          => 'published',
@@ -9,11 +8,11 @@ if(get_sub_field('type') == 'team') {
     	'post_status'      => 'publish',
     );
 
-    if (get_sub_field('category')) {
+    if ($params['category']) {
     	$args['meta_query'] = 	array(
     								array(
-                                    'key' => get_sub_field('category')->post_type,
-    								'value' => '"' . get_sub_field('category')->ID . '"',
+                                    'key' => $params['category']->post_type,
+    								'value' => '"' . $params['category']->ID . '"',
 								    'compare' => 'LIKE'
     								)
     							);
@@ -25,7 +24,7 @@ if(get_sub_field('type') == 'team') {
     if( $people->have_posts() ):
     	while( $people->have_posts() ) : $people->the_post();
     		$person = get_post_with_custom_fields(get_post());
-    		$person['image'] = get_thumbnail_url(get_the_ID(), 'team-member-thumb');
+    		$person['image'] = array('sizes' => format_attachment_sizes_array(get_post_thumbnail_id()));
             $person['icon'] = false;
     		$person['title'] = $person['post_title'] . '<br/><span class="small">' . $person['job_title'] . '</span>';
             $person['description'] = '<a href="' . get_home_url() . '/team#' . $person['ID'] . '">' .
@@ -43,13 +42,13 @@ if(get_sub_field('type') == 'team') {
 
 } else {
 
-    $slides_object = get_post_with_custom_fields(get_sub_field('slider'));
-    $slides_object['arrows'] = get_sub_field('arrows') ? 'true' : 'false';
-    $slides_object['arrow_background_color'] = get_sub_field('arrow_background_color');
+    $slides_object = get_post_with_custom_fields($params['slider']);
+    $slides_object['arrows'] = $params['arrows'] ? 'true' : 'false';
+    $slides_object['arrow_background_color'] = $params['arrow_background_color'];
 
 }
 
-$slides_object['slides_to_show'] = get_sub_field('slides_in_view');
+$slides_object['slides_to_show'] = $params['slides_in_view'];
 
 ?>
 

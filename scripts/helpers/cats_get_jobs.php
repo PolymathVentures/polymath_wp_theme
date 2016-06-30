@@ -18,7 +18,7 @@ function cats_jobs() {
         $job['description'] = preg_replace('/style=".*?"/i', '', $job['description']);
 
         $job_array[] = $job;
-        $sort_array[] = find_custom_field($job, '164169');
+        $sort_array[] = find_custom_field_value($job, '164169');
     }
 
     array_multisort($sort_array, $job_array);
@@ -81,23 +81,33 @@ function get_cats_jobs() {
 function find_custom_field($job, $custom_field_id) {
     foreach ($job['_embedded']['custom_fields'] as $item) {
         if($item['id'] == $custom_field_id) {
-            return $item['value'];
+            return $item;
         }
     }
 };
 
-function custom_field_options($custom_field_id) {
-    $jobs = cats_jobs();
-    $list = [];
+function find_custom_field_value($job, $custom_field_id, $label=false) {
 
-    foreach($jobs as $job) {
-        $val = find_custom_field($job, $custom_field_id);
-        if($val) {
-            $list[] = find_custom_field($job, $custom_field_id);
-        }
+    $cf = find_custom_field($job, $custom_field_id);
+
+    if(!$cf['value']) return '';
+    
+    if($label) {
+        return custom_field_options($job, $custom_field_id)[$cf['value']];
     }
 
-    return $list;
+    return $cf;
+};
+
+function custom_field_options($job, $custom_field_id) {
+    $cf = find_custom_field($job, $custom_field_id);
+
+    $labels = array();
+    foreach($cf['_embedded']['definition']['field']['selections'] as $option) {
+        $labels[$option['id']] = $option['label'];
+    }
+
+    return $labels;
 }
 
 /**
@@ -129,7 +139,7 @@ function prefix_url_rewrite_templates() {
 
     if (get_query_var( 'job_id' )) {
 
-        $template =  $job ? '/templates/job-single.php' : '/404.php';
+        $template =  $job ? '/templates/content-single-job.php' : '/404.php';
 
         add_filter( 'template_include', function() use ($template) {
             return get_template_directory() . $template;

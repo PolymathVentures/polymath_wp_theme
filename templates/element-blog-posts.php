@@ -28,7 +28,8 @@ $blog_posts = new WP_query($args);
 
 		<div class="col-sm-4 post-list-item margin-bottom">
 			<div class="col-xs-12">
-				<div class="post-list-image" style="background-image: url(<?php the_post_thumbnail_url('post-list-thumb'); ?>)">
+				<div class="post-list-image responsive-bg"
+					 data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'>
 					<a href="<?php the_permalink(); ?>">
 						<div class="blog-post-more-button"><span class="plus text-center">+</span></div>
 					</a>
@@ -36,7 +37,11 @@ $blog_posts = new WP_query($args);
 				<article class="white text-left content-padding-wrapper">
 					<div class="content-padding">
 						<header>
-							<div class="h2"><?php the_title(); ?></div>
+							<div class="h2">
+								<a href="<?php the_permalink(); ?>">
+									<?php the_title(); ?>
+								</a>
+							</div>
 						</header>
 	                    <?php get_template_part('templates/element-share-buttons'); ?>
 					</div>

@@ -35,14 +35,30 @@ $arrow-width: 6%;
 .slider-tabs {
     overflow: hidden;
     margin-bottom: $grid-gutter-width;
+    padding-left: 0;
     li {
         list-style: none;
-        opacity: 0.3;
+
+        img {
+            max-width: 150px;
+        }
+
+        @media(min-width: $screen-sm-min) {
+            opacity: 0.3;
+
+            img {
+                max-width: 100%;
+            }
+        }
 
         &.active {
             opacity:1;
         }
 
+    }
+
+    p {
+        display: none;
     }
 }
 
@@ -85,6 +101,7 @@ $arrow-width: 6%;
 
     .slick-arrow {
         @extend .carousel-control;
+        color: $dark-blue;
         opacity: 1;
         width: $arrow-width;
         background-image: none !important;

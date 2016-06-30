@@ -37,9 +37,10 @@ function setup() {
   add_theme_support('post-thumbnails');
 
   // Size for post-list images
-  add_image_size( 'post-list-thumb', 380, 260, true );
-  add_image_size( 'team-member-thumb', 285, 400, true );
-  add_image_size( 'blog-post-image', 700, 400, true );
+  add_image_size( 'post_list_thumb', 380, 260, true );
+  add_image_size( 'team_member_thumb', 285, 400, true );
+  add_image_size( 'blog_post_image', 700, 400, true );
+  add_image_size( 'extra_large', 1600, 1200);
 
   // Enable post formats
   // http://codex.wordpress.org/Post_Formats

@@ -8,11 +8,11 @@ $args = array(
 	'post_status'      => 'publish',
 );
 
-if (get_sub_field('category')) {
+if ($params['category']) {
 	$args['meta_query'] = 	array(
 								array(
-								'key' => get_sub_field('category')->post_type,
-								'value' => '"' . get_sub_field('category')->ID . '"',
+								'key' => $params['category']->post_type,
+								'value' => '"' . $params['category']->ID . '"',
 								'compare' => 'LIKE'
 								)
 							);
@@ -35,6 +35,7 @@ $items = get_posts( $args );
 $items[0]->button_text = 'Ventures';
 ?>
 
+Filter by: <br/>
 <?php include(locate_template('templates/element-matrix-filter.php')); ?><span class="custom-button">&middot;</span>
 
 <?
@@ -57,8 +58,8 @@ $items[0]->button_text = 'Role';
 		<?php $seeds = implode(' ', get_field( "seeds" ) ?: []); ?>
 		<?php $roles = implode(' ', array_map(function($role) {return $role->slug;}, get_the_terms(get_the_ID(), 'job_role') ?: [])); ?>
 
-		<div id="<?php the_ID(); ?>" class="col-md-3 col-sm-6 col-xs-12 mix <?php echo $ventures; ?> <?php echo $seeds; ?> <?php echo $roles; ?>"
-             style="background-image: url(<?php echo get_thumbnail_url(get_the_ID(), 'team-member-thumb'); ?>)">
+		<div id="<?php the_ID(); ?>" class="col-md-3 col-sm-6 col-xs-12 mix responsive-bg <?php echo $ventures; ?> <?php echo $seeds; ?> <?php echo $roles; ?>"
+             data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'>
 				 <article class="team-member-info-overlay content-padding-wrapper">
 				 <div class="content-padding">
 				  	 <header>

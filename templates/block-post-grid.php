@@ -15,7 +15,8 @@ if( $items->have_posts() ):
 
 <?php while( $items->have_posts() ) : $items->the_post(); ?>
 
-	<div class="col-sm-4 post-grid-item-wrapper-wrapper" style="background-image: url('<?php the_post_thumbnail_url('medium'); ?>');">
+	<div class="col-sm-4 col-xs-6 post-grid-item-wrapper-wrapper responsive-bg"
+		 data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'>
 		<a href="<?php echo get_field( "link" ) ?: get_the_permalink(); ?>">
 			<div class="post-grid-item-wrapper">
 				<article class="post-grid-item">
