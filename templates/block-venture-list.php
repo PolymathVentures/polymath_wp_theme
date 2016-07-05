@@ -37,10 +37,10 @@ $ventures = new WP_query($args);
 					<div class="content-padding">
 						<header>
 							<h3 class="text-bold">
-								<a href="<?php the_permalink(); ?>">
+								<a href="<?php the_permalink(); ?>" class="text-dark">
 									<?php the_title(); ?><br />
 								</a>
-								<span class="small">Launched: <?php the_field('year_launched'); ?></span>
+								<span class="small">Launched: <span class="text-italic"><?php the_field('year_launched'); ?><span></span>
 							</h3>
 						</header>
 						<p><?php the_field('description'); ?></p>

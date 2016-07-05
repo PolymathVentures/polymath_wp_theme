@@ -58,8 +58,9 @@ $items[0]->button_text = 'Role';
 		<?php $seeds = implode(' ', get_field( "seeds" ) ?: []); ?>
 		<?php $roles = implode(' ', array_map(function($role) {return $role->slug;}, get_the_terms(get_the_ID(), 'job_role') ?: [])); ?>
 
-		<div id="<?php the_ID(); ?>" class="col-md-3 col-sm-6 col-xs-12 mix responsive-bg <?php echo $ventures; ?> <?php echo $seeds; ?> <?php echo $roles; ?>"
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mix responsive-bg <?php echo $ventures; ?> <?php echo $seeds; ?> <?php echo $roles; ?>"
              data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'>
+			 <span id="person-<?php the_ID(); ?>" class="anchor"></span>
 				 <article class="team-member-info-overlay content-padding-wrapper">
 				 <div class="content-padding">
 				  	 <header>
@@ -70,7 +71,8 @@ $items[0]->button_text = 'Role';
 					  </header>
 					  <div class="entry-summary">
 						<?php the_field( "description" ); ?>
-					  </div>
+					</div><br/>
+					  <a href="<?php the_field('linkedin'); ?>" target="_blank">LinkedIn</a>
 			  		</div>
 				</article>
 		</div>

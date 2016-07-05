@@ -1,6 +1,6 @@
 .featured-image {
     @extend .background-position;
-    min-height: 130px;
+    min-height: 150px;
     display: table;
     width: 100%;
 
@@ -13,7 +13,19 @@
     }
 
     @media(min-width: $screen-sm-min) {
-        min-height: 300px;
+        min-height: 350px;
+    }
+}
+
+.block-icons {
+    img {
+        max-width: 150px;
+    }
+
+    @media(min-width: $screen-sm-min) {
+        img {
+            max-width: 100%;
+        }
     }
 }
 

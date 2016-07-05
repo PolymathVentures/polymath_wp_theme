@@ -11,6 +11,16 @@ function load_select_options( $field ) {
             'light-gray text-dark' => 'Light gray',
             'white' => 'White',
             'lila text-white' => 'Lila',
+            'gradient' => 'Gradient',
+        );
+    } else if(strpos($field['name'], 'gradient_color') !== false) {
+        $field['choices'] = array(
+            '#F7403A' => 'Red',
+            '#49C3B1' => 'Aqua',
+            '#C2BEC7' => 'Lila',
+            '#302C45' => 'Purple',
+            '#1F1A33' => 'Blue',
+            '#9D9D9C' => 'Gray',
         );
     } else if(strpos($field['name'], 'text_size') !== false) {
         $field['choices'] = array(
@@ -33,8 +43,8 @@ function load_select_options( $field ) {
             'col-sm-6 text-left' => '1/2, left',
             'col-sm-8 col-sm-offset-2 text-center' => '2/3, centered',
             'col-sm-8 text-left' => '2/3, left',
-            'col-sm-12 text-center' => '2/3, center',
-            'col-sm-8 text-left' => '2/3, left',
+            'col-sm-12 text-center' => 'full width, center',
+            'col-sm-12 text-left' => 'full width, left',
         );
     }
 
@@ -339,6 +349,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -450,6 +461,30 @@ acf_add_local_field_group(array (
 							'readonly' => 0,
 						),
 						array (
+							'key' => 'field_577c0d6e61c35',
+							'label' => 'Category',
+							'name' => 'category',
+							'type' => 'post_object',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'post_type' => array (
+								0 => 'seeds',
+								1 => 'ventures',
+							),
+							'taxonomy' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'return_format' => 'object',
+							'ui' => 1,
+						),
+						array (
 							'key' => 'field_5756d7cc9e6b4',
 							'label' => 'Maximum posts',
 							'name' => 'maximum_posts',
@@ -473,9 +508,48 @@ acf_add_local_field_group(array (
 							'disabled' => 0,
 						),
 						array (
+							'key' => 'field_577c05391e0ec',
+							'label' => 'Posts per row',
+							'name' => 'posts_per_row',
+							'type' => 'number',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => 3,
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'min' => 2,
+							'max' => 6,
+							'step' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+						array (
 							'key' => 'field_575623cf5a3ed',
 							'label' => 'Show images',
 							'name' => 'show_images',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 1,
+						),
+						array (
+							'key' => 'field_577c109d2939e',
+							'label' => 'Show links',
+							'name' => 'show_links',
 							'type' => 'true_false',
 							'instructions' => '',
 							'required' => 0,
@@ -564,6 +638,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -574,6 +649,22 @@ acf_add_local_field_group(array (
 							'placeholder' => '',
 							'disabled' => 0,
 							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_577bff9576a49',
+							'label' => 'No extra padding',
+							'name' => 'no_extra_padding',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
 						),
 						array (
 							'key' => 'field_575625f95a3f3',
@@ -689,6 +780,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -866,6 +958,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -907,11 +1000,27 @@ acf_add_local_field_group(array (
 							'readonly' => 0,
 						),
 						array (
+							'key' => 'field_577ab1881a558',
+							'label' => 'Show title',
+							'name' => 'show_title',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 1,
+						),
+						array (
 							'key' => 'field_575624945a3f1',
 							'label' => 'Category',
 							'name' => 'category',
 							'type' => 'post_object',
-							'instructions' => '',
+							'instructions' => 'If you select no category, all team members will be shown. If you select a category all people tagged with that venture/seed will be shown. If you select a list of specific people below, just those people will be shown.',
 							'required' => 0,
 							'conditional_logic' => array (
 								array (
@@ -935,6 +1044,67 @@ acf_add_local_field_group(array (
 							),
 							'allow_null' => 0,
 							'multiple' => 0,
+							'return_format' => 'object',
+							'ui' => 1,
+						),
+						array (
+							'key' => 'field_577690ddb4ded',
+							'label' => 'Role',
+							'name' => 'role',
+							'type' => 'taxonomy',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field' => 'field_575624525a3f0',
+										'operator' => '==',
+										'value' => 'team',
+									),
+								),
+							),
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'taxonomy' => 'job_role',
+							'field_type' => 'select',
+							'allow_null' => 0,
+							'add_term' => 1,
+							'save_terms' => 0,
+							'load_terms' => 0,
+							'return_format' => 'object',
+							'multiple' => 0,
+						),
+						array (
+							'key' => 'field_57768916bd4e7',
+							'label' => 'People',
+							'name' => 'people',
+							'type' => 'post_object',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field' => 'field_575624525a3f0',
+										'operator' => '==',
+										'value' => 'team',
+									),
+								),
+							),
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'post_type' => array (
+								0 => 'team_members',
+							),
+							'taxonomy' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 1,
 							'return_format' => 'object',
 							'ui' => 1,
 						),
@@ -968,6 +1138,76 @@ acf_add_local_field_group(array (
 							'multiple' => 0,
 							'return_format' => 'object',
 							'ui' => 1,
+						),
+						array (
+							'key' => 'field_577a83e59fd98',
+							'label' => 'Animation',
+							'name' => 'animation',
+							'type' => 'select',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => array (
+								'false' => 'Slide',
+								'true' => 'Fade',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_577a925ea25e2',
+							'label' => 'Autoplay',
+							'name' => 'autoplay',
+							'type' => 'select',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => array (
+								'false' => 'No',
+								'true' => 'Yes',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_577ae65320840',
+							'label' => 'Full width',
+							'name' => 'full_width',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
 						),
 						array (
 							'key' => 'field_5756f05328230',
@@ -1044,6 +1284,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -1081,7 +1322,8 @@ acf_add_local_field_group(array (
 								'col-sm-6 text-left' => '1/2, left',
 								'col-sm-8 col-sm-offset-2 text-center' => '2/3, centered',
 								'col-sm-8 text-left' => '2/3, left',
-								'col-sm-12 text-center' => '2/3, center',
+								'col-sm-12 text-center' => 'full width, center',
+								'col-sm-12 text-left' => 'full width, left',
 							),
 							'default_value' => array (
 							),
@@ -1130,6 +1372,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -1255,6 +1498,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -1466,6 +1710,85 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_577a7c552eda8',
+							'label' => 'Gradient color 1',
+							'name' => 'gradient_color_1',
+							'type' => 'select',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field' => 'field_57573f0d879a2',
+										'operator' => '==',
+										'value' => 'gradient',
+									),
+								),
+							),
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => array (
+								'#F7403A' => 'Red',
+								'#49C3B1' => 'Aqua',
+								'#C2BEC7' => 'Lila',
+								'#302C45' => 'Purple',
+								'#1F1A33' => 'Blue',
+								'#9D9D9C' => 'Gray',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_577a7c852eda9',
+							'label' => 'Gradient color 2',
+							'name' => 'gradient_color_2',
+							'type' => 'select',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field' => 'field_57573f0d879a2',
+										'operator' => '==',
+										'value' => 'gradient',
+									),
+								),
+							),
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => array (
+								'#F7403A' => 'Red',
+								'#49C3B1' => 'Aqua',
+								'#C2BEC7' => 'Lila',
+								'#302C45' => 'Purple',
+								'#1F1A33' => 'Blue',
+								'#9D9D9C' => 'Gray',
 							),
 							'default_value' => array (
 							),
@@ -1558,6 +1881,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -1613,6 +1937,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -1623,6 +1948,22 @@ acf_add_local_field_group(array (
 							'placeholder' => '',
 							'disabled' => 0,
 							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_577a791bb4ecd',
+							'label' => 'No extra padding',
+							'name' => 'no_extra_padding',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
 						),
 						array (
 							'key' => 'field_57573f6d879a6',
@@ -1738,6 +2079,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -1887,6 +2229,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -2085,6 +2428,7 @@ acf_add_local_field_group(array (
 										'light-gray text-dark' => 'Light gray',
 										'white' => 'White',
 										'lila text-white' => 'Lila',
+										'gradient' => 'Gradient',
 									),
 									'default_value' => array (
 									),
@@ -2097,6 +2441,22 @@ acf_add_local_field_group(array (
 									'readonly' => 0,
 								),
 							),
+						),
+						array (
+							'key' => 'field_577aafbd24795',
+							'label' => 'No extra padding',
+							'name' => 'no_extra_padding',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
 						),
 						array (
 							'key' => 'field_57575695b1e8d',
@@ -2228,6 +2588,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -2353,6 +2714,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),
@@ -2478,6 +2840,7 @@ acf_add_local_field_group(array (
 								'light-gray text-dark' => 'Light gray',
 								'white' => 'White',
 								'lila text-white' => 'Lila',
+								'gradient' => 'Gradient',
 							),
 							'default_value' => array (
 							),

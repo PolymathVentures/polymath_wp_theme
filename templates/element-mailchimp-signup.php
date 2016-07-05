@@ -4,12 +4,12 @@
     <div id="mc_embed_signup_scroll">
 
 <div class="form-group">
-    <div class="col-xs-12">
+    <div class="col-sm-8 col-sm-offset-2">
     	<input type="email" value="" placeholder="Email" name="EMAIL" class="required email form-control input-sm" id="mce-EMAIL">
     </div>
 </div>
 <div class="form-group">
-    <div class="col-xs-12">
+    <div class="col-sm-8 col-sm-offset-2">
     	<input type="text" value="" placeholder="First name" name="FNAME" class="required form-control input-sm" id="mce-FNAME">
     </div>
 </div>
@@ -20,7 +20,7 @@
     	</div>
 	</div>
     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_bf424acd364ec846df798dafc_ecdf67cd98" tabindex="-1" value=""></div>
-    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default btn-sm" style="margin-left: 0;"></div>
+    <div class="clear text-center"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default btn-sm" style="margin-left: 0;display: inline-block;"></div>
     </div>
 </form>
 </div>

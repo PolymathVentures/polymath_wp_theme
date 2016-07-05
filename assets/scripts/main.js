@@ -86,7 +86,7 @@
                 appendArrows: $("#" + carouselId).parent(".slick-container"),
                 dots: true,
                 lazyLoad: 'ondemand',
-                autoplay: true,
+                waitForAnimate: false,
                 prevArrow: '<a class="left prev ' + $("#" + carouselId).parent(".slick-container").data('arrow-bg') + '" href="#" role="button">' +
                     	        '<i class="icon-arrow-left icons"></i>' +
                     	        '<span class="sr-only">Previous</span>' +
@@ -107,7 +107,7 @@
             });
 
             var self = $(this);
-            $(this).parent().prev('.slick-control').on('click', 'a', function (e) {
+            $(this).parent().prev('.slick-control').on('hover', 'a', function (e) {
                 var tab = $(this).parent('li');
                 self.slick( 'slickGoTo', parseInt( tab.index() ) );
                 e.preventDefault();

@@ -142,3 +142,14 @@
 
     }
 }
+
+.border-element {
+    @media(min-width: $screen-sm-min) {
+        position: absolute;
+        left: 0;
+        height: 80%;
+        top: 10%;
+        width: 100%;
+        border-right: 1px solid white;
+    }
+}

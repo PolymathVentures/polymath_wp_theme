@@ -1,3 +1,7 @@
+html {
+       overflow-y: scroll;
+}
+
 // Offset for fixed nav bar
 body {
     background: $light-gray;
@@ -10,11 +14,23 @@ img, input {
 
 h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
-    word-break: break-all;
+    // word-break: break-all;
 }
 
 hr {
     border-color: inherit;
+}
+
+//Social media icons
+.si {
+    color: inherit;
+}
+
+span.anchor {
+    display: block;
+    position: relative;
+    top: -($navbar-height);
+    visibility: hidden;
 }
 
 .text-underline {
@@ -22,7 +38,11 @@ hr {
 }
 
 .text-bold {
-    font-weight: bold;
+    font-weight: 700;
+}
+
+.text-normal-weight {
+    font-weight: 400;
 }
 
 .text-italic {
@@ -54,9 +74,9 @@ hr {
 }
 
 .extra-big {
-    font-size: 5vw;
+    font-size: $font-size-base * 1.5;
 
-    @media(max-width: $screen-xs-max) {
+    @media(min-width: $screen-sm-min) {
         font-size: $font-size-base * 2;
     }
 
@@ -66,9 +86,13 @@ hr {
 }
 
 .super-big {
-    font-size: $font-size-base * 3;
+    font-size: $font-size-base * 4;
 
     @media(min-width: $screen-sm-min) {
+        font-size: $font-size-base * 5;
+    }
+
+    @media(min-width: $screen-md-min) {
         font-size: $font-size-base * 6;
     }
 }
@@ -77,6 +101,10 @@ hr {
     font-size: $font-size-base * 3;
 
     @media(min-width: $screen-sm-min) {
+        font-size: $font-size-base * 5;
+    }
+
+    @media(min-width: $screen-md-min) {
         font-size: $font-size-base * 8;
     }
 }
@@ -149,7 +177,7 @@ $extra-padding: $grid-gutter-width;
 }
 
 .overlay-red {
-    background-color: rgba($red, 0.5);
+    background-color: rgba($red, 0.7);
 }
 
 .dark-blue {
@@ -158,7 +186,7 @@ $extra-padding: $grid-gutter-width;
 
 .overlay-dark-blue {
     @extend .text-white;
-    background-color: rgba($dark-blue, 0.5);
+    background-color: rgba($dark-blue, 0.7);
 }
 
 .aqua {
@@ -166,7 +194,7 @@ $extra-padding: $grid-gutter-width;
 }
 
 .overlay-aqua {
-    background-color: rgba($aqua, 0.5);
+    background-color: rgba($aqua, 0.7);
 }
 
 .lila {
@@ -249,6 +277,18 @@ $extra-padding: $grid-gutter-width;
 
     &:hover {
         opacity: 1;
+    }
+}
+
+.block-promos {
+    @media(max-width: $screen-xs-max) {
+        background: none !important;
+        filter: none !important;
+    }
+
+    .col-xs-12 {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 

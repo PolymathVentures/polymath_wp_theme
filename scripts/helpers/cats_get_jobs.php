@@ -91,12 +91,12 @@ function find_custom_field_value($job, $custom_field_id, $label=false) {
     $cf = find_custom_field($job, $custom_field_id);
 
     if(!$cf['value']) return '';
-    
+
     if($label) {
         return custom_field_options($job, $custom_field_id)[$cf['value']];
     }
 
-    return $cf;
+    return $cf['value'];
 };
 
 function custom_field_options($job, $custom_field_id) {

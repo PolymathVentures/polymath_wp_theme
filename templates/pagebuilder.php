@@ -6,19 +6,24 @@ if( have_rows('content') ):
 
     $template_name = 'block-' . str_replace('_', '-', get_row_layout());
 ?>
-
+    <span id="block-<?php echo $content_block_index + 1; ?>" class="anchor"></span>
     <?php $params = get_fields()['content'][$content_block_index]; ?>
-    <?php if(strpos($template_name, 'full-width') > 0): ?>
+    <?php if(strpos($template_name, 'full-width') > 0 || get_sub_field('full_width') ): ?>
 
         <?php include(locate_template('templates/' . $template_name . '.php')); ?>
 
     <?php else: ?>
 
-        <div class="<?php the_sub_field('background_color'); ?> <?php echo $template_name; ?>">
+        <div class="<?php the_sub_field('background_color'); ?> <?php echo $template_name; ?>"
+             <?php if(get_sub_field('background_color') == 'gradient'): ?>
+                 style="<?php echo css_gradient(get_sub_field('gradient_color_1'), get_sub_field('gradient_color_2')); ?>"
+             <?php endif; ?>>
             <div class="container">
                 <div class="row text-center">
                     <div class="col-xs-12">
-                        <div class="block-content">
+                        <?php if(!get_sub_field('no_extra_padding')): ?>
+                            <div class="block-content">
+                        <?php endif; ?>
                         <?php if(get_sub_field('title')): ?>
 
                             <h2 class="text-bold"><?php the_sub_field('title'); ?></h2>
@@ -32,9 +37,13 @@ if( have_rows('content') ):
                             <? endif; ?>
 
                         <? endif; ?>
-                        <div class="extra-padding-vertical">
+                        <?php if(!get_sub_field('no_extra_padding')): ?>
+                            <div class="extra-padding-vertical">
+                        <?php endif; ?>
                             <?php include(locate_template('templates/' . $template_name . '.php')); ?>
-                        </div>
+                        <?php if(!get_sub_field('no_extra_padding')): ?>
+                            </div>
+                        <?php endif; ?>
                         <?php if(get_sub_field('button_text')): ?>
                             <div class="extra-padding-vertical">
                                 <p>
@@ -44,7 +53,9 @@ if( have_rows('content') ):
                                 </p>
                             </div>
                         <? endif; ?>
-                        </div>
+                        <?php if(!get_sub_field('no_extra_padding')): ?>
+                            </div>
+                        <? endif; ?>
                     </div>
                 </div>
             </div>

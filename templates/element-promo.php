@@ -10,7 +10,7 @@
 			<?php endif; ?>
 
 			<?php if(isset($promo['team_member'])): ?>
-				<a href="<?php echo get_home_url() . '/team#' . $promo['team_member']->ID; ?>" class="text-uppercase text-underline"><?php echo $promo['team_member']->post_title; ?></a>
+				<a href="<?php echo get_home_url() . '/team/#person-' . $promo['team_member']->ID; ?>" class="text-uppercase text-underline"><?php echo $promo['team_member']->post_title; ?></a>
 			<?php endif; ?>
 	        <?php if($promo['link']): ?>
 	            <br/>

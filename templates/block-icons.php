@@ -5,7 +5,7 @@ $offset = (12 - $count * 2) / 2;
 ?>
 
 <?php $i = 0; foreach($icons as $icon): ?>
-    <div class="col-sm-2 <?php echo $i == 0 ? 'active col-sm-offset-' . $offset: ''; ?> col-xs-6 text-uppercase extra-letter-spacing">
+    <div class="col-sm-2 <?php echo $i == 0 ? 'col-sm-offset-' . $offset: ''; ?> col-xs-12 text-uppercase extra-letter-spacing">
 
         <?php if(get_sub_field('link')): ?>
             <a href="<?php the_sub_field('link'); ?>">
@@ -18,5 +18,5 @@ $offset = (12 - $count * 2) / 2;
         <?php endif; ?>
 
         <?php echo $icon['text']; ?>
-    </div>
+    <br/><br/><br /></div>
 <?php $i++; endforeach; ?>

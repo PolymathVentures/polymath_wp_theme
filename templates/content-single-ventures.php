@@ -17,23 +17,33 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <?php
-            $params = array(
-                'maximum_posts' => 3,
-                'post_type' => 'promos',
-                'filter' => 'type',
-                'value' => 'statistic',
-                'show_images' => false,
-                'alternating_colors' => false,
-                'post_background_color' => 'red text-white',
-                'post_title_text_size' => 'super-big'
-            );
-             ?>
-            <?php include(locate_template('templates/block-posts.php')); ?>
+</div>
+
+<div style="background-color: <?php the_field('brand_color'); ?>">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-xs-12">
+                <?php
+                $params = array(
+                    'maximum_posts' => 4,
+                    'posts_per_row' => 4,
+                    'post_type' => 'promos',
+                    'filter' => 'type',
+                    'value' => 'statistic',
+                    'category' => get_post(),
+                    'show_images' => false,
+                    'no_extra_padding' => true,
+                    'alternating_colors' => false,
+                    'post_background_color' => 'text-white',
+                    'post_title_text_size' => 'super-big'
+                );
+                 ?>
+                <?php include(locate_template('templates/block-posts.php')); ?>
+            </div>
         </div>
     </div>
+</div>
+<div class="container text-center">
     <div class="row">
         <div class="col-xs-12">
             <div class="block-content">

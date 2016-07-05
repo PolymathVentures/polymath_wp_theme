@@ -13,7 +13,8 @@
     "slick-carousel": "^1.6.0",
     "bourbon": "^4.2.7",
     "bootstrap_dropdowns_enhancement": "https://github.com/behigh/bootstrap_dropdowns_enhancement.git#1c0f45446703992787f71492d2b68927d736f370",
-    "simple-line-icons": "^2.3.2"
+    "simple-line-icons": "^2.3.2",
+    "76d-social-icons": "^1.0.4"
   },
   "overrides": {
     "bootstrap_dropdowns_enhancement": {
@@ -30,6 +31,15 @@
         "./fonts/Simple-Line-Icons.ttf",
         "./fonts/Simple-Line-Icons.woff",
         "./fonts/Simple-Line-Icons.woff2"
+      ]
+    },
+    "76d-social-icons": {
+      "main": [
+        "./assets/css/social-icons.css",
+        "./assets/fonts/social-icons.eot",
+        "./assets/fonts/social-icons.svg",
+        "./assets/fonts/social-icons.ttf",
+        "./assets/fonts/social-icons.woff"
       ]
     },
     "bootstrap-sass": {

@@ -12,13 +12,13 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
         <li role="presentation" class="col-xs-12 col-sm-2 <?php echo $i == 0 ? 'active col-sm-offset-' . $offset: ''; ?>">
             <a href="#" role="tab" data-toggle="tab">
                 <img src="<?php echo $tab['icon']['sizes']['medium']; ?>">
-            </a>
+            </a><br/><br/>
 
             <?php if($tab['title']): ?>
                 <span class="text-uppercase extra-letter-spacing"><?php echo $tab['icon_text']; ?></span>
             <?php endif; ?>
 
-            <div class="visible-xs-block"><br/><?php echo $tab['description']; ?><br/><br/><br/></div>
+            <div class="visible-xs-block"><?php echo $tab['description']; ?><br/><br/><br/></div>
 
         </li>
     <?php $i++; endforeach; ?>
@@ -33,14 +33,18 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
          <?php if($params['type'] == 'personal_story'): ?>
          <div class="col-sm-6 col-sm-offset-6">
             <div class="content-padding-wrapper">
-                <div class="slider-title content-padding h1 text-white text-bold"><?php echo $slides_object['post_title']; ?><br/>
-                    <span class="small"><?php echo $slides_object['sub_title']; ?></span>
-                </div>
+                <?php if($params['show_title']): ?>
+                    <div class="slider-title content-padding h1 text-white text-bold"><?php echo $slides_object['post_title']; ?><br/>
+                        <span class="small"><?php echo $slides_object['sub_title']; ?></span>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
         <?php endif; ?>
         <div class="slick" data-slick='{"arrows": <?php echo $slides_object['arrows']; ?>,
                                         "slidesToShow": <?php echo $slides_object['slides_to_show']; ?>,
+                                        "fade": <?php echo $params['animation'] ?: 'false'; ?>,
+                                        "autoplay": <?php echo $params['autoplay'] ?: 'true'; ?>,
                                         "slidesToScroll": 1}'>
             <?php foreach ($slides_object['slides'] as $slide): ?>
         		<div class="slide slick-slide">
@@ -49,18 +53,26 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
                          style="height:<?php echo $params['height']; ?>px;">
 
 					</div>
-                    <div class="<?php echo $ajust_height; ?>">
-                        <div class="caption content-padding-wrapper <?php echo $params['caption_background_color']; ?>">
-                            <div class="content-padding">
-                                <?php if($slide['title']): ?>
-                                    <h3><?php echo $slide['title']; ?></h3>
-                                <?php endif; ?>
-                                <?php if($slide['description']): ?>
-                                    <p><?php echo $slide['description']; ?></p>
-                                <?php endif; ?>
+                    <?php if($params['type'] !== 'team'): ?>
+                        <div class="row">
+                        <div class="<?php the_sub_field('caption_column_width'); ?>">
+                    <? endif; ?>
+                        <div class="<?php echo $ajust_height; ?>">
+                            <div class="caption content-padding-wrapper <?php echo $params['caption_background_color']; ?>">
+                                <div class="content-padding">
+                                    <?php if($slide['title']): ?>
+                                        <h3><?php echo $slide['title']; ?></h3>
+                                    <?php endif; ?>
+                                    <?php if($slide['description']): ?>
+                                        <p><?php echo $slide['description']; ?></p>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                        </div>
-            		</div>
+                		</div>
+                        <?php if($params['type'] !== 'team'): ?>
+            		      </div>
+            		      </div>
+                        <?php endif; ?>
         		</div>
 
             <?php endforeach; ?>

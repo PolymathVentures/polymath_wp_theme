@@ -43,7 +43,6 @@ $blog_posts = new WP_query($args);
 								</a>
 							</div>
 						</header>
-	                    <?php get_template_part('templates/element-share-buttons'); ?>
 					</div>
 				</article>
 			</div>

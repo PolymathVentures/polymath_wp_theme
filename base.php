@@ -44,7 +44,12 @@ use Roots\Sage\Wrapper;
     ?>
   </div>
   <!-- Modal -->
-    <div class="modal fade" id="loading-modal" tabindex="-1" role="dialog"></div>
+    <div class="modal fade text-center" id="loading-modal"
+         tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+
+        <!-- <img class="extra-padding-vertical" src="<?php // get_template_directory_uri(); ?>/dist/images/squares.gif"> -->
+
+    </div>
   <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
   </body>
 </html>

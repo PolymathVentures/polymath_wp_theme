@@ -32,7 +32,7 @@ foreach($result->posts as $r) {
     </a><br/>
 <?php endif; ?>
 
-Filter by: <br />
+<span class="text-gray text-italic big">Filter by:</span> <br />
 
 <?php
 $items = $result->posts;
@@ -42,10 +42,10 @@ $items[0]->button_text = 'Venture';
 <?php include(locate_template('templates/element-matrix-filter.php')); ?><span class="custom-button">&middot;</span>
 
 <?php
-// $items = custom_field_options('208901');
-// array_unshift($items, 'Expertise');
+$items = custom_field_options($jobs[0], '208901');
+$items['button_text'] = 'Expertise';
 ?>
-<?php // include(locate_template('templates/element-matrix-filter.php')); ?>
+<?php include(locate_template('templates/element-matrix-filter.php')); ?>
 
 <div class="post-list mixitup-container">
 
@@ -63,7 +63,7 @@ $items[0]->button_text = 'Venture';
             <div class="content-padding text-left">
                 <header>
                     <h3 class="text-bold">
-						<a href="<?php echo get_permalink() . $job['id'] . '/' . urlencode($job['title']); ?>">
+						<a href="<?php echo get_permalink() . $job['id'] . '/' . urlencode($job['title']); ?>" class="text-dark">
 	                        <?php echo $job['title']; ?><br />
 						</a>
                         <span class="small"><?php echo get_field('post_title', $ventures[$job['company_id']]); ?></span>
