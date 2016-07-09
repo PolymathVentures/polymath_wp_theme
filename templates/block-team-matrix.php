@@ -54,6 +54,7 @@ $items[0]->button_text = 'Role';
 
 	<?php while( $people->have_posts() ) : $people->the_post(); ?>
 
+		<?php $person = formatPersonInfo(get_post()); ?>
 		<?php $ventures = implode(' ', get_field( "ventures" ) ?: []); ?>
 		<?php $seeds = implode(' ', get_field( "seeds" ) ?: []); ?>
 		<?php $roles = implode(' ', array_map(function($role) {return $role->slug;}, get_the_terms(get_the_ID(), 'job_role') ?: [])); ?>
@@ -61,18 +62,12 @@ $items[0]->button_text = 'Role';
 		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mix responsive-bg <?php echo $ventures; ?> <?php echo $seeds; ?> <?php echo $roles; ?>"
              data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'>
 			 <span id="person-<?php the_ID(); ?>" class="anchor"></span>
-				 <article class="team-member-info-overlay content-padding-wrapper">
+				 <article class="team-member-info-overlay content-padding-wrapper show-person-modal"
+						  data-title="<?php echo htmlspecialchars($person['title']); ?>"
+						  data-description="<?php echo htmlspecialchars($person['full_description']); ?>"
+						  data-picture="<?php echo $person['image']['sizes']['original']; ?>">
 				 <div class="content-padding">
-				  	 <header>
-						<h2 class="entry-title">
-							<?php the_title(); ?><br />
-							<span class="small"><?php the_field( "job_title" ); ?></span>
-						</h2>
-					  </header>
-					  <div class="entry-summary">
-						<?php the_field( "description" ); ?>
-					</div><br/>
-					  <a href="<?php the_field('linkedin'); ?>" target="_blank">LinkedIn</a>
+						 <h3><?php echo $person['title']; ?></h3>
 			  		</div>
 				</article>
 		</div>

@@ -30,7 +30,7 @@ $blog_posts = new WP_query($args);
 			<div class="col-xs-12">
 				<div class="post-list-image responsive-bg"
 					 data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'>
-					<a href="<?php the_permalink(); ?>">
+					<a href="<?php the_permalink(); ?>" class="text-dark">
 						<div class="blog-post-more-button"><span class="plus text-center">+</span></div>
 					</a>
 				</div>
@@ -38,7 +38,7 @@ $blog_posts = new WP_query($args);
 					<div class="content-padding">
 						<header>
 							<div class="h2">
-								<a href="<?php the_permalink(); ?>">
+								<a href="<?php the_permalink(); ?>" class="text-dark">
 									<?php the_title(); ?>
 								</a>
 							</div>

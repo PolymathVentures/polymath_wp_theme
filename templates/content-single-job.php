@@ -75,20 +75,27 @@ $params = array(
                 </div>
             </div>
         </div>
+	</div>
+</div>
+
+<div class="red">
+    <div class="container">
 		<?php
 		$params = array(
-			'maximum_posts' => 3,
+			'maximum_posts' => 4,
 			'post_type' => 'promos',
 			'filter' => 'type',
 			'value' => 'statistic',
+			'category' => get_post($venture['ID']),
 			'alternating_colors' => false,
 			'post_background_color' => 'red',
 			'show_images' => false,
-			'post_title_text_size' => 'super-big'
+			'post_title_text_size' => 'super-big',
+			'posts_per_row' => 4,
 		);
 		 ?>
 		<?php include(locate_template('templates/block-posts.php')); ?>
-    </div>
+	</div>
 </div>
 
 <div class="white">
@@ -103,9 +110,9 @@ $params = array(
                             'type' => 'team',
                             'category' => get_post($venture['ID']),
                             'arrows' => true,
-                            'arrow_background_color' => 'dark-blue',
+                            'arrow_background_color' => 'dark-blue text-white',
                             'slides_in_view' => 3,
-                            'height' => 350,
+                            'height' => 400,
                             'caption_background_color' => '',
                         );
                          ?>
@@ -124,22 +131,22 @@ $params = array(
         </div>
     </div>
 </div>
-<div class="white">
+
+<div class="block-promos"
+         style="<?php echo css_gradient('#C2BEC7', '#49C3B1'); ?>">
     <div class="container text-center">
         <div class="row">
             <div class="col-xs-12">
-                <div class="block-content">
-                    <?php
-                    $params = array(
-						'promo_1_width' => 8,
-						'promo_1_background_color' => 'lila text-white',
-						'promo_1' => $venture['promo_1'],
-						'promo_2_background_color' => 'aqua text-white',
-						'promo_2' => $venture['promo_2']
-                    );
-                     ?>
-                    <?php include(locate_template('templates/block-promos.php')); ?>
-                </div>
+                <?php
+                $params = array(
+					'promo_1_width' => 8,
+					'promo_1_background_color' => 'lila text-white',
+					'promo_1' => $venture['promo_1'],
+					'promo_2_background_color' => 'aqua text-white',
+					'promo_2' => $venture['promo_2']
+                );
+                 ?>
+                <?php include(locate_template('templates/block-promos.php')); ?>
             </div>
         </div>
     </div>

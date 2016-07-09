@@ -52,31 +52,36 @@
 }
 
 .dropdown-menu.custom-dropdown {
-    @extend .text-center;
-    padding: 10px $line-height-computed;
-    border-radius: 0;
-    border: 0px;
-    background: $lila;
-
     a {
-        @extend .text-underline;
         @extend .extra-letter-spacing;
-        color: white !important;
-        line-height: $line-height-computed * 1.5 !important;
-
     }
 
-    li.active, li:hover {
+    @media(min-width: $screen-sm-min) {
+        text-align: center;
+        padding: 10px $line-height-computed;
+        border-radius: 0;
+        border: 0px;
+        background: $lila;
+
         a {
-            background: darken($lila, 5%) !important;
+            border-bottom: 1px solid inherit;
+            color: white !important;
+            line-height: $line-height-computed * 1.5 !important;
+
         }
-    }
 
-    li:last-of-type > a {
-        border-bottom: 0px;
-    }
+        li.active, li:hover {
+            a {
+                background: darken($lila, 5%) !important;
+            }
+        }
 
-    &.bullet:after {
-        border-bottom-color: $lila;
+        li:last-of-type > a {
+            border-bottom: 0px;
+        }
+
+        &.bullet:after {
+            border-bottom-color: $lila;
+        }
     }
 }

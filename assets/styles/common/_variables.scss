@@ -5,7 +5,8 @@ $icon-font-path:        "../fonts/";
 // Grid settings
 $main-sm-columns:       12;
 $sidebar-sm-columns:    4;
-
+$grid-gutter-width:     30px;
+$border-radius-large:   2px;
 
 // Fonts
 $font-size-base: 14px;
@@ -49,6 +50,7 @@ $navbar-default-toggle-border-color: white;
 //Modal
 $modal-backdrop-bg:           white;
 $modal-backdrop-opacity:      .7;
+$modal-inner-padding:         $grid-gutter-width;
 
 // =============================================================================
 // String Replace

@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 hr {
-    border-color: inherit;
+    border-color: $light-gray;
 }
 
 //Social media icons
@@ -278,6 +278,10 @@ $extra-padding: $grid-gutter-width;
     &:hover {
         opacity: 1;
     }
+}
+
+.show-person-modal {
+    cursor: pointer;
 }
 
 .block-promos {

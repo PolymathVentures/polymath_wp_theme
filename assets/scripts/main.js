@@ -96,15 +96,29 @@
                     	        '<span class="sr-only">Next</span>' +
                             '</a>',
                 responsive: [{
-                    breakpoint: 500,
+                    breakpoint: 767,
                     settings: {
                         slidesToShow: 1,
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: '10px'
+                        arrows: false
                     }
                 }]
             });
+
+            //Center arrow in the middle of caption
+            var captionHeights = $(this).find('.caption').map(function() {
+                return $(this).height();
+            }).get();
+
+            var maxHeight = Math.max.apply(null, captionHeights);
+            $(this).parent().find('.slick-arrow .icons').css('bottom', (maxHeight / 2) - 20);
+
+            //adjust dots
+            var dotElements = $(this).parent('.tab_slider, .timeline');
+
+            dotElements.find('.caption').css('padding-top', 25);
+            dotElements.find('.slick-dots').css('bottom', maxHeight - 10);
+
+            $(this).parent('.personal_story').find('.slick-dots').css('bottom', 50);
 
             var self = $(this);
             $(this).parent().prev('.slick-control').on('hover', 'a', function (e) {
@@ -127,6 +141,16 @@
             if(id) {
                 $('#' + id + ' .slick').slick('setPosition');
             }
+        });
+
+        $('.show-person-modal').click(function() {
+
+            $('#person-modal .person-title').html($(this).data('title'));
+            $('#person-modal .person-description').html($(this).data('description'));
+            $('#person-modal .person-picture').attr('src', $(this).data('picture'));
+
+            $('#person-modal').modal('show');
+
         });
 
         // Get appropriate image size for screen

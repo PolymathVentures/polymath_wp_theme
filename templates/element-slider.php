@@ -14,7 +14,7 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
                 <img src="<?php echo $tab['icon']['sizes']['medium']; ?>">
             </a><br/><br/>
 
-            <?php if($tab['title']): ?>
+            <?php if($tab['icon_text']): ?>
                 <span class="text-uppercase extra-letter-spacing"><?php echo $tab['icon_text']; ?></span>
             <?php endif; ?>
 
@@ -58,7 +58,12 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
                         <div class="<?php the_sub_field('caption_column_width'); ?>">
                     <? endif; ?>
                         <div class="<?php echo $ajust_height; ?>">
-                            <div class="caption content-padding-wrapper <?php echo $params['caption_background_color']; ?>">
+                            <div class="caption content-padding-wrapper
+                                        <?php echo $params['caption_background_color']; ?>
+                                        <?php echo $params['type'] == 'team' ? 'show-person-modal' : ''; ?>"
+                                 data-title="<?php echo htmlspecialchars($slide['title']); ?>"
+                                 data-description="<?php echo htmlspecialchars($slide['full_description']); ?>"
+                                 data-picture="<?php echo $slide['image']['sizes']['original']; ?>">
                                 <div class="content-padding">
                                     <?php if($slide['title']): ?>
                                         <h3><?php echo $slide['title']; ?></h3>

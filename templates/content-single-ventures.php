@@ -56,7 +56,7 @@
                         'arrows' => false,
                         'arrow_background_color' => false,
                         'slides_in_view' => 1,
-                        'height' => 300,
+                        'height' => 400,
                         'caption_background_color' => 'dark-blue text-white',
                     );
                      ?>
@@ -82,6 +82,47 @@
                     ?>
                     <?php include(locate_template('templates/block-team-matrix.php')); ?>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block-promos"
+         style="<?php echo css_gradient('#C2BEC7', '#49C3B1'); ?>">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-xs-12">
+                <?php
+
+                $args = array(
+                	'posts_per_page'   => 1,
+                	'orderby'          => 'publish',
+                	'post_type'		   => 'post',
+                	'order'            => 'ASC',
+                	'post_status'      => 'publish',
+                    'meta_query'       => array(
+                								array(
+                								'key' => 'ventures',
+                								'value' => '"' . get_the_ID() . '"',
+                								'compare' => 'LIKE'
+                								)
+                                            )
+                );
+
+                $post = new WP_query($args);
+                $post = $post->posts[0];
+                $post->link = get_the_permalink($post->ID);
+                $post->button_text = 'Read more';
+
+
+                $params = array(
+					'promo_1_width' => 4,
+					'promo_1_background_color' => 'lila text-white',
+					'promo_1' => get_field('promo_1'),
+					'promo_2_background_color' => 'aqua text-white',
+					'promo_2' => $post
+                );
+                 ?>
+                <?php include(locate_template('templates/block-promos.php')); ?>
             </div>
         </div>
     </div>

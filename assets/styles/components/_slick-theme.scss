@@ -79,6 +79,8 @@ $arrow-width: 6%;
         }
 
         .caption {
+            // padding-left: $arrow-width;
+            // padding-right: $arrow-width;
             p {
                 @media(min-width: $screen-sm-min) {
                     display: inline-block;
@@ -90,18 +92,20 @@ $arrow-width: 6%;
 
     &.arrows {
 
-        .slick {
-            @media(min-width: $screen-sm-min) {
-                width:100% - ($arrow-width * 2);
-                margin-left: $arrow-width;
-                margin-right: $arrow-width;
+        &.team {
+            .slick {
+                @media(min-width: $screen-sm-min) {
+                    width:100% - ($arrow-width * 2);
+                    margin-left: $arrow-width;
+                    margin-right: $arrow-width;
+                }
             }
         }
     }
 
     .slick-arrow {
         @extend .carousel-control;
-        color: $dark-blue;
+        color: inherit;
         opacity: 1;
         width: $arrow-width;
         background-image: none !important;
@@ -110,11 +114,11 @@ $arrow-width: 6%;
 
         .icons {
             position: absolute;
+            display: inline-block;
             font-size: 40px;
-            top: 47%;
             margin-top: -10px;
             z-index: 5;
-            display: inline-block;
+
             &.icon-arrow-left {
                 left: 50%;
                 margin-left: -20px;
@@ -129,7 +133,6 @@ $arrow-width: 6%;
     .slick-dots {
         @extend .carousel-indicators;
         text-align: center;
-        bottom: 5px;
         margin-bottom: 0;
         li {
             margin: 0 3px;

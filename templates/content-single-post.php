@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="row post-list">
         <div class="extra-padding-vertical">
+            <div class="row post-list">
             <?php get_template_part('templates/element-blog-post'); ?>
-            <?php get_template_part('templates/element-blog-posts'); ?>
         </div>
+            <?php get_template_part('templates/element-blog-posts'); ?>
     </div>
 </div>

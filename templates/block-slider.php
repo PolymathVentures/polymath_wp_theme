@@ -41,13 +41,9 @@ if($params['type'] == 'team') {
 
     if( count($people) > 0 ):
     	foreach($people as $person):
-    		$person = get_post_with_custom_fields($person);
-    		$person['image'] = array('sizes' => format_attachment_sizes_array(get_post_thumbnail_id($person['ID'])));
-            $person['icon'] = false;
-    		$person['title'] = $person['post_title'] . '<br/><span class="small">' . $person['job_title'] . '</span>';
-            $person['description'] = '<a href="' . get_home_url() . '/team/#person-' . $person['ID'] . '">' .
-                                     'more <i class="icon-arrow-right icons text-extra-small"></i></a>';
-    		$slides[] = $person;
+            $p = formatPersonInfo($person);
+            $p['description'] = '';
+    		$slides[] = $p;
     	endforeach;
     endif;
 
