@@ -11,7 +11,7 @@
                 <div class="content-padding-wrapper">
                  	<div class="content-padding">
                         <img src="<?php echo get_field('logo')['sizes']['post_list_thumb']; ?>"/>
-                            <p><?php the_field('description'); ?></p>
+                            <p class="big text-light"><?php the_field('description'); ?></p>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<div style="background-color: <?php the_field('brand_color'); ?>">
+<div class="red">
     <div class="container text-center">
         <div class="row">
             <div class="col-xs-12">
@@ -57,6 +57,9 @@
                         'arrow_background_color' => false,
                         'slides_in_view' => 1,
                         'height' => 400,
+                        'autoplay' => false,
+                        'arrows' => true,
+                        'arrow_background_color' => 'text-white',
                         'caption_background_color' => 'dark-blue text-white',
                     );
                      ?>
@@ -64,6 +67,8 @@
 
                     <div class="block-content">
                         <h2 class="text-bold text-center">Want to learn more about <?php the_title(); ?>?</h2>
+                        <br/>
+                        <br/>
                         <a class="btn btn-primary" href="<?php the_field('website'); ?>" target="_blank">Visit website</a>
                     </div>
                 </div>
@@ -76,11 +81,20 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="block-content">
-                    <?php $params = array(
-                        'category' => get_post()
-                    );
-                    ?>
-                    <?php include(locate_template('templates/block-team-matrix.php')); ?>
+                    <div class="extra-padding-vertical">
+                        <?php
+                        $params = array(
+                            'type' => 'team',
+                            'category' => get_post(),
+                            'arrows' => true,
+                            'arrow_background_color' => 'dark-blue text-white',
+                            'slides_in_view' => 4,
+                            'height' => 350,
+                            'caption_background_color' => '',
+                        );
+                         ?>
+                        <?php include(locate_template('templates/block-slider.php')); ?>
+                    </div>
                 </div>
             </div>
         </div>

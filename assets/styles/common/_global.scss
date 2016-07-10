@@ -45,6 +45,10 @@ span.anchor {
     font-weight: 400;
 }
 
+.text-light {
+    font-weight: 300;
+}
+
 .text-italic {
     font-style: italic;
 }
@@ -294,6 +298,10 @@ $extra-padding: $grid-gutter-width;
         padding-left: 0;
         padding-right: 0;
     }
+}
+
+#mc-embedded-subscribe {
+    margin: 0 !important;
 }
 
 /*

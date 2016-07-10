@@ -21,11 +21,11 @@ if( $items->have_posts() ):
 			<div class="post-grid-item-wrapper">
 				<article class="post-grid-item">
 					<header>
-						<h2 class="text-bold extra-big">
+						<div class="text-bold extra-big h2">
 							<?php the_title(); ?><br/>
 							<span class="small">Seed <?php the_field('year'); ?></span><br/>
-							<i class="icon-magnifier icons"></i>
-						</h2>
+							<div class="more">+</div>
+						</div>
 					</header>
 				</article>
 			</div>

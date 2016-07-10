@@ -26,7 +26,8 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
 <?php endif; ?>
 
 <?php if(count($slides_object['slides']) > 0): ?>
-    <div class="slick-container <?php echo $params['type'] == 'tab_slider' ? 'hidden-xs' : ''; ?> <?php echo $params['type']; ?> <?php echo $slides_object['arrows'] == 'true' ? 'arrows' : ''; ?> responsive-bg"
+    <div class="slick-container <?php echo $params['type'] == 'tab_slider' ? 'hidden-xs' : ''; ?> <?php echo $params['type']; ?> <?php echo $slides_object['arrows'] == 'true' ? 'arrows' : ''; ?>
+    <?php echo explode(' ', $params['caption_background_color'])[1]; ?> responsive-bg"
          data-bg-json='<?php echo json_encode(get_or_empty($slides_object, 'background_image', array('sizes' => null))['sizes']); ?>'
          data-arrow-bg="<?php echo get_or_empty($params, 'arrow_background_color'); ?>">
 

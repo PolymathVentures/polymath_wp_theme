@@ -8,6 +8,16 @@ $args = array(
 	'post_status'      => 'publish',
 );
 
+if($params['role']) {
+	$args['tax_query'] = array(
+							array(
+							'taxonomy' => $params['role']->taxonomy,
+							'field' => 'id',
+							'terms' => $params['role']->term_id
+							)
+						);
+}
+
 if ($params['category']) {
 	$args['meta_query'] = 	array(
 								array(
@@ -35,10 +45,19 @@ $items = get_posts( $args );
 $items[0]->button_text = 'Ventures';
 ?>
 
-Filter by: <br/>
-<?php include(locate_template('templates/element-matrix-filter.php')); ?><span class="custom-button">&middot;</span>
+<span class="big text-gray text-italic">Filter by:</span> <br/>
 
-<?
+
+<?php if(!$params['category']): ?>
+	<?php include(locate_template('templates/element-matrix-filter.php')); ?>
+<?php endif; ?>
+
+
+<?php if(!$params['category'] && !$params['role']): ?>
+	<span class="custom-button">&middot;</span>
+<?php endif; ?>
+
+<?php
 
 $items = get_terms( array(
 	'taxonomy' => 'job_role',
@@ -46,7 +65,9 @@ $items = get_terms( array(
 $items[0]->button_text = 'Role';
 ?>
 
-<?php include(locate_template('templates/element-matrix-filter.php')); ?>
+<?php if(!$params['role']): ?>
+	<?php include(locate_template('templates/element-matrix-filter.php')); ?>
+<?php endif; ?>
 
 <?php if( $people->have_posts() ): ?>
 

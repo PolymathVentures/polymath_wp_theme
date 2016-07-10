@@ -5,6 +5,8 @@ function load_select_options( $field ) {
     if(strpos($field['name'], 'background_color') !== false) {
         $field['choices'] = array(
             'none' => 'None',
+            'text-white' => 'None, White text',
+            'text-dark' => 'None, dark text',
             'red text-white' => 'Red',
             'aqua text-white' => 'Aqua',
             'dark-blue text-white' => 'Blue',
@@ -2156,6 +2158,28 @@ acf_add_local_field_group(array (
 							'allow_null' => 0,
 							'multiple' => 0,
 						),
+						array (
+							'key' => 'field_5782bb7612f2a',
+							'label' => 'role',
+							'name' => 'role',
+							'type' => 'taxonomy',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'taxonomy' => 'job_role',
+							'field_type' => 'select',
+							'allow_null' => 0,
+							'add_term' => 1,
+							'save_terms' => 0,
+							'load_terms' => 0,
+							'return_format' => 'object',
+							'multiple' => 0,
+						),
 					),
 					'min' => '',
 					'max' => '',
@@ -2977,6 +3001,7 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
+	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (
@@ -3122,6 +3147,7 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
+	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (
@@ -3192,6 +3218,7 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
+	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (
@@ -3393,6 +3420,7 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
+	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (
@@ -3599,6 +3627,7 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
+	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (
@@ -3876,6 +3905,7 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
+	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (
@@ -3930,6 +3960,7 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
+	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (
@@ -3991,6 +4022,7 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
+	'local' => 'php',
 ));
 
 endif;

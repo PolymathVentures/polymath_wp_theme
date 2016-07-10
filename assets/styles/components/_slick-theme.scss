@@ -71,6 +71,7 @@ $arrow-width: 6%;
 
         .slide {
             @extend .item;
+            height: auto;
             position: relative;
 
             .slide-content {
@@ -135,13 +136,14 @@ $arrow-width: 6%;
         text-align: center;
         margin-bottom: 0;
         li {
+            border-color: inherit;
             margin: 0 3px;
             button {
                 display: none;
             }
 
             &.slick-active {
-                background: white;
+                border: 5px solid;
             }
         }
     }
