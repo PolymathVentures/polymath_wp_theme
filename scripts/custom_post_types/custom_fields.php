@@ -123,7 +123,7 @@ acf_add_local_field_group(array (
 								'id' => '',
 							),
 							'choices' => array (
-								'col-md-6' => 'Left',
+								'col-md-8' => 'Left',
 								'col-md-8 col-md-offset-2 text-center' => 'Center',
 							),
 							'default_value' => array (
@@ -135,6 +135,29 @@ acf_add_local_field_group(array (
 							'placeholder' => '',
 							'disabled' => 0,
 							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_57846847e6628',
+							'label' => 'Height',
+							'name' => 'height',
+							'type' => 'number',
+							'instructions' => '',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => 350,
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'min' => '',
+							'max' => '',
+							'step' => '',
+							'readonly' => 0,
+							'disabled' => 0,
 						),
 						array (
 							'key' => 'field_5756221e5a3ea',
@@ -345,6 +368,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -634,6 +659,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -709,6 +736,28 @@ acf_add_local_field_group(array (
 							'allow_null' => 0,
 							'multiple' => 0,
 						),
+						array (
+							'key' => 'field_57851c5c2a43e',
+							'label' => 'Specific posts',
+							'name' => 'specific_posts',
+							'type' => 'post_object',
+							'instructions' => '',
+							'required' => '',
+							'conditional_logic' => '',
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'post_type' => array (
+							),
+							'taxonomy' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 1,
+							'return_format' => 'object',
+							'ui' => 1,
+						),
 					),
 					'min' => '',
 					'max' => '',
@@ -776,6 +825,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -940,6 +991,33 @@ acf_add_local_field_group(array (
 							'disabled' => 0,
 						),
 						array (
+							'key' => 'field_578540500d530',
+							'label' => 'Title alignment',
+							'name' => 'title_alignment',
+							'type' => 'select',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => array (
+								'none' => 'left',
+								'col-md-offset-6' => 'right',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						array (
 							'key' => 'field_5756e8152822e',
 							'label' => 'Background color',
 							'name' => 'background_color',
@@ -954,6 +1032,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -1280,6 +1360,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -1368,6 +1450,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -1385,6 +1469,22 @@ acf_add_local_field_group(array (
 							'placeholder' => '',
 							'disabled' => 0,
 							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_5783f81eb879c',
+							'label' => 'No extra padding',
+							'name' => 'no_extra_padding',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
 						),
 						array (
 							'key' => 'field_575626165a3f5',
@@ -1494,6 +1594,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -1706,6 +1808,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -1817,6 +1921,7 @@ acf_add_local_field_group(array (
 							),
 							'post_type' => array (
 								0 => 'promos',
+								1 => 'post',
 							),
 							'taxonomy' => array (
 							),
@@ -1877,6 +1982,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -1910,6 +2017,7 @@ acf_add_local_field_group(array (
 							),
 							'post_type' => array (
 								0 => 'promos',
+								1 => 'post',
 							),
 							'taxonomy' => array (
 							),
@@ -1933,6 +2041,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -2075,6 +2185,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -2247,6 +2359,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -2446,6 +2560,8 @@ acf_add_local_field_group(array (
 									),
 									'choices' => array (
 										'none' => 'None',
+										'text-white' => 'None, White text',
+										'text-dark' => 'None, dark text',
 										'red text-white' => 'Red',
 										'aqua text-white' => 'Aqua',
 										'dark-blue text-white' => 'Blue',
@@ -2606,6 +2722,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -2732,6 +2850,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -2858,6 +2978,8 @@ acf_add_local_field_group(array (
 							),
 							'choices' => array (
 								'none' => 'None',
+								'text-white' => 'None, White text',
+								'text-dark' => 'None, dark text',
 								'red text-white' => 'Red',
 								'aqua text-white' => 'Aqua',
 								'dark-blue text-white' => 'Blue',
@@ -2992,6 +3114,13 @@ acf_add_local_field_group(array (
 				'value' => 'page',
 			),
 		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'seeds',
+			),
+		),
 	),
 	'menu_order' => 0,
 	'position' => 'acf_after_title',
@@ -3001,7 +3130,6 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
-	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (
@@ -3177,29 +3305,6 @@ acf_add_local_field_group(array (
 			'readonly' => 0,
 			'disabled' => 0,
 		),
-		array (
-			'key' => 'field_577417c41141c',
-			'label' => 'Seed story',
-			'name' => 'seed_story',
-			'type' => 'post_object',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'post_type' => array (
-				0 => 'sliders',
-			),
-			'taxonomy' => array (
-			),
-			'allow_null' => 0,
-			'multiple' => 0,
-			'return_format' => 'object',
-			'ui' => 1,
-		),
 	),
 	'location' => array (
 		array (
@@ -3218,7 +3323,6 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
-	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (
@@ -3428,6 +3532,33 @@ acf_add_local_field_group(array (
 	'title' => 'Team member info',
 	'fields' => array (
 		array (
+			'key' => 'field_57854bf0b882b',
+			'label' => 'Order',
+			'name' => 'order',
+			'type' => 'number',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'min' => 0,
+			'max' => 100,
+			'step' => '0.01',
+			'show_column' => 1,
+			'show_column_weight' => '',
+			'allow_quickedit' => 1,
+			'allow_bulkedit' => 1,
+			'readonly' => 0,
+			'disabled' => 0,
+		),
+		array (
 			'key' => 'field_577e8cddc59e7',
 			'label' => 'Roles',
 			'name' => 'roles',
@@ -3627,7 +3758,6 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
-	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (
@@ -3798,6 +3928,29 @@ acf_add_local_field_group(array (
 			'ui' => 1,
 		),
 		array (
+			'key' => 'field_578511166afbb',
+			'label' => 'people',
+			'name' => 'people',
+			'type' => 'post_object',
+			'instructions' => 'Select some people if you only want to show a subset of the team on the venture/individual jobs pages. Otherwise leave empty.',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'team_members',
+			),
+			'taxonomy' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 1,
+			'return_format' => 'object',
+			'ui' => 1,
+		),
+		array (
 			'key' => 'field_577436e256e72',
 			'label' => 'Promo 1',
 			'name' => 'promo_1',
@@ -3905,7 +4058,6 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
-	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (
@@ -3951,6 +4103,13 @@ acf_add_local_field_group(array (
 				'value' => 'post',
 			),
 		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'team_members',
+			),
+		),
 	),
 	'menu_order' => 1,
 	'position' => 'side',
@@ -3960,7 +4119,6 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
-	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (

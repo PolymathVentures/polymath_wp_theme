@@ -1,7 +1,8 @@
 .navbar-default {
 
-    border-color: white;
+    border: 0;
     margin-bottom: 0;
+    background: rgba(255,255,255,0.9);
 
     .navbar-header {
 
@@ -16,7 +17,7 @@
     }
     .navbar-nav {
 
-        @media(min-width: $screen-sm-min) {
+        @media(min-width: $screen-md-min) {
             float: right;
         }
 
@@ -31,7 +32,7 @@
                font-size: $font-size-small;
            }
 
-           @media(min-width: $screen-sm-min) {
+           @media(min-width: $screen-md-min) {
                > a {
                    padding: 0 0 $o 0;
                    margin-top: $v;
@@ -41,9 +42,10 @@
                    border-bottom: 1px solid $dark-blue;
                }
 
-               &.active, &:hover, &.current-menu-ancestor {
+               &.active, &:hover, &:focus, &.open, &.current-menu-ancestor {
                    > a {
                        border-bottom: 1px solid $aqua;
+                       background: transparent;
                    }
                }
            }
@@ -56,15 +58,15 @@
         @extend .extra-letter-spacing;
     }
 
-    @media(min-width: $screen-sm-min) {
+    @media(min-width: $screen-md-min) {
         text-align: center;
-        padding: 10px $line-height-computed;
+        padding: 10px 0;
         border-radius: 0;
         border: 0px;
-        background: $lila;
+        background: $purple;
 
         a {
-            border-bottom: 1px solid inherit;
+            border-bottom: 1px solid lighten($purple, 10%);
             color: white !important;
             line-height: $line-height-computed * 1.5 !important;
 
@@ -72,7 +74,7 @@
 
         li.active, li:hover {
             a {
-                background: darken($lila, 5%) !important;
+                background: lighten($purple, 10%) !important;
             }
         }
 
@@ -81,7 +83,7 @@
         }
 
         &.bullet:after {
-            border-bottom-color: $lila;
+            border-bottom-color: $purple;
         }
     }
 }

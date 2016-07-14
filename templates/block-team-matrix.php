@@ -2,7 +2,8 @@
 
 $args = array(
 	'posts_per_page'   => -1,
-	'orderby'          => 'post_title',
+	'orderby'          => 'meta_value_num title',
+	'meta_key'		   => 'order',
 	'post_type'		   => 'team_members',
 	'order'            => 'ASC',
 	'post_status'      => 'publish',
@@ -29,6 +30,7 @@ if ($params['category']) {
 }
 
 $people = new WP_query($args);
+
 ?>
 
 <?php
@@ -74,6 +76,8 @@ $items[0]->button_text = 'Role';
 <div class="mixitup-container">
 
 	<?php while( $people->have_posts() ) : $people->the_post(); ?>
+
+		<?php if(!get_field('order')) continue; ?>
 
 		<?php $person = formatPersonInfo(get_post()); ?>
 		<?php $ventures = implode(' ', get_field( "ventures" ) ?: []); ?>

@@ -4,7 +4,7 @@ $current_id = get_the_ID();
 
 $args = array(
 	'posts_per_page'   => -1,
-	'orderby'          => 'post_title',
+	'orderby'          => 'publish',
 	'post_type'		   => 'ventures',
 	'order'            => 'ASC',
 	'post_status'      => 'publish',
@@ -26,7 +26,6 @@ $ventures = new WP_query($args);
 		<?php if($current_id == get_the_ID()) continue; ?>
 
 		<div class="col-sm-4 post-list-item margin-bottom">
-			<div class="col-xs-12">
 				<div class="venture-logo" style="border-bottom: 4px solid <?php the_field('brand_color'); ?>;">
 					<img src="<?php echo get_field('logo')['sizes']['post_list_thumb']; ?>"/>
 					<a href="<?php the_permalink(); ?>">
@@ -46,7 +45,6 @@ $ventures = new WP_query($args);
 						<p><?php the_field('description'); ?></p>
 					</div>
 				</article>
-			</div>
 		</div>
 
 		<?php $i++; if ($i % 3 == 0 || $i == $ventures->found_posts): ?>

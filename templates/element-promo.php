@@ -1,5 +1,3 @@
-<?php $promo = get_post_with_custom_fields($promo); ?>
-
 <div class="content-padding-wrapper">
 	<div class="content-padding">
 		<p class="h2"><?php echo $promo['post_title']; ?></p>

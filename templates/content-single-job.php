@@ -33,7 +33,8 @@ $params = array(
     <div class="row">
 		<div class="extra-padding-vertical">
 	        <div class="col-sm-8 border-right">
-	            <div class="extra-padding-vertical border-bottom">
+	            <div class="border-bottom extra-padding-horizontal">
+	            <div class="extra-padding-vertical">
 	                <img class="pull-right" src="<?php echo $venture['logo']['sizes']['thumbnail']; ?>">
 	                <h2 class="text-bold">
 						<span class="small"><?php echo find_custom_field_value($job, '208901', true); ?></span><br/>
@@ -44,12 +45,13 @@ $params = array(
 	                    <span class="small"><?php echo $job['location']['city']; ?></span>
 	                </h3>
 	            </div>
-				<div class="extra-padding-vertical">
+	            </div>
+				<div class="extra-padding-vertical extra-padding-horizontal">
 					<?php echo $job['description']; ?>
 		        </div>
 	        </div>
 			<div class="col-sm-4">
-				<div class="extra-padding-vertical">
+				<div class="extra-padding-vertical extra-padding-horizontal">
 					<p><a class="btn btn-primary" href="#">Refer a friend</a></p><br/>
 	            	<p><?php get_template_part('templates/element-share-buttons'); ?></p>
 		            <p><a href="/about">About Polymath Ventures</a></p>
@@ -113,13 +115,16 @@ $params = array(
                             'arrow_background_color' => 'dark-blue text-white',
                             'slides_in_view' => 3,
                             'height' => 400,
-                            'caption_background_color' => '',
+                            'caption_background_color' => 'none text-white',
+							'people' => $venture['people']
                         );
                          ?>
                         <?php include(locate_template('templates/block-slider.php')); ?>
 
 						<div class="block-content">
 	                        <h2 class="text-bold text-center">Come work with us!</h2>
+							<br/>
+	                        <br/>
 							<a class="btn btn-danger" target="_blank" href="http://polymath.catsone.com/careers/index.php?m=portal&a=apply&jobOrderID=<?php echo $job['id']; ?>">
 				                Apply
 				            </a>

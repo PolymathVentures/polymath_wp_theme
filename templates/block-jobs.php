@@ -51,28 +51,28 @@ $items['button_text'] = 'Expertise';
 
 <?php foreach ($jobs as $job): ?>
 
-<div class="col-sm-4 post-list-item margin-bottom mix <?php echo find_custom_field_value($job, '208901'); ?> <?php echo $ventures[$job['company_id']]; ?>">
-    <div class="col-xs-12">
+<div class="col-md-3 mix col-sm-6 col-xs-12 post-list-item adjust-height margin-bottom <?php echo find_custom_field_value($job, '208901'); ?> <?php echo $ventures[$job['company_id']]; ?>">
+	<div class="white">
         <div class="venture-logo" style="border-bottom: 4px solid <?php the_field('brand_color', $ventures[$job['company_id']]); ?>;">
             <img src="<?php echo get_field('logo', $ventures[$job['company_id']])['sizes']['post_list_thumb']; ?>"/>
             <a href="<?php echo get_permalink() . $job['id'] . '/' . urlencode($job['title']); ?>">
                 <div class="blog-post-more-button"><span class="plus text-center">+</span></div>
             </a>
         </div>
-        <article class="white content-padding-wrapper">
+        <article class="content-padding-wrapper">
             <div class="content-padding text-left">
                 <header>
                     <h3 class="text-bold">
 						<a href="<?php echo get_permalink() . $job['id'] . '/' . urlencode($job['title']); ?>" class="text-dark">
 	                        <?php echo $job['title']; ?><br />
 						</a>
-                        <span class="small"><?php echo get_field('post_title', $ventures[$job['company_id']]); ?></span>
+                        <span class="small"><?php echo get_the_title($ventures[$job['company_id']]); ?>, </span>
                         <span class="small text-title"><?php echo $job['location']['city']; ?></span>
                     </h3>
                 </header>
             </div>
         </article>
-    </div>
+	</div>
 </div>
 
 <?php endforeach; ?>

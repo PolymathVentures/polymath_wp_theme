@@ -1,8 +1,8 @@
 .featured-image {
     @extend .background-position;
-    min-height: 150px;
-    display: table;
     width: 100%;
+    display: table;
+    min-height: 300px;
 
     // @media(min-width: $screen-sm-min) {
     //     margin-bottom: $line-height-computed * 3;
@@ -10,10 +10,11 @@
 
     .featured-image-inner {
         display: table-cell;
+        vertical-align: middle;
     }
 
-    @media(min-width: $screen-sm-min) {
-        min-height: 350px;
+    @media(max-width: $screen-xs-max) {
+        min-height: 200px !important;
     }
 }
 
@@ -34,6 +35,7 @@
     .background-image {
         @extend .background-position;
         min-height: 100px;
+        height:100%;
     }
 
     @media(min-width: $screen-sm-min) {

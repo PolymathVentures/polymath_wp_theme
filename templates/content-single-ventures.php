@@ -19,6 +19,28 @@
     </div>
 </div>
 
+<?php
+$args = array(
+	'post_type'		   => 'promos',
+	'post_status'      => 'publish',
+    'meta_query'       => array(
+                                array(
+                                    'key' => 'type',
+                                    'value' => 'statistic',
+                                    'compare' => 'LIKE'
+                                ),
+                                array(
+                                    'key' => 'ventures',
+    								'value' => '"' . get_the_ID() . '"',
+    								'compare' => 'LIKE')
+                            )
+);
+
+$stat_count = new WP_query($args);
+$stat_count = $stat_count->found_posts;
+?>
+
+<?php if($stat_count > 0): ?>
 <div class="red">
     <div class="container text-center">
         <div class="row">
@@ -43,6 +65,7 @@
         </div>
     </div>
 </div>
+<?php endif; ?>
 <div class="container text-center">
     <div class="row">
         <div class="col-xs-12">
@@ -57,7 +80,7 @@
                         'arrow_background_color' => false,
                         'slides_in_view' => 1,
                         'height' => 400,
-                        'autoplay' => false,
+                        'autoplay' => 'false',
                         'arrows' => true,
                         'arrow_background_color' => 'text-white',
                         'caption_background_color' => 'dark-blue text-white',
@@ -90,7 +113,8 @@
                             'arrow_background_color' => 'dark-blue text-white',
                             'slides_in_view' => 4,
                             'height' => 350,
-                            'caption_background_color' => '',
+                            'caption_background_color' => 'none text-white',
+                            'people' => get_field('people')
                         );
                          ?>
                         <?php include(locate_template('templates/block-slider.php')); ?>
@@ -122,20 +146,25 @@
                                             )
                 );
 
-                $post = new WP_query($args);
-                $post = $post->posts[0];
-                $post->link = get_the_permalink($post->ID);
-                $post->button_text = 'Read more';
+                $featured_post = new WP_query($args);
 
+                if($featured_post->found_posts > 0):
+                    $featured_post = $featured_post->posts[0];
+                    $featured_post->link = get_the_permalink($featured_post->ID);
+                    $featured_post->button_text = 'Read more';
+                else:
+                    $featured_post = get_field('promo_2');
+                endif;
 
                 $params = array(
-					'promo_1_width' => 4,
+					'promo_1_width' => 8,
 					'promo_1_background_color' => 'lila text-white',
 					'promo_1' => get_field('promo_1'),
 					'promo_2_background_color' => 'aqua text-white',
-					'promo_2' => $post
+					'promo_2' => $featured_post
                 );
                  ?>
+
                 <?php include(locate_template('templates/block-promos.php')); ?>
             </div>
         </div>

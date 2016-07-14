@@ -32,7 +32,9 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
          data-arrow-bg="<?php echo get_or_empty($params, 'arrow_background_color'); ?>">
 
          <?php if($params['type'] == 'personal_story'): ?>
-         <div class="col-sm-6 col-sm-offset-6">
+             <div class="container">
+                 <div class="row">
+         <div class="col-sm-6 <?php echo get_or_empty($params, 'title_alignment'); ?>">
             <div class="content-padding-wrapper">
                 <?php if($params['show_title']): ?>
                     <div class="slider-title content-padding h1 text-white text-bold"><?php echo $slides_object['post_title']; ?><br/>
@@ -40,6 +42,8 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
                     </div>
                 <?php endif; ?>
             </div>
+        </div>
+        </div>
         </div>
         <?php endif; ?>
         <div class="slick" data-slick='{"arrows": <?php echo $slides_object['arrows']; ?>,

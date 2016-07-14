@@ -1,47 +1,50 @@
 <?php
+if(!$params['specific_posts']):
+	$args = array(
+		'posts_per_page'   => $params['maximum_posts'],
+		'orderby'          => 'published',
+		'post_type'		   => $params['post_type'],
+		'order'            => 'DESC',
+		'post_status'      => 'publish',
+	);
 
-$args = array(
-	'posts_per_page'   => $params['maximum_posts'],
-	'orderby'          => 'published',
-	'post_type'		   => $params['post_type'],
-	'order'            => 'DESC',
-	'post_status'      => 'publish',
-);
+	$args['meta_query'] = array();
 
-$args['meta_query'] = array();
+	if ($params['filter']) {
+		$args['meta_query'][] = array(
+									'key' => $params['filter'],
+									'value' => $params['value'],
+									'compare' => 'LIKE'
+								);
+	};
 
-if ($params['filter']) {
-	$args['meta_query'][] = array(
-								'key' => $params['filter'],
-								'value' => $params['value'],
-								'compare' => 'LIKE'
-							);
-};
+	if ($params['category']) {
+		$args['meta_query'][] = array(
+									'key' => $params['category']->post_type,
+									'value' => '"' . $params['category']->ID . '"',
+									'compare' => 'LIKE'
+								);
+	};
 
-if ($params['category']) {
-	$args['meta_query'][] = array(
-								'key' => $params['category']->post_type,
-								'value' => '"' . $params['category']->ID . '"',
-								'compare' => 'LIKE'
-							);
-};
-
-$items = new WP_query($args);
-
-if( $items->have_posts() ):
+	$items = new WP_query($args);
+	$items = $items->posts;
+else:
+	$items = $params['specific_posts'];
+endif;
 
 $i = 0;
 $colors = array('red', 'aqua', 'dark-blue');
 ?>
 
-<?php while( $items->have_posts() ) : $items->the_post(); ?>
+<?php foreach($items as $post): ?>
 
+	<?php setup_postdata($post); ?>
 	<?php if($i % $params['posts_per_row'] == 0): ?>
         <div class="post-list">
     <?php endif; ?>
 
 	<?php $color = $params['alternating_colors'] ? $colors[$i % 3] : $params['post_background_color']; ?>
-		<div class="col-sm-<?php echo 12 / $params['posts_per_row']; ?> post-list-item flex <?php echo $color; ?> text-white">
+		<div class="no-padding col-sm-<?php echo 12 / $params['posts_per_row']; ?> post-list-item flex <?php echo $color; ?> text-white">
 			<article class="col-xs-12 text-center no-padding <?php echo $params['show_images'] ? 'equal-height' : ''; ?>">
 				<div class="content-padding-wrapper">
 					<div class="content-padding">
@@ -72,11 +75,9 @@ $colors = array('red', 'aqua', 'dark-blue');
 			<?php endif; ?>
 		</div>
 
-    <?php $i++; if ($i % $params['posts_per_row'] == 0 || $i == $items->found_posts): ?>
+    <?php $i++; if ($i % $params['posts_per_row'] == 0 || $i == count($items)): ?>
         </div>
     <?php array_push($colors, array_shift($colors)); endif; ?>
 
-<?php endwhile; ?>
-
-<?php endif; ?>
+<?php endforeach; ?>
 <?php wp_reset_postdata(); ?>

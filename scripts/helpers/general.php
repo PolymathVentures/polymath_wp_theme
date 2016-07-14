@@ -42,13 +42,19 @@ function formatPersonInfo($person) {
     $person = get_post_with_custom_fields($person);
     $person['image'] = array('sizes' => format_attachment_sizes_array(get_post_thumbnail_id($person['ID'])));
     $person['icon'] = false;
-    $person['title'] = $person['post_title'] . '<br/><span class="small">' . $person['roles'][0]['title'] . ' @ ' . get_the_title($person['roles'][0]['venture']) . '</span>';
+    $person['title'] = $person['post_title'];
+
+    if(isset($person['roles'][0])):
+        $person['title'] .= '<br/><span class="small">' . $person['roles'][0]['title'] . ' @ ' .                                get_the_title($person['roles'][0]['venture']) . '</span>';
+    endif;
 
     $person['full_description'] = $person['description'] .'<br/><br/>';
 
-    if(isset($person['previous_roles']) && count($person['previous_roles']) > 0) {
-        foreach($person['previous_roles'] as $role) {
-            $person['full_description'] .= '<span class="text-italic">' . $role['role'] . '</span> @ <a href="' . get_permalink($role['venture']) . '">' . get_the_title($role['venture']) . '</a><br/>';
+    $person['full_description'] .= '<a href="' . $person['linkedin'] . '" target="_blank">LinkedIn</a><br/><br/>';
+
+    if(isset($person['roles']) && count($person['roles']) > 0) {
+        for($i = 1; $i < count($person['roles']); $i++) {
+            $person['full_description'] .= '<span class="text-italic">' . $person['roles'][$i]['title'] . '</span> @ <a href="' . get_permalink($person['roles'][$i]['venture']) . '" data-dismiss="modal">' . get_the_title($person['roles'][$i]['venture']) . '</a><br/>';
         };
     }
 
