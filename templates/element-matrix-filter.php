@@ -22,9 +22,9 @@ if(is_object(reset($items))) {
 
 <div class="btn-group">
     <button type="button" class="btn custom-button" data-label="<?php echo $button; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span><?php echo $button; ?></span>
+        <span><?php echo $button; ?> <i class="caret"></i></span>
     </button>
-    <ul class="dropdown-menu bullet pull-center custom-dropdown show-selected">
+    <ul class="dropdown-menu bullet pull-center custom-dropdown">
         <?php foreach($labels as $key => $val): ?>
 
             <li><a href="#" class="filter" data-filter=".<?php echo $key; ?>"><?php echo $val; ?></a></li>

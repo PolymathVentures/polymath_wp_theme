@@ -1,16 +1,18 @@
 <div class="container text-center">
     <div class="row block-simple-text">
-        <div class="adjust-height extra-padding-vertical content-row">
+        <div class="extra-padding-vertical content-row">
             <div class="col-sm-6">
-                <div class="background-image responsive-bg"
-                        data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'>
-                        &nbsp;
+                <div class="background-image responsive-bg calc-height"
+                        data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'
+                        data-height-group="venture-intro">
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="content-padding-wrapper">
+                <div class="content-padding-wrapper calc-height" data-height-group="venture-intro">
                  	<div class="content-padding">
-                        <img src="<?php echo get_field('logo')['sizes']['post_list_thumb']; ?>"/>
+                        <img src="<?php echo get_field('logo')['sizes']['post_list_thumb']; ?>"
+                             width="<?php echo get_field('logo')['sizes']['post_list_thumb-width']; ?>"
+                             height="<?php echo get_field('logo')['sizes']['post_list_thumb-height']; ?>"/>
                             <p class="big text-light"><?php the_field('description'); ?></p>
                     </div>
                 </div>
@@ -135,7 +137,7 @@ $stat_count = $stat_count->found_posts;
                 	'posts_per_page'   => 1,
                 	'orderby'          => 'publish',
                 	'post_type'		   => 'post',
-                	'order'            => 'ASC',
+                	'order'            => 'DESC',
                 	'post_status'      => 'publish',
                     'meta_query'       => array(
                 								array(

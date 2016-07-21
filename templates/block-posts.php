@@ -45,18 +45,21 @@ $colors = array('red', 'aqua', 'dark-blue');
 
 	<?php $color = $params['alternating_colors'] ? $colors[$i % 3] : $params['post_background_color']; ?>
 		<div class="no-padding col-sm-<?php echo 12 / $params['posts_per_row']; ?> post-list-item flex <?php echo $color; ?> text-white">
-			<article class="col-xs-12 text-center no-padding <?php echo $params['show_images'] ? 'equal-height' : ''; ?>">
+			<article class="col-xs-12 text-center no-padding calc-height" data-height-group="posts">
 				<div class="content-padding-wrapper">
 					<div class="content-padding">
 						<header>
-							<div class="h2 <?php echo $params['post_title_text_size']; ?> text-normal-weight"><a href="<?php echo get_field( "link" ) ?: get_the_permalink(); ?>"><?php the_title(); ?></a></div>
+							<div class="h2 <?php echo $params['post_title_text_size']; ?> text-normal-weight">
+								<?php the_title(); ?>
+							</div>
 						</header>
 						<div class="entry-summary big">
 							<?php echo get_field( "description" ) ?: get_the_excerpt(); ?>
 
 							<?php if(get_or_empty($params, 'show_links', false)): ?>
 								<br />
-								<a class="text-underline" href="<?php echo get_field( "link" ) ?: get_the_permalink(); ?>"><?php echo get_field( "button_text" ) ?: 'More'; ?></a>
+								<br />
+								<a class="text-underline small" href="<?php echo get_field( "link" ) ?: get_the_permalink(); ?>"><?php echo get_field( "button_text" ) ?: 'More'; ?></a>
 								<i class="icon-arrow-right icons text-extra-small"></i>
 							<?php endif; ?>
 						</div>
@@ -64,8 +67,9 @@ $colors = array('red', 'aqua', 'dark-blue');
 				</div>
 			</article>
 			<?php if($params['show_images']): ?>
-                <div class="post-list-image responsive-bg"
-					 data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'>
+                <div class="post-list-image responsive-bg calc-height"
+					 data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'
+					 data-height-group="posts">
 					<span class="arrow text-<?php echo explode(' ', $color)[0]; ?>"></span>
 				</div>
             <?php endif; ?>

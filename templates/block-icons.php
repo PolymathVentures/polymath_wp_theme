@@ -17,6 +17,5 @@ $offset = (12 - $count * 2) / 2;
             </a>
         <?php endif; ?>
 
-        <?php echo $icon['text']; ?>
-    <br/><br/><br /></div>
+        <?php echo $icon['text']; ?></div>
 <?php $i++; endforeach; ?>

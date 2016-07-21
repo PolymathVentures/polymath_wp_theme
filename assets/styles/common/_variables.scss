@@ -8,10 +8,10 @@ $sidebar-sm-columns:    4;
 $grid-gutter-width:     30px;
 $border-radius-large:   2px;
 
-$grid-float-breakpoint: 992px;
+$grid-float-breakpoint: 	 992px;
 
 // Fonts
-$font-size-base: 14px;
+// $font-size-base: 15px;
 $font-family-sans-serif: 'Source Sans Pro', sans-serif;
 $headings-font-family: 'Source Sans Pro', sans-serif;
 $headings-font-weight: 300;
@@ -95,8 +95,3 @@ $modal-inner-padding:         $grid-gutter-width;
 		border-bottom: 0;
 	}
 }
-
-@include font-face("Whitney", "../fonts/WhitneyHTF-Medium", normal, normal, null, eot otf svg ttf woff);
-@include font-face("Whitney", "../fonts/WhitneyHTF-MediumItalicSC", normal, italic, null, eot otf svg ttf woff);
-@include font-face("Whitney", "../fonts/WhitneyHTF-Bold", bold, normal, null, eot otf svg ttf woff);
-@include font-face("Whitney", "../fonts/WhitneyHTF-BoldItalic", bold, italic, null, eot otf svg ttf woff);

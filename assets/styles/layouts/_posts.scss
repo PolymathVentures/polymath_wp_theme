@@ -8,6 +8,7 @@
             flex-wrap: wrap;
         }
 
+
         .post-list-image {
             @extend .background-position;
             width: 100%;
@@ -17,6 +18,7 @@
 
             .arrow {
                 @include arrow(10px);
+                left: 50%;
             }
         }
 
@@ -41,13 +43,6 @@
             font-size: 28px;
             display: none;
             text-align: center;
-
-            .plus {
-                @include transition-property(transform);
-                @include transition-duration(0.25s);
-                @include transition-timing-function(ease-out);
-
-            }
 
             @media(min-width: $screen-sm-min) {
                 display: block;
@@ -83,11 +78,7 @@
     }
 
     @media(min-width: $screen-sm-min) {
-        $height: 260px;
         .post-list-item {
-            .equal-height, .post-list-image {
-                height: $height;
-            }
             &:nth-child(2) {
                 article {
                     order: 2;

@@ -1,4 +1,4 @@
-<?php $url = isset($share_url) ? $share_url : get_the_permalink(); ?>
+<?php $url = $share_url ?: get_the_permalink(); ?>
 
 <p>
     <a href="#"

@@ -32,7 +32,7 @@ $ventures = new WP_query($args);
 						<div class="blog-post-more-button"><span class="plus text-center">+</span></div>
 					</a>
 				</div>
-				<article class="white content-padding-wrapper">
+				<article class="white content-padding-wrapper calc-height" data-height-group="ventures">
 					<div class="content-padding">
 						<header>
 							<h3 class="text-bold">

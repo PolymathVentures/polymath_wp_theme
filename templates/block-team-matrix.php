@@ -71,6 +71,15 @@ $items[0]->button_text = 'Role';
 	<?php include(locate_template('templates/element-matrix-filter.php')); ?>
 <?php endif; ?>
 
+<span class="custom-button">&middot;</span>
+<button type="button" class="btn custom-button filter" data-filter="all">
+    <span>Clear filters</span>
+</button>
+
+<br/>
+<br/>
+<br/>
+
 <?php if( $people->have_posts() ): ?>
 
 <div class="mixitup-container">
@@ -84,7 +93,7 @@ $items[0]->button_text = 'Role';
 		<?php $seeds = implode(' ', get_field( "seeds" ) ?: []); ?>
 		<?php $roles = implode(' ', array_map(function($role) {return $role->slug;}, get_the_terms(get_the_ID(), 'job_role') ?: [])); ?>
 
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mix responsive-bg <?php echo $ventures; ?> <?php echo $seeds; ?> <?php echo $roles; ?>"
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mix team-member responsive-bg <?php echo $ventures; ?> <?php echo $seeds; ?> <?php echo $roles; ?>"
              data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'>
 			 <span id="person-<?php the_ID(); ?>" class="anchor"></span>
 				 <article class="team-member-info-overlay content-padding-wrapper show-person-modal"

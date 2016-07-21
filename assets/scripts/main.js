@@ -18,43 +18,79 @@
     // All pages
     'common': {
       init: function() {
-          var ssOptions = {
-              debug: true,
-              prefetch: true,
-              cacheLength: 4,
-              scroll: false,
-              onStart: {
-                  duration: 250,
-                  render: function ($container) {
-                      $container.addClass('is-exiting');
-                      smoothState.restartCSSAnimations();
-                  }
-              },
-              onProgress: {
-                duration: 0,
-                render: function ($container) {
-                    $('#loading-modal').modal('show');
-                }
-              },
-              onReady: {
-                  duration: 0,
-                  render: function ($container, $newContent) {
-                      $('#loading-modal').modal('hide');
-                      $container.removeClass('is-exiting');
-                      $container.html($newContent);
 
-                      //body_classes is passed to this script from setup.php
-                      $('body').removeClass().addClass(body_classes.join(' '));
+        //   $('#tell-friend-button').click(function() {
+        //       $('#tell-friend-modal').modal('show');
+        //   });
 
-                      //reset slider for correct display
-                      $('.slick').slick('setPosition');
-                  }
-              }
-          };
+        //   $('#gform_submit_button_1').click(function(e) {
+        //       e.preventDefault();
+        //       $('#gform_1').submit();
+        //       $('#tell-friend-modal').modal('hide');
+        //     //   location.reload();
+        //   });
+          //
+        //     $(document).bind('gform_confirmation_loaded', function(event, formId){
+        //         console.log('loaadded');
+        //     });
+
+        //   var ssOptions = {
+        //       debug: true,
+        //       prefetch: true,
+        //       cacheLength: 4,
+        //       scroll: false,
+        //       onStart: {
+        //           duration: 250,
+        //           render: function ($container) {
+        //               $container.addClass('is-exiting');
+        //               smoothState.restartCSSAnimations();
+        //           }
+        //       },
+        //       onProgress: {
+        //         duration: 0,
+        //         render: function ($container) {
+        //             $('#loading-modal').modal('show');
+        //         }
+        //       },
+        //       onReady: {
+        //           duration: 0,
+        //           render: function ($container, $newContent) {
+        //               $('#loading-modal').modal('hide');
+        //               $container.removeClass('is-exiting');
+        //               $container.html($newContent);
+          //
+        //               //body_classes is passed to this script from setup.php
+        //               $('body').removeClass().addClass(body_classes.join(' '));
+          //
+        //               //reset slider for correct display
+        //               $('.slick').slick('setPosition');
+        //           }
+        //       }
+        //   };
           //TODO: This causes a depreciation warning XMLhttprequest because script is loaded in footer. Switch to header
-          smoothState = $('#smoothstate').smoothState(ssOptions).data('smoothState');
+
+        //   smoothState = $('#smoothstate').smoothState(ssOptions).data('smoothState');
       },
       finalize: function() {
+
+          function calculateHeights() {
+              // Code to make all elements equal heights
+              var allHeights = {};
+              $('.calc-height').each(function() {
+                  var heightGroup = $(this).data('height-group');
+                  var height = $(this).height();
+                  if(allHeights[heightGroup]) {
+                      allHeights[heightGroup].push(height);
+                  } else {
+                      allHeights[heightGroup] = [height];
+                  }
+              });
+
+              $.each(allHeights, function(key, val) {
+                  var maxHeight = Math.max.apply(null, val);
+                  $("[data-height-group='" + key + "']").height(maxHeight);
+              });
+          }
 
         // Disable jump to top for buttons with href #
         $('[href="#"]').click(function(e) {
@@ -86,7 +122,6 @@
                 appendArrows: $("#" + carouselId).parent(".slick-container"),
                 dots: true,
                 lazyLoad: 'ondemand',
-                waitForAnimate: false,
                 prevArrow: '<a class="left prev ' + $("#" + carouselId).parent(".slick-container").data('arrow-bg') + '" href="#" role="button">' +
                     	        '<i class="icon-arrow-left icons"></i>' +
                     	        '<span class="sr-only">Previous</span>' +
@@ -99,7 +134,8 @@
                     breakpoint: 767,
                     settings: {
                         slidesToShow: 1,
-                        arrows: false
+                        arrows: false,
+                        dots: true
                     }
                 }]
             });
@@ -113,7 +149,7 @@
             $(this).parent().find('.slick-arrow .icons').css('bottom', (maxHeight / 2) - 20);
 
             //adjust dots
-            var dotElements = $(this).parent('.tab_slider, .timeline');
+            var dotElements = $(this).parent('.tab_slider.dots, .timeline.dots');
 
             dotElements.find('.caption').css('padding-top', 25);
             dotElements.find('.slick-dots').css('bottom', maxHeight - 10);
@@ -142,6 +178,16 @@
                 $('#' + id + ' .slick').slick('setPosition');
             }
         });
+
+        if ($('.mixitup-container').length) {
+            $('.mixitup-container').on('mixEnd', function(e, state){
+                calculateHeights();
+            });
+        } else {
+            calculateHeights();
+        }
+
+
 
         $('.show-person-modal').click(function() {
 

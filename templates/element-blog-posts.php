@@ -4,9 +4,9 @@ $current_id = get_the_ID();
 
 $args = array(
 	'posts_per_page'   => -1,
-	'orderby'          => 'post_title',
+	'orderby'          => 'publish',
 	'post_type'		   => 'post',
-	'order'            => 'ASC',
+	'order'            => 'DESC',
 	'post_status'      => 'publish',
 );
 
@@ -25,20 +25,21 @@ $blog_posts = new WP_query($args);
 		<?php $seeds = implode(' ', get_field( "seeds" ) ?: []); ?>
 		<?php $tags = implode(' ', array_map(function($tag) {return $tag->slug;}, get_the_tags() ?: [])); ?>
 
-		<div class="col-sm-4 post-list-item margin-bottom">
+		<div class="col-xs-12 col-sm-4 post-list-item margin-bottom">
 			<div class="post-list-image responsive-bg"
 				 data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'>
 				<a href="<?php the_permalink(); ?>" class="text-dark">
 					<div class="blog-post-more-button"><span class="plus text-center">+</span></div>
 				</a>
 			</div>
-			<article class="white text-left content-padding-wrapper">
+			<article class="white text-left content-padding-wrapper calc-height" data-height-group="blog-post-excerpt">
 				<div class="content-padding">
 					<header>
 						<div class="h2">
 							<a href="<?php the_permalink(); ?>" class="text-dark">
 								<?php the_title(); ?>
-							</a>
+							</a><br/>
+							<span class="small text-light"><?php the_date(); ?></span>
 						</div>
 					</header>
 				</div>

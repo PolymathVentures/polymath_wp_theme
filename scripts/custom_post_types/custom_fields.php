@@ -1436,6 +1436,22 @@ acf_add_local_field_group(array (
 							'default_value' => 0,
 						),
 						array (
+							'key' => 'field_5790008b65d49',
+							'label' => 'Dots',
+							'name' => 'dots',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
+						),
+						array (
 							'key' => 'field_576ddf38a59c0',
 							'label' => 'Arrow background color',
 							'name' => 'arrow_background_color',
@@ -2474,7 +2490,7 @@ acf_add_local_field_group(array (
 								'id' => '',
 							),
 							'collapsed' => '',
-							'min' => 1,
+							'min' => 0,
 							'max' => '',
 							'layout' => 'table',
 							'button_label' => 'Add Row',
@@ -2586,6 +2602,22 @@ acf_add_local_field_group(array (
 							'key' => 'field_577aafbd24795',
 							'label' => 'No extra padding',
 							'name' => 'no_extra_padding',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
+						),
+						array (
+							'key' => 'field_578fdc621ad13',
+							'label' => 'No extra inner padding',
+							'name' => 'no_extra_inner_padding',
 							'type' => 'true_false',
 							'instructions' => '',
 							'required' => 0,
@@ -3202,8 +3234,10 @@ acf_add_local_field_group(array (
 			),
 			'taxonomy' => array (
 			),
-			'allow_null' => 0,
+			'allow_null' => 1,
 			'multiple' => 0,
+			'show_column' => 0,
+			'show_column_weight' => '',
 		),
 		array (
 			'key' => 'field_573a243c88800',
@@ -3233,15 +3267,7 @@ acf_add_local_field_group(array (
 			'type' => 'post_object',
 			'instructions' => '',
 			'required' => 0,
-			'conditional_logic' => array (
-				array (
-					array (
-						'field' => 'field_575075f4ced1c',
-						'operator' => '==',
-						'value' => 'Quote',
-					),
-				),
-			),
+			'conditional_logic' => 0,
 			'wrapper' => array (
 				'width' => '',
 				'class' => '',
@@ -3255,6 +3281,8 @@ acf_add_local_field_group(array (
 			'allow_null' => 0,
 			'multiple' => 0,
 			'return_format' => 'object',
+			'show_column' => 0,
+			'show_column_weight' => '',
 			'ui' => 1,
 		),
 	),
@@ -3275,7 +3303,6 @@ acf_add_local_field_group(array (
 	'hide_on_screen' => '',
 	'active' => 1,
 	'description' => '',
-	'local' => 'php',
 ));
 
 acf_add_local_field_group(array (

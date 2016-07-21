@@ -45,7 +45,9 @@ function formatPersonInfo($person) {
     $person['title'] = $person['post_title'];
 
     if(isset($person['roles'][0])):
-        $person['title'] .= '<br/><span class="small">' . $person['roles'][0]['title'] . ' @ ' .                                get_the_title($person['roles'][0]['venture']) . '</span>';
+        $person['current_job_title'] = $person['roles'][0]['title'];
+        $person['current_venture'] = get_the_title($person['roles'][0]['venture']);
+        $person['title'] .= '<br/><span class="small">' . $person['current_job_title'] . ' @ ' .                                $person['current_venture'] . '</span>';
     endif;
 
     $person['full_description'] = $person['description'] .'<br/><br/>';
@@ -54,7 +56,14 @@ function formatPersonInfo($person) {
 
     if(isset($person['roles']) && count($person['roles']) > 0) {
         for($i = 1; $i < count($person['roles']); $i++) {
-            $person['full_description'] .= '<span class="text-italic">' . $person['roles'][$i]['title'] . '</span> @ <a href="' . get_permalink($person['roles'][$i]['venture']) . '" data-dismiss="modal">' . get_the_title($person['roles'][$i]['venture']) . '</a><br/>';
+            $venture = $person['roles'][$i]['venture'];
+            if(get_post_status($venture) == 'publish') {
+                $person['full_description'] .= '<span class="text-italic">' . $person['roles'][$i]['title'] . '</span> @ <a href="' . get_permalink($venture) . '" data-dismiss="modal">' . get_the_title($venture) . '</a><br/>';
+            } else {
+                $person['full_description'] .= '<span class="text-italic">' . $person['roles'][$i]['title'] . ' @ ' . get_the_title($venture) . '</a><br/>';
+            }
+
+
         };
     }
 

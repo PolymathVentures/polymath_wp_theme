@@ -96,9 +96,10 @@ $arrow-width: 6%;
         &.team {
             .slick {
                 @media(min-width: $screen-sm-min) {
-                    width:100% - ($arrow-width * 2);
-                    margin-left: $arrow-width;
-                    margin-right: $arrow-width;
+                    $arrow-offset: $arrow-width - 0.5%;
+                    width:100% - ($arrow-offset * 2);
+                    margin-left: $arrow-offset;
+                    margin-right: $arrow-offset;
                 }
             }
         }
@@ -112,6 +113,11 @@ $arrow-width: 6%;
         background-image: none !important;
         z-index: 99;
         text-shadow: none;
+
+        &:hover, &:active, &:focus {
+            opacity: 1 !important;
+            color: inherit !important;
+        }
 
         .icons {
             position: absolute;

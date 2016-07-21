@@ -17,6 +17,14 @@ h1, h2, h3, h4, h5, h6 {
     // word-break: break-all;
 }
 
+h2, .h2 {
+    font-size: 22px;
+    @media (min-width: $screen-md-min) {
+        font-size: 28px;
+    }
+}
+
+
 hr {
     border-color: $light-gray;
 }
@@ -46,7 +54,7 @@ span.anchor {
 }
 
 .text-light {
-    font-weight: 300;
+    font-weight: 300 !important;
 }
 
 .text-italic {
@@ -261,7 +269,10 @@ $extra-padding: $grid-gutter-width;
 .mix{
     @extend .background-position;
     display: none;
-    height: 400px;
+
+    &.team-member {
+        height: 400px;
+    }
 }
 
 
@@ -306,8 +317,21 @@ $extra-padding: $grid-gutter-width;
 
 #mc-embedded-subscribe {
     margin: 0 !important;
+
 }
 
+#mce-responses {
+    .response {
+        margin: 1em 0;
+        padding: 0 !important;
+        font-weight: normal !important;
+        float: left;
+        top: -1.5em;
+        z-index: 1;
+        width: 100% !important;
+        color: white !important;
+    }
+}
 /*
  * CSS Animations
  * Don't forget to add vendor prefixes!

@@ -50,6 +50,5 @@ use Roots\Sage\Wrapper;
         <!-- <img class="extra-padding-vertical" src="<?php // get_template_directory_uri(); ?>/dist/images/squares.gif"> -->
 
     </div>
-  <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
   </body>
 </html>

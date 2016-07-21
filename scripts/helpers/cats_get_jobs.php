@@ -29,7 +29,8 @@ function cats_jobs() {
 /**
  * Gets a job from a Cats job list
  */
-function get_job($jobs, $id) {
+function get_job($id) {
+    $jobs = cats_jobs();
     foreach ($jobs as $job) {
         if ($job['id'] == $id) {
             return $job;
@@ -110,6 +111,50 @@ function custom_field_options($job, $custom_field_id) {
     return $labels;
 }
 
+
+function get_job_url($job) {
+    return get_permalink() . $job['id'] . '/' . urlencode($job['title']);
+};
+
+
+function get_ventures() {
+
+    $args = array(
+        'posts_per_page'   => -1,
+        'orderby'          => 'post_title',
+        'post_type'		   => 'ventures',
+        'order'            => 'ASC',
+        'post_status'      => array('publish', 'pending'),
+    );
+
+    return new WP_query($args);
+
+}
+
+
+function get_cats_venture_map($result=false) {
+
+    if(!$result) {
+        $result = get_ventures();
+    }
+
+    $ventures = [];
+
+    foreach($result->posts as $r) {
+
+        $catsone_id = get_field('catsone_id', $r->ID);
+
+        if($catsone_id) {
+            $ventures[$catsone_id] = $r->ID;
+        }
+
+    };
+
+    return $ventures;
+
+}
+
+
 /**
  * Register the custom query params "job_id" and "job_title" and rewrite the url so it's pretty
  */
@@ -135,7 +180,7 @@ add_action('init', 'register_job_params', 10, 0);
  */
 function prefix_url_rewrite_templates() {
 
-    $job = get_job(cats_jobs(), get_query_var( 'job_id' ));
+    $job = get_job(get_query_var('job_id'));
 
     if (get_query_var( 'job_id' )) {
 
@@ -149,3 +194,28 @@ function prefix_url_rewrite_templates() {
 }
 
 add_action( 'template_redirect', 'prefix_url_rewrite_templates' );
+
+/**
+ * Change Meta info (OG and twitter) for single job pages
+ */
+function job_meta_info(){
+    if(get_query_var('job_id')) {
+        $job = get_job(get_query_var('job_id'));
+
+        add_action('wpseo_title', function() {
+            return urldecode(get_query_var('job_title'));
+        });
+
+        add_action('wpseo_canonical',function() use ($job) {
+            return get_job_url($job);
+        });
+
+        add_action('wpseo_opengraph_image',function() use ($job) {
+            $venture = get_cats_venture_map()[$job['company_id']];
+            return wp_get_attachment_url(get_post_thumbnail_id($venture));
+        });
+
+    }
+}
+
+add_action('wp', 'job_meta_info');

@@ -297,7 +297,7 @@ gulp.task( 'deploy', ['clean', 'build'], function () {
         host:     argv.host,
         user:     argv.user,
         password: argv.password,
-        parallel: 5,
+        parallel: 3,
         log:      gutil.log
     } );
 

@@ -27,7 +27,9 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
 
 <?php if(count($slides_object['slides']) > 0): ?>
     <div class="slick-container <?php echo $params['type'] == 'tab_slider' ? 'hidden-xs' : ''; ?> <?php echo $params['type']; ?> <?php echo $slides_object['arrows'] == 'true' ? 'arrows' : ''; ?>
-    <?php echo explode(' ', $params['caption_background_color'])[1]; ?> responsive-bg"
+    <?php echo explode(' ', $params['caption_background_color'])[1]; ?>
+    <?php echo $params['dots'] ? 'dots' : ''; ?>
+    responsive-bg"
          data-bg-json='<?php echo json_encode(get_or_empty($slides_object, 'background_image', array('sizes' => null))['sizes']); ?>'
          data-arrow-bg="<?php echo get_or_empty($params, 'arrow_background_color'); ?>">
 
@@ -46,9 +48,11 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
         </div>
         </div>
         <?php endif; ?>
-        <div class="slick" data-slick='{"arrows": <?php echo $slides_object['arrows']; ?>,
+        <div class="slick" data-slick='{"arrows": <?php echo $params['arrows'] ? "true" : "false"; ?>,
                                         "slidesToShow": <?php echo $slides_object['slides_to_show']; ?>,
                                         "fade": <?php echo $params['animation'] ?: 'false'; ?>,
+                                        <?php echo $params['animation'] === "true" ? '"speed": 0,' : '' ?>
+                                        "dots": <?php echo $params['dots'] ? "true" : "false"; ?>,
                                         "autoplay": <?php echo $params['autoplay'] ?: 'true'; ?>,
                                         "slidesToScroll": 1}'>
             <?php foreach ($slides_object['slides'] as $slide): ?>
@@ -74,7 +78,7 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
                                         <h3><?php echo $slide['title']; ?></h3>
                                     <?php endif; ?>
                                     <?php if($slide['description']): ?>
-                                        <p><?php echo $slide['description']; ?></p>
+                                        <p class="big"><?php echo $slide['description']; ?></p>
                                     <?php endif; ?>
                                 </div>
                             </div>

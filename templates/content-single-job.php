@@ -1,5 +1,5 @@
 <?php
-$job = get_job(cats_jobs(), $wp_query->query_vars['job_id']);
+$job = get_job($wp_query->query_vars['job_id']);
 $job['description'] = str_replace('<strong>', '<h3>', $job['description']);
 $job['description'] = str_replace('</strong>', '</h3>', $job['description']);
 
@@ -52,11 +52,13 @@ $params = array(
 	        </div>
 			<div class="col-sm-4">
 				<div class="extra-padding-vertical extra-padding-horizontal">
-					<p><a class="btn btn-primary" href="#">Refer a friend</a></p><br/>
-	            	<p><?php get_template_part('templates/element-share-buttons'); ?></p>
+					<p><button class="btn btn-primary" id="tell-friend-button"
+							   data-toggle="modal" data-target="#tell-friend-modal">Tell a friend</button></p><br/>
+					<?php $share_url = get_job_url($job); ?>
+	            	<p><?php include(locate_template('templates/element-share-buttons.php')); ?></p>
 		            <p><a href="/about">About Polymath Ventures</a></p>
 		            <p><a href="<?php echo $venture['website']; ?>" target="_blank"><?php echo $venture['website']; ?></a></p>
-		            <p><a href="<?php the_permalink(); ?>">Back to jobs</a></p>
+		            <p><a href="<?php the_permalink(); ?>#block-7">Back to jobs</a></p><br/>
 
 		            <a class="btn btn-danger" target="_blank" href="http://polymath.catsone.com/careers/index.php?m=portal&a=apply&jobOrderID=<?php echo $job['id']; ?>">
 		                Apply
@@ -73,7 +75,7 @@ $params = array(
             <div class="col-sm-6 col-sm-offset-3 text-center">
                 <div class="extra-padding-vertical">
                     <h2 class="text-bold">About <?php echo $venture['post_title']; ?></h2>
-                    <p><?php echo $venture['description']; ?></p>
+                    <p class="big"><?php echo $venture['description']; ?></p>
                 </div>
             </div>
         </div>
@@ -105,7 +107,7 @@ $params = array(
         <div class="row">
             <div class="col-xs-12">
                 <div class="block-content">
-					<h2 class="text-bold text-center"><?php echo $venture['post_title']; ?> team</h2>
+					<h2 class="text-bold text-center"><?php echo $venture['post_title']; ?> management team</h2>
                     <div class="extra-padding-vertical">
                         <?php
                         $params = array(
