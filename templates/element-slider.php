@@ -15,7 +15,7 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
             </a><br/><br/>
 
             <?php if($tab['icon_text']): ?>
-                <span class="text-uppercase extra-letter-spacing"><?php echo $tab['icon_text']; ?></span>
+                <span class="text-uppercase extra-letter-spacing small hyphenate"><?php echo $tab['icon_text']; ?></span>
             <?php endif; ?>
 
             <div class="visible-xs-block"><?php echo $tab['description']; ?><br/><br/><br/></div>
@@ -36,17 +36,17 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
          <?php if($params['type'] == 'personal_story'): ?>
              <div class="container">
                  <div class="row">
-         <div class="col-sm-6 <?php echo get_or_empty($params, 'title_alignment'); ?>">
-            <div class="content-padding-wrapper">
-                <?php if($params['show_title']): ?>
-                    <div class="slider-title content-padding h1 text-white text-bold"><?php echo $slides_object['post_title']; ?><br/>
-                        <span class="small"><?php echo $slides_object['sub_title']; ?></span>
+                     <div class="col-sm-6 <?php echo get_or_empty($params, 'title_alignment'); ?>">
+                        <div class="content-padding-wrapper">
+                            <?php if($params['show_title']): ?>
+                                <div class="slider-title content-padding h1 text-white text-bold"><?php echo $slides_object['post_title']; ?><br/>
+                                    <span class="small"><?php echo $slides_object['sub_title']; ?></span>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                <?php endif; ?>
+                </div>
             </div>
-        </div>
-        </div>
-        </div>
         <?php endif; ?>
         <div class="slick" data-slick='{"arrows": <?php echo $params['arrows'] ? "true" : "false"; ?>,
                                         "slidesToShow": <?php echo $slides_object['slides_to_show']; ?>,

@@ -76,6 +76,12 @@ $params = array(
                 <div class="extra-padding-vertical">
                     <h2 class="text-bold">About <?php echo $venture['post_title']; ?></h2>
                     <p class="big"><?php echo $venture['description']; ?></p>
+
+					<?php if(get_post_status($venture['ID']) == 'publish'): ?>
+						<br/>
+						<br/>
+						<a href="<?php the_permalink($venture['ID']); ?>" class="btn btn-primary">More about <?php echo $venture['post_title']; ?></a>
+					<?php endif; ?>
                 </div>
             </div>
         </div>
@@ -113,10 +119,12 @@ $params = array(
                         $params = array(
                             'type' => 'team',
                             'category' => get_post($venture['ID']),
+							//term_id 19 is management
+							'role' => (object) array('taxonomy' => 'job_role', 'term_id' => '19'),
                             'arrows' => true,
                             'arrow_background_color' => 'dark-blue text-white',
-                            'slides_in_view' => 3,
-                            'height' => 400,
+                            'slides_in_view' => 4,
+                            'height' => 350,
                             'caption_background_color' => 'none text-white',
 							'people' => $venture['people']
                         );
@@ -134,26 +142,6 @@ $params = array(
 
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="block-promos"
-         style="<?php echo css_gradient('#C2BEC7', '#49C3B1'); ?>">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-xs-12">
-                <?php
-                $params = array(
-					'promo_1_width' => 8,
-					'promo_1_background_color' => 'lila text-white',
-					'promo_1' => $venture['promo_1'],
-					'promo_2_background_color' => 'aqua text-white',
-					'promo_2' => $venture['promo_2']
-                );
-                 ?>
-                <?php include(locate_template('templates/block-promos.php')); ?>
             </div>
         </div>
     </div>

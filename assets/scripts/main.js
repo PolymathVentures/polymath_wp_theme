@@ -19,57 +19,6 @@
     'common': {
       init: function() {
 
-        //   $('#tell-friend-button').click(function() {
-        //       $('#tell-friend-modal').modal('show');
-        //   });
-
-        //   $('#gform_submit_button_1').click(function(e) {
-        //       e.preventDefault();
-        //       $('#gform_1').submit();
-        //       $('#tell-friend-modal').modal('hide');
-        //     //   location.reload();
-        //   });
-          //
-        //     $(document).bind('gform_confirmation_loaded', function(event, formId){
-        //         console.log('loaadded');
-        //     });
-
-        //   var ssOptions = {
-        //       debug: true,
-        //       prefetch: true,
-        //       cacheLength: 4,
-        //       scroll: false,
-        //       onStart: {
-        //           duration: 250,
-        //           render: function ($container) {
-        //               $container.addClass('is-exiting');
-        //               smoothState.restartCSSAnimations();
-        //           }
-        //       },
-        //       onProgress: {
-        //         duration: 0,
-        //         render: function ($container) {
-        //             $('#loading-modal').modal('show');
-        //         }
-        //       },
-        //       onReady: {
-        //           duration: 0,
-        //           render: function ($container, $newContent) {
-        //               $('#loading-modal').modal('hide');
-        //               $container.removeClass('is-exiting');
-        //               $container.html($newContent);
-          //
-        //               //body_classes is passed to this script from setup.php
-        //               $('body').removeClass().addClass(body_classes.join(' '));
-          //
-        //               //reset slider for correct display
-        //               $('.slick').slick('setPosition');
-        //           }
-        //       }
-        //   };
-          //TODO: This causes a depreciation warning XMLhttprequest because script is loaded in footer. Switch to header
-
-        //   smoothState = $('#smoothstate').smoothState(ssOptions).data('smoothState');
       },
       finalize: function() {
 
@@ -95,6 +44,17 @@
         // Disable jump to top for buttons with href #
         $('[href="#"]').click(function(e) {
             e.preventDefault();
+        });
+
+        var lg = $( window ).width() >= 977;
+        $('.menu-item.dropdown').mouseover(function(e) {
+            if(!$(this).hasClass('open') && lg) {
+                $(this).find('.dropdown-toggle').dropdown('toggle');
+            }
+        }).mouseleave(function(e) {
+            if($(this).hasClass('open') && lg) {
+                $(this).find('.dropdown-toggle').dropdown('toggle');
+            }
         });
 
         //Populate button text with selected option
@@ -146,7 +106,13 @@
             }).get();
 
             var maxHeight = Math.max.apply(null, captionHeights);
-            $(this).parent().find('.slick-arrow .icons').css('bottom', (maxHeight / 2) - 20);
+            var bottomOffset = (maxHeight / 2) - 20;
+
+            if($(this).parents('.slick-container').hasClass('personal_story')) {
+                bottomOffset = bottomOffset + 40;
+            }
+
+            $(this).parent().find('.slick-arrow .icons').css('bottom', bottomOffset);
 
             //adjust dots
             var dotElements = $(this).parent('.tab_slider.dots, .timeline.dots');
@@ -255,7 +221,6 @@
       }
     },
     // About us page, note the change from about-us to about_us
-    //TODO: This is currently not working because of smoothstate. The body classes will always be one page behind.
     'post_type_archive_team_members': {
       finalize: function() {
       }

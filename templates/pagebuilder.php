@@ -41,7 +41,7 @@ if( have_rows('content') ):
                             <div class="extra-padding-vertical">
                         <?php endif; ?>
                             <?php include(locate_template('templates/' . $template_name . '.php')); ?>
-                        <?php if(!get_sub_field('no_extra_padding')): ?>
+                        <?php if(!get_sub_field('no_extra_inner_padding')): ?>
                             </div>
                         <?php endif; ?>
                         <?php if(get_sub_field('button_text')): ?>

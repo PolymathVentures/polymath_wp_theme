@@ -35,20 +35,18 @@
     .background-image {
         @extend .background-position;
         min-height: 100px;
+        width: 100%;
         // height:100%;
     }
 
     @media(min-width: $screen-sm-min) {
         .content-row {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            flex-wrap: wrap;
+            @include display(flex);
+            @include flex-wrap(wrap);
 
             [class*='col-'] {
-                display: flex;
-                flex-direction: column;
+                @include display(flex);
+                @include flex-direction(row);
             }
 
             .background-image {

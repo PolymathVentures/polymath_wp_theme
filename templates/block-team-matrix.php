@@ -65,6 +65,7 @@ $items = get_terms( array(
 	'taxonomy' => 'job_role',
 ) );
 $items[0]->button_text = 'Role';
+$excluded = ['management'];
 ?>
 
 <?php if(!$params['role']): ?>

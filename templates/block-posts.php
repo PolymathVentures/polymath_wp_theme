@@ -54,11 +54,9 @@ $colors = array('red', 'aqua', 'dark-blue');
 							</div>
 						</header>
 						<div class="entry-summary big">
-							<?php echo get_field( "description" ) ?: get_the_excerpt(); ?>
+							<p class="text-sentence"><?php echo get_field( "description" ) ?: get_the_excerpt(); ?></p>
 
 							<?php if(get_or_empty($params, 'show_links', false)): ?>
-								<br />
-								<br />
 								<a class="text-underline small" href="<?php echo get_field( "link" ) ?: get_the_permalink(); ?>"><?php echo get_field( "button_text" ) ?: 'More'; ?></a>
 								<i class="icon-arrow-right icons text-extra-small"></i>
 							<?php endif; ?>

@@ -112,8 +112,8 @@ function custom_field_options($job, $custom_field_id) {
 }
 
 
-function get_job_url($job) {
-    return get_permalink() . $job['id'] . '/' . urlencode($job['title']);
+function get_job_url($job, $page_id='') {
+    return get_permalink($page_id) . $job['id'] . '/' . urlencode($job['title']);
 };
 
 

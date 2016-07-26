@@ -11,7 +11,7 @@ $offset = (12 - $count * 2) / 2;
             <a href="<?php the_sub_field('link'); ?>">
         <?php endif; ?>
 
-            <img src="<?php echo $icon['image']['sizes']['medium']; ?>" width="100%"><br /><br />
+            <img src="<?php echo $icon['image']['sizes']['medium']; ?>"><br /><br />
 
         <?php if(get_sub_field('link')): ?>
             </a>

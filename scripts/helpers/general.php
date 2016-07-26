@@ -60,7 +60,7 @@ function formatPersonInfo($person) {
             if(get_post_status($venture) == 'publish') {
                 $person['full_description'] .= '<span class="text-italic">' . $person['roles'][$i]['title'] . '</span> @ <a href="' . get_permalink($venture) . '" data-dismiss="modal">' . get_the_title($venture) . '</a><br/>';
             } else {
-                $person['full_description'] .= '<span class="text-italic">' . $person['roles'][$i]['title'] . ' @ ' . get_the_title($venture) . '</a><br/>';
+                $person['full_description'] .= '<span>' . $person['roles'][$i]['title'] . ' @ ' . get_the_title($venture) . '</a><br/>';
             }
 
 

@@ -69,6 +69,10 @@ span.anchor {
     text-transform: capitalize;
 }
 
+.text-sentence:first-letter {
+    text-transform: uppercase;
+}
+
 .extra-letter-spacing {
     letter-spacing: $extra-letter-spacing;
 }
@@ -102,14 +106,14 @@ span.anchor {
 }
 
 .super-big {
-    font-size: $font-size-base * 4;
+    font-size: $font-size-base * 3;
 
     @media(min-width: $screen-sm-min) {
-        font-size: $font-size-base * 5;
+        font-size: $font-size-base * 4;
     }
 
     @media(min-width: $screen-md-min) {
-        font-size: $font-size-base * 6;
+        font-size: $font-size-base * 5;
     }
 }
 

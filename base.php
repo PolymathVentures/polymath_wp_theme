@@ -9,10 +9,24 @@ use Roots\Sage\Wrapper;
 <html <?php language_attributes(); ?>>
   <?php get_template_part('templates/head'); ?>
   <body <?php body_class(); ?>>
-  <div id="smoothstate" class="m-scene">
+  <!--[if IE 9]>
+  <style>
+  .wrap, footer {
+  display: none;
+};
+</style>
+    <div class="alert alert-warning">
+      This website cannot be displayed by your browser because it is outdated. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+    </div>
+  <![endif]-->
     <!--[if IE]>
+    <style>
+    .wrap, footer {
+    display: none;
+  };
+  </style>
       <div class="alert alert-warning">
-        <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'sage'); ?>
+        This website cannot be displayed by your browser because it is outdated. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
       </div>
     <![endif]-->
     <?php
@@ -42,13 +56,5 @@ use Roots\Sage\Wrapper;
       get_template_part('templates/footer');
       wp_footer();
     ?>
-  </div>
-  <!-- Modal -->
-    <div class="modal fade text-center" id="loading-modal"
-         tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
-
-        <!-- <img class="extra-padding-vertical" src="<?php // get_template_directory_uri(); ?>/dist/images/squares.gif"> -->
-
-    </div>
   </body>
 </html>

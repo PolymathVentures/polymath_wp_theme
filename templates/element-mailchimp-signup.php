@@ -1,6 +1,6 @@
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 <div id="mc_embed_signup" class="text-dark">
-<form class="form-horizontal" action="//polymathv.us3.list-manage.com/subscribe/post?u=bf424acd364ec846df798dafc&amp;id=ecdf67cd98" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<form class="form-horizontal validate" action="//polymathv.us3.list-manage.com/subscribe/post?u=bf424acd364ec846df798dafc&amp;id=ecdf67cd98" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
 
 <div class="form-group">

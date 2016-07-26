@@ -26,7 +26,7 @@ if(is_object(reset($items))) {
     </button>
     <ul class="dropdown-menu bullet pull-center custom-dropdown">
         <?php foreach($labels as $key => $val): ?>
-
+            <?php if(isset($excluded) && in_array($key, $excluded)) continue; ?>
             <li><a href="#" class="filter" data-filter=".<?php echo $key; ?>"><?php echo $val; ?></a></li>
         <?php endforeach; ?>
     </ul>

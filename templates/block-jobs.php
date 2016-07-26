@@ -36,7 +36,7 @@ $items['button_text'] = 'Expertise';
 <br/>
 <br/>
 
-<div class="post-list mixitup-container">
+<div class="post-list mixitup-container row">
 
 <?php foreach ($jobs as $job): ?>
 
