@@ -43,7 +43,7 @@ $stat_count = $stat_count->found_posts;
 ?>
 
 <?php if($stat_count > 0): ?>
-<div class="red">
+<div class="aqua">
     <div class="container text-center">
         <div class="row">
             <div class="col-xs-12">
@@ -73,6 +73,7 @@ $stat_count = $stat_count->found_posts;
         <div class="col-xs-12">
             <div class="block-content">
                 <h2 class="text-bold text-center">Building <?php the_title(); ?></h2>
+                <p class="big">The journey from MVP to operations to growth</p>
                 <div class="extra-padding-vertical">
                     <?php
                     $params = array(
@@ -91,7 +92,7 @@ $stat_count = $stat_count->found_posts;
                     <?php include(locate_template('templates/block-slider.php')); ?>
 
                     <div class="block-content">
-                        <h2 class="text-bold text-center">Want to learn more about <?php the_title(); ?>?</h2>
+                        <h2 class="text-center">Want to learn more about <?php the_title(); ?>?</h2>
                         <br/>
                         <br/>
                         <a class="btn btn-primary" href="<?php the_field('website'); ?>" target="_blank">Visit website</a>
@@ -112,7 +113,7 @@ $stat_count = $stat_count->found_posts;
                             'type' => 'team',
                             'category' => get_post(),
                             'arrows' => true,
-                            'arrow_background_color' => 'dark-blue text-white',
+                            'arrow_background_color' => 'lila text-white',
                             'slides_in_view' => 4,
                             'height' => 350,
                             'caption_background_color' => 'none text-white',

@@ -69,10 +69,12 @@ $ajust_height = $params['type'] == 'tab_slider' || $params['type'] == 'timeline'
                         <div class="<?php echo $ajust_height; ?>">
                             <div class="caption content-padding-wrapper
                                         <?php echo $params['caption_background_color']; ?>
+                                        <?php echo $params['type'] == 'personal_story' ? 'calc-height' : ''; ?>
                                         <?php echo $params['type'] == 'team' ? 'show-person-modal' : ''; ?>"
                                  data-title="<?php echo htmlspecialchars($slide['title']); ?>"
                                  data-description="<?php echo htmlspecialchars($slide['full_description']); ?>"
-                                 data-picture="<?php echo $slide['image']['sizes']['original']; ?>">
+                                 data-picture="<?php echo $slide['image']['sizes']['original']; ?>"
+                                 data-height-group="<?php echo 'slider-' . $content_block_index . '-caption'; ?>">
                                 <div class="content-padding">
                                     <?php if($slide['title']): ?>
                                         <h3><?php echo $slide['title']; ?></h3>

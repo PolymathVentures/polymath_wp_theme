@@ -11,7 +11,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="brand" href="<?= esc_url(home_url('/')); ?>">
-              <img src="http://www.polymathv.com/wp-content/uploads/2014/09/Polymath_Logo_transparent.png">
+              <img src="<?php echo get_template_directory_uri(); ?>/dist/images/Polymath_Logo_transparent.png">
           </a>
         </div>
 

@@ -297,7 +297,7 @@ gulp.task( 'deploy', ['clean', 'build'], function () {
         host:     argv.host,
         user:     argv.user,
         password: argv.password,
-        parallel: 1,
+        parallel: 5,
         log:      gutil.log
     } );
 
@@ -311,8 +311,8 @@ gulp.task( 'deploy', ['clean', 'build'], function () {
     // turn off buffering in gulp.src for best performance
 
     return gulp.src( globs, { base: '.', buffer: false } )
-        .pipe( conn.newer( '/new/wp-content/themes/polymath_wp_theme' ) ) // only upload newer files
-        .pipe( conn.dest( '/new/wp-content/themes/polymath_wp_theme' ) );
+        .pipe( conn.newer( '/wp-content/themes/polymath_wp_theme' ) ) // only upload newer files
+        .pipe( conn.dest( '/wp-content/themes/polymath_wp_theme' ) );
 
 });
 

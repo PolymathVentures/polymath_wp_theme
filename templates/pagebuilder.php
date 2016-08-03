@@ -10,6 +10,17 @@ if( have_rows('content') ):
     <?php $params = get_fields()['content'][$content_block_index]; ?>
     <?php if(strpos($template_name, 'full-width') > 0 || get_sub_field('full_width') ): ?>
 
+            <?php if(get_sub_field('title') && get_sub_field('full_width')): ?>
+                <div class="text-center extra-padding-vertical">
+
+                <h2 class="text-bold"><?php the_sub_field('title'); ?></h2>
+
+                <?php if(get_sub_field('sub_title')): ?>
+                    <p class="big"><?php the_sub_field('sub_title'); ?></p>
+                <? endif; ?>
+            </div>
+            <? endif; ?>
+
         <?php include(locate_template('templates/' . $template_name . '.php')); ?>
 
     <?php else: ?>

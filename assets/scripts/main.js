@@ -180,9 +180,22 @@
 
             if(!bgJSON) { return true; }
 
+            var sizes = [];
+            var sizeKeys = {};
             $.each(bgJSON, function(k, v) {
 
-                if(k.indexOf('-') > -1) { return true; }
+                sizeOptions = ['medium', 'large', 'medium_large', 'extra_large', 'original'];
+                if(sizeOptions.indexOf(k) === -1) { return true; }
+                sizes.push(bgJSON[k + '-width']);
+                sizeKeys[bgJSON[k + '-width']] = k;
+
+            });
+
+            sizes.sort(function(a,b){return a - b;});
+
+            $.each(sizes, function(v) {
+
+                var k = sizeKeys[sizes[v]];
 
                 var w = bgJSON[k + '-width'];
                 var h = bgJSON[k + '-height'];
@@ -192,7 +205,7 @@
                 if(w > largest.size) { largest = {'size': w, 'name': k}; }
 
                 if(w + wM > elWidth && h + hM > elHeight) {
-                    url = v;
+                    url = bgJSON[k];
                     return false;
                 }
 

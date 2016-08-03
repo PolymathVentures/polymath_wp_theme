@@ -2,7 +2,12 @@
 	<div class="content-padding">
 		<div class="calc-height" data-height-group="promos">
 			<?php if(isset($promo['post_title'])): ?>
-				<p class="h2"><?php echo $promo['post_title']; ?></p>
+				<p class="h2">
+					<span class="text-uppercase small">
+						<?php echo $promo['post_type'] == 'post' ? 'News' : ''; ?>
+					</span><br/>
+					<?php echo $promo['post_title']; ?>
+				</p>
 			<?php endif; ?>
 			<?php if($promo['description']): ?>
 				<p class="big">

@@ -123,7 +123,7 @@ acf_add_local_field_group(array (
 								'id' => '',
 							),
 							'choices' => array (
-								'col-md-8' => 'Left',
+								'col-xs-8' => 'Left',
 								'col-md-8 col-md-offset-2 text-center' => 'Center',
 							),
 							'default_value' => array (
@@ -3074,6 +3074,22 @@ acf_add_local_field_group(array (
 							'placeholder' => '',
 							'disabled' => 0,
 							'readonly' => 0,
+						),
+                        array (
+							'key' => 'field_5796a5e25c7af098w',
+							'label' => 'No extra inner padding',
+							'name' => 'no_extra_inner_padding',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
 						),
 						array (
 							'key' => 'field_576d613ce509d',

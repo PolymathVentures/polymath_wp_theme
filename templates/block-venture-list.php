@@ -26,25 +26,23 @@ $ventures = new WP_query($args);
 		<?php if($current_id == get_the_ID()) continue; ?>
 
 		<div class="col-sm-4 post-list-item margin-bottom">
+			<a href="<?php the_permalink(); ?>" class="text-dark">
 				<div class="venture-logo" style="border-bottom: 4px solid <?php the_field('brand_color'); ?>;">
 					<img src="<?php echo get_field('logo')['sizes']['post_list_thumb']; ?>"/>
-					<a href="<?php the_permalink(); ?>">
-						<div class="blog-post-more-button"><span class="plus text-center">+</span></div>
-					</a>
+					<div class="blog-post-more-button"><span class="plus text-center">+</span></div>
 				</div>
 				<article class="white content-padding-wrapper calc-height" data-height-group="ventures">
 					<div class="content-padding">
 						<header>
 							<h3 class="text-bold">
-								<a href="<?php the_permalink(); ?>" class="text-dark">
-									<?php the_title(); ?><br />
-								</a>
+								<?php the_title(); ?><br />
 								<span class="small">Launched: <span class="text-italic"><?php the_field('year_launched'); ?></span></span>
 							</h3>
 						</header>
 						<p><?php the_field('description'); ?></p>
 					</div>
 				</article>
+			</a>
 		</div>
 
 		<?php $i++; if ($i % 3 == 0 || $i == $ventures->found_posts): ?>

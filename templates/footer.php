@@ -4,6 +4,15 @@
         <?php dynamic_sidebar('sidebar-footer'); ?>
       </div>
   </div>
+
+<div class="content-padding-wrapper">
+    <div class="content-padding">
+        &copy; Polymath Ventures 2016.
+        <a href="http://www.polymathv.com/terms-of-use.pdf" target="_blank">Terms of use</a> &
+        <a href="http://www.polymathv.com/privacy-policy.pdf" target="_blank">Privacy policy</a>
+    </div>
+</div>
+
 </footer>
 
 <div class="modal fade" id="person-modal" tabindex="-1" role="dialog">

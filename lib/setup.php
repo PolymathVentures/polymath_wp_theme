@@ -40,6 +40,7 @@ function setup() {
   add_image_size( 'post_list_thumb', 380, 260, true );
   add_image_size( 'team_member_thumb', 285, 400, true );
   add_image_size( 'blog_post_image', 700, 400, true );
+  add_image_size( 'medium_large', 768, 480);
   add_image_size( 'extra_large', 1600, 1200);
 
   // Enable post formats
