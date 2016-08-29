@@ -47,7 +47,7 @@ function formatPersonInfo($person) {
     if(isset($person['roles'][0])):
         $person['current_job_title'] = $person['roles'][0]['title'];
         $person['current_venture'] = get_the_title($person['roles'][0]['venture']);
-        $person['title'] .= '<br/><span class="small">' . $person['current_job_title'] . ' @ ' .                                $person['current_venture'] . '</span>';
+        $person['title'] .= '<br/><span class="small">' . $person['current_job_title'] . ' @ ' . $person['current_venture'] . '</span>';
     endif;
 
     $person['full_description'] = $person['description'] .'<br/><br/>';

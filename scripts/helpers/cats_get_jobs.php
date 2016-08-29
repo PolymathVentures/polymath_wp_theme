@@ -47,14 +47,14 @@ function get_cats_jobs() {
 
     $result = get_transient('cats_jobs');
 
-    if ( false === $result || (is_user_logged_in() && isset($_GET["refresh"]))) {
+    if ( false === $result || isset($_GET["refresh"])) {
         error_log('getting jobs from cats');
 
 
         // Also clear the WP Super Cache for this page on refresh. Important to specify 'refresh=true' in the
         // list of non cached urls in the 'Advanced' tab of WP Super Cache plugin.
-        if (function_exists ('wp_cache_post_change')) {
-            wp_cache_post_change(get_the_ID());
+        if (function_exists ('wp_cache_clear_cache')) {
+            wp_cache_clear_cache();
         };
 
         // TODO: 100 is the maximum number of jobs per page. This should loop through all pages

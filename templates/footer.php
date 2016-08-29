@@ -24,7 +24,7 @@
           </div>
           <div class="row">
               <div class="col-sm-6">
-                  <img class="person-picture" src="photo.jpg"/>
+                  <img class="person-picture" src="http://www.polymathv.com/wp-content/themes/polymath_wp_theme/dist/images/Polymath_Logo_transparent.png"/>
               </div>
               <div class="col-sm-6">
                   <h2 class="person-title">title</h2>

@@ -12,6 +12,7 @@ $args = array(
 );
 
 $venture = get_post_with_custom_fields(get_posts( $args )[0]);
+$cats_url = 'http://polymath.catsone.com/careers/index.php?m=portal&a=apply&jobOrderID=' . $job['id'];
 ?>
 
 <?php
@@ -60,7 +61,10 @@ $params = array(
 		            <p><a href="<?php echo $venture['website']; ?>" target="_blank"><?php echo $venture['website']; ?></a></p>
 		            <p><a href="<?php the_permalink(); ?>#block-7">Back to jobs</a></p><br/>
 
-		            <a class="btn btn-danger" target="_blank" href="http://polymath.catsone.com/careers/index.php?m=portal&a=apply&jobOrderID=<?php echo $job['id']; ?>">
+		            <a class="btn btn-danger"
+									 target="_blank"
+									 onclick="__gaTracker('send', 'event', 'outbound-article', '<?php echo $cats_url; ?>', '<?php echo $job['title']; ?>');"
+									 href="<?php echo $cats_url; ?>">
 		                Apply
 		            </a>
 		        </div>
@@ -133,11 +137,14 @@ $params = array(
 
 						<div class="block-content">
 	                        <h2 class="text-bold text-center">Come work with us!</h2>
-							<br/>
+													<br/>
 	                        <br/>
-							<a class="btn btn-danger" target="_blank" href="http://polymath.catsone.com/careers/index.php?m=portal&a=apply&jobOrderID=<?php echo $job['id']; ?>">
-				                Apply
-				            </a>
+													<a class="btn btn-danger"
+														 target="_blank"
+														 onclick="__gaTracker('send', 'event', 'outbound-article', '<?php echo $cats_url; ?>', <?php echo $job['title']; ?>);"
+														 href="<?php echo $cats_url; ?>">
+															Apply
+													</a>
 	                    </div>
 
                     </div>

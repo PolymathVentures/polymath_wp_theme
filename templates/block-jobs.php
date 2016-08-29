@@ -7,14 +7,6 @@ $ventures = get_cats_venture_map($result);
 
 ?>
 
-<?php if (is_user_logged_in()): ?>
-    <a href="<?php echo get_permalink() . '?refresh=true'; ?>">
-        refresh
-    </a><br/>
-<?php endif; ?>
-
-<span class="text-gray text-italic big">Filter by:</span> <br />
-
 <?php
 $items = $result->posts;
 $items[0]->button_text = 'Venture';
@@ -36,7 +28,7 @@ $items['button_text'] = 'Expertise';
 <br/>
 <br/>
 
-<div class="post-list mixitup-container row">
+<div class="post-list mixitup-container row" data-start-filter="<?php echo $_GET['start_filter'] ? '.' . $_GET['start_filter'] : 'all'; ?>">
 
 <?php foreach ($jobs as $job): ?>
 

@@ -4,7 +4,13 @@
 			<?php if(isset($promo['post_title'])): ?>
 				<p class="h2">
 					<span class="text-uppercase small">
-						<?php echo $promo['post_type'] == 'post' ? 'News' : ''; ?>
+						<?php if($promo['post_type'] == 'post'): ?>
+							News
+						<?php elseif($promo['team_member']): ?>
+							Team
+						<?php else: ?>
+							Learn more
+						<?php endif; ?>
 					</span><br/>
 					<?php echo $promo['post_title']; ?>
 				</p>

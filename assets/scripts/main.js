@@ -57,6 +57,13 @@
             }
         });
 
+        //re-enable click on dropdown parent
+        $('.dropdown-toggle').click(function(e) {
+            if(lg) {
+                window.location.href = $(this).attr('href');
+            }
+        });
+
         //Populate button text with selected option
         $('.show-selected a').click(function(e) {
 
@@ -68,7 +75,11 @@
             button.text(button.data('label') + ': ' + $(this).text());
         });
 
+        var startFilter = $('.mixitup-container').data('start-filter');
         $('.mixitup-container').mixItUp({
+            load: {
+        		filter: startFilter
+        	}
             // animation: {
             //     enable: false
             // }

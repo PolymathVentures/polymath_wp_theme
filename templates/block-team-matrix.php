@@ -47,9 +47,6 @@ $items = get_posts( $args );
 $items[0]->button_text = 'Ventures';
 ?>
 
-<span class="big text-gray text-italic">Filter by:</span> <br/>
-
-
 <?php if(!$params['category']): ?>
 	<?php include(locate_template('templates/element-matrix-filter.php')); ?>
 <?php endif; ?>

@@ -18,4 +18,12 @@
        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $url; ?>','name','width=400,height=400')">
         <i class="si si-linkedin si-small"></i>
     </a>
+&nbsp;&nbsp;
+<div class="fb-like"
+data-href="<?php echo $url; ?>"
+data-layout="standard"
+data-action="like"
+data-width="300"
+data-show-faces="false">
+</div>
 </p>

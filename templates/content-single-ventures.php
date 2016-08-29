@@ -107,6 +107,7 @@ $stat_count = $stat_count->found_posts;
         <div class="row">
             <div class="col-xs-12">
                 <div class="block-content">
+                    <h2 class="text-bold text-center">Meet some of our team</h2>
                     <div class="extra-padding-vertical">
                         <?php
                         $params = array(

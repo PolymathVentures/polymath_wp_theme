@@ -1,6 +1,6 @@
 <div class="featured-image responsive-bg"
      data-bg-json='<?php echo json_encode($params['background_image']['sizes']); ?>'
-     style="min-height:<?php echo $params['height']; ?>px;">
+     style="height:<?php echo $params['height']; ?>px;">
     <div class="featured-image-inner <?php echo $params['overlay_color']; ?>">
         <div class="container">
             <div class="row">
