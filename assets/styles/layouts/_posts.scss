@@ -79,13 +79,18 @@
 
     @media(min-width: $screen-sm-min) {
         .post-list-item {
-            &:nth-child(2) {
-                article {
-                    order: 2;
-                }
 
-                img {
-                    order: 1;
+            article.text-leftside {
+              order: 1 !important;
+            }
+
+            article.text-rightside {
+              order: 2 !important;
+            }
+
+            &:nth-child(even) {
+                article.auto {
+                    order: 2;
                 }
 
                 .arrow {

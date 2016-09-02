@@ -1,25 +1,34 @@
 <div class="container text-center">
     <div class="row block-simple-text">
-        <div class="extra-padding-vertical content-row">
-            <div class="col-sm-6">
-                <div class="background-image responsive-bg calc-height"
-                        data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'
-                        data-height-group="venture-intro">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="content-padding-wrapper calc-height" data-height-group="venture-intro">
-                 	<div class="content-padding">
-                        <img src="<?php echo get_field('logo')['sizes']['post_list_thumb']; ?>"
-                             width="<?php echo get_field('logo')['sizes']['post_list_thumb-width']; ?>"
-                             height="<?php echo get_field('logo')['sizes']['post_list_thumb-height']; ?>"/>
-                            <p class="big text-light"><?php the_field('description'); ?></p>
-                    </div>
-                </div>
-            </div>
+      <div class="content-padding-wrapper">
+        <div class="content-padding">
+          <img src="<?php echo get_field('logo')['sizes']['post_list_thumb']; ?>"
+               width="<?php echo get_field('logo')['sizes']['post_list_thumb-width']; ?>"
+               height="<?php echo get_field('logo')['sizes']['post_list_thumb-height']; ?>"/>
         </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2">
+            <p class="big text-light"><?php the_field('description'); ?></p>
+      </div>
     </div>
 </div>
+
+<br/>
+<br/>
+<br/>
+
+<?php
+$params = array(
+    'background_image' => array('sizes' => format_attachment_sizes_array(get_post_thumbnail_id(get_the_ID()))),
+    'overlay_color' => '',
+    'text' => false,
+    'height' => 350,
+    'button_link' => '',
+    'button_text' => '',
+);
+ ?>
+
+<?php include(locate_template('templates/block-full-width-image.php')); ?>
 
 <?php
 $args = array(
@@ -77,19 +86,24 @@ $stat_count = $stat_count->found_posts;
                 <div class="extra-padding-vertical">
                     <?php
                     $params = array(
-                        'type' => 'timeline',
-                        'slider' => get_field('venture_story'),
-                        'arrows' => false,
-                        'arrow_background_color' => false,
-                        'slides_in_view' => 1,
-                        'height' => 400,
-                        'autoplay' => 'false',
-                        'arrows' => true,
-                        'arrow_background_color' => 'text-white',
-                        'caption_background_color' => 'dark-blue text-white',
+                        'width' => 10,
+                        'alignment' => 'left',
+                        'text_size' => 'normal',
+                        'background_color' => 'none',
                     );
+
+                    $slides = get_post_with_custom_fields(get_field('venture_story'))['slides'];
+                    $params['text_fields'] = array();
+                    foreach($slides as $slide) {
+                        $params['text_fields'][] = array(
+                          'title' => $slide['title'],
+                          'text' => $slide['description'],
+                          'image' => $slide['image']
+                        );
+                    }
+
                      ?>
-                    <?php include(locate_template('templates/block-slider.php')); ?>
+                    <?php include(locate_template('templates/block-story-telling.php')); ?>
 
                     <div class="block-content">
                         <h2 class="text-center">Want to learn more about <?php the_title(); ?>?</h2>

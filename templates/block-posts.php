@@ -45,7 +45,7 @@ $colors = array('red', 'aqua', 'dark-blue');
 
 	<?php $color = $params['alternating_colors'] ? $colors[$i % 3] : $params['post_background_color']; ?>
 		<div class="no-padding col-sm-<?php echo 12 / $params['posts_per_row']; ?> post-list-item flex <?php echo $color; ?> text-white">
-			<article class="col-xs-12 text-center no-padding calc-height" data-height-group="posts">
+			<article class="col-xs-12 text-center no-padding calc-height auto" data-height-group="posts">
 				<div class="content-padding-wrapper">
 					<div class="content-padding">
 						<header>
