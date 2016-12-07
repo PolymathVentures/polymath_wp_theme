@@ -11,17 +11,19 @@ function cats_jobs() {
 
     $job_array = [];
     $sort_array = [];
-    foreach ($jobs as $job) {
-        $job['description'] = strip_tags($job['description'],
-                                '<p><ul><ol><li><br><br/><h1><h2><h3><h4><h5><a><b><strong>');
+    if (is_array($jobs) || is_object($jobs)) {
+        foreach ($jobs as $job) {
+            $job['description'] = strip_tags($job['description'],
+                                    '<p><ul><ol><li><br><br/><h1><h2><h3><h4><h5><a><b><strong>');
 
-        $job['description'] = preg_replace('/style=".*?"/i', '', $job['description']);
+            $job['description'] = preg_replace('/style=".*?"/i', '', $job['description']);
 
-        $job_array[] = $job;
-        $sort_array[] = find_custom_field_value($job, '164169');
+            $job_array[] = $job;
+            $sort_array[] = find_custom_field_value($job, '164169');
+        }
+
+        array_multisort($sort_array, $job_array);
     }
-
-    array_multisort($sort_array, $job_array);
     return $job_array;
 };
 
