@@ -1,61 +1,56 @@
 <?php
+$jobs     = greenhouse_jobs();
+$result   = get_ventures();
+$ventures = get_greenhouse_venture_map($result);
 
-$jobs = cats_jobs();
-
-$result = get_ventures();
-$ventures = get_cats_venture_map($result);
-
+$items    = $result->posts;
+$items[0]->button_text = "Venture";
+include(locate_template("templates/element-matrix-filter.php"));
 ?>
+
+<span class="custom-button">&middot;</span>
 
 <?php
-$items = $result->posts;
-$items[0]->button_text = 'Venture';
+$items    = get_greenhouse_expertise($jobs);
+$items["button_text"]  = "Expertise";
+include(locate_template("templates/element-matrix-filter.php"));
 ?>
 
-<?php include(locate_template('templates/element-matrix-filter.php')); ?><span class="custom-button">&middot;</span>
-
-<?php
-$items = custom_field_options($jobs[0], '208901');
-$items['button_text'] = 'Expertise';
-?>
-<?php include(locate_template('templates/element-matrix-filter.php')); ?><span class="custom-button">&middot;</span>
+<span class="custom-button">&middot;</span>
 
 <button type="button" class="btn custom-button filter" data-filter="all">
-    <span>Clear filters</span>
+  <span>Clear filters</span>
 </button>
 
-<br/>
-<br/>
-<br/>
+<br><br><br>
 
-<div class="post-list mixitup-container row" data-start-filter="<?php echo $_GET['start_filter'] ? '.' . $_GET['start_filter'] : 'all'; ?>">
+<div class="post-list mixitup-container row" data-start-filter="<?=($_GET['start_filter'] ? '.'.$_GET['start_filter'] : 'all')?>">
 
-<?php foreach ($jobs as $job): ?>
-
-<div class="col-md-3 mix col-sm-6 col-xs-12 post-list-item adjust-height calc-height margin-bottom <?php echo find_custom_field_value($job, '208901'); ?> <?php echo $ventures[$job['company_id']]; ?>"  data-height-group="jobs">
-	<div class="white">
-        <a href="<?php echo get_job_url($job); ?>" class="text-dark">
-        <div class="venture-logo" style="border-bottom: 4px solid <?php the_field('brand_color', $ventures[$job['company_id']]); ?>;">
-            <img src="<?php echo get_field('logo', $ventures[$job['company_id']])['sizes']['post_list_thumb']; ?>"
-                 width="<?php echo get_field('logo', $ventures[$job['company_id']])['sizes']['post_list_thumb-width']; ?>"
-                 height="<?php echo get_field('logo', $ventures[$job['company_id']])['sizes']['post_list_thumb-height']; ?>"/>
-            <div class="blog-post-more-button"><span class="plus text-center">+</span></div>
+<?php foreach( $jobs as $job ): ?>
+  <div class="col-md-3 mix col-sm-6 col-xs-12 post-list-item adjust-height calc-height margin-bottom <?=$job['departments'][0]['id']?> <?=$ventures[$job['offices'][0]['name']]?>" data-height-group="jobs">
+    <div class="white">
+      <a href="<?=get_job_url($job)?>" class="text-dark">
+        <div class="venture-logo" style="border-bottom: 4px solid <?php the_field('brand_color', $ventures[$job['offices'][0]['name']]);?>;">
+          <img src="<?=get_field('logo', $ventures[$job['offices'][0]['name']])['sizes']['post_list_thumb']?>"
+            width="<?=get_field('logo', $ventures[$job['offices'][0]['name']])['sizes']['post_list_thumb-width']?>"
+            height="<?=get_field('logo', $ventures[$job['offices'][0]['name']])['sizes']['post_list_thumb-height']?>">
+          <div class="blog-post-more-button"><span class="plus text-center">+</span></div>
         </div>
         <article class="content-padding-wrapper">
-            <div class="content-padding text-left">
-                <header>
-                    <h3 class="text-bold">
-                        <span class="small"><?php echo find_custom_field_value($job, '208901', true); ?></span><br/><br/>
-	                        <?php echo $job['title']; ?><br />
-                        <span class="small"><?php echo get_the_title($ventures[$job['company_id']]); ?>, </span>
-                        <span class="small text-title"><?php echo $job['location']['city']; ?></span>
-                    </h3>
-                </header>
-            </div>
+          <div class="content-padding text-left">
+            <header>
+              <h3 class="text-bold">
+                <span class="small"><?=$job['departments'][0]['name']?></span><br><br>
+                <?=$job['title']?><br>
+                <span class="small"><?=$job['offices'][0]['name']?>, </span>
+                <span class="small text-title"><?=$job['location']['name']?></span>
+              </h3>
+            </header>
+          </div>
         </article>
-    </a>
-	</div>
-</div>
-
+      </a>
+    </div>
+  </div>
 <?php endforeach; ?>
+
 </div>

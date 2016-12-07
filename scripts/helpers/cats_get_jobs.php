@@ -193,7 +193,7 @@ function prefix_url_rewrite_templates() {
 
 }
 
-add_action( 'template_redirect', 'prefix_url_rewrite_templates' );
+//add_action( 'template_redirect', 'prefix_url_rewrite_templates' );
 
 /**
  * Change Meta info (OG and twitter) for single job pages
