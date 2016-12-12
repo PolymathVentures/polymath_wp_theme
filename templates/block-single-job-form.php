@@ -18,7 +18,14 @@
 <script type="text/javascript">
 	jQuery(function() {
 		jQuery("[data-toggle=tooltip]").tooltip();
-
+		jQuery(".paste-option").click(function(event) {
+			var field = jQuery(event.target).parents(".file-option").find("textarea");
+			if( field.css("display")==="none" ) {
+				field.show(250);
+			} else {
+				field.hide(250);
+			}
+		});
 	});
 </script>
 <form method="POST" action="<?=$green_url?>" enctype="multipart/form-data">
@@ -63,7 +70,7 @@
 			<span class="file-option">
 				<!-- PASTE ATTACHMENT -->
 				<label class="file-label" data-toggle="tooltip" data-placement="bottom" title="Paste">
-					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-paste.png">
+					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-paste.png" class="paste-option">
 				</label>
 				<textarea class="form-control" style="display:none;"></textarea>
 			</span>
@@ -80,7 +87,7 @@
 			<span class="file-option">
 				<!-- PASTE ATTACHMENT -->
 				<label class="file-label" data-toggle="tooltip" data-placement="bottom" title="Paste">
-					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-paste.png">
+					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-paste.png" class="paste-option">
 				</label>
 				<textarea class="form-control" style="display:none;"></textarea>
 			</span>
