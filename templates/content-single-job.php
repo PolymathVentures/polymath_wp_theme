@@ -35,7 +35,7 @@ $params = array(
 <div class="container">
 	<div class="row">
 		<div class="extra-padding-vertical">
-			<div class="col-sm-8 border-right">
+			<div class="col-sm-8 border-right" id="job-column">
 				<div class="border-bottom extra-padding-horizontal">
 					<div class="extra-padding-vertical">
 						<img class="pull-right" src="<?php echo $venture['logo']['sizes']['thumbnail']; ?>">
@@ -49,11 +49,14 @@ $params = array(
 						</h3>
 					</div>
 				</div>
-				<div class="extra-padding-vertical extra-padding-horizontal">
+				<div class="border-bottom extra-padding-vertical extra-padding-horizontal">
 					<?=html_entity_decode($job['content'])?><br><br>
 				</div>
+				<div class="extra-padding-horizontal" id="form-section" style="margin-bottom:25px;">
+					<?php include(locate_template("templates/block-single-job-form.php")); ?>
+				</div>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-4" id="float-column">
 				<div class="extra-padding-vertical extra-padding-horizontal">
 					<p><button class="btn btn-primary" id="tell-friend-button" data-toggle="modal" data-target="#tell-friend-modal">Tell a friend</button></p><br/>
 					<?php $share_url = get_job_url($job); ?>
@@ -63,7 +66,7 @@ $params = array(
 					<p><a href="<?php the_permalink(); ?>#block-7">Back to jobs</a></p><br/>
 					<a class="btn btn-danger" target="_blank"
 						onclick="__gaTracker('send', 'event', 'outbound-article', '<?php echo $green_url; ?>', '<?php echo $job['title']; ?>');"
-						href="<?=$green_url?>">
+						href="javascript:scroll_to_form();">
 						Apply
 					</a>
 				</div>
@@ -135,7 +138,7 @@ $params = array(
 							<h2 class="text-bold text-center">Come work with us!</h2><br/><br/>
 							<a class="btn btn-danger" target="_blank"
 								onclick="__gaTracker('send', 'event', 'outbound-article', '<?php echo $green_url; ?>', '<?php echo $job['title']; ?>');"
-								href="<?=$green_url?>">
+								href="javascript:scroll_to_form();">
 								Apply
 							</a>
 						</div>
@@ -145,3 +148,19 @@ $params = array(
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	jQuery(function() {
+		jQuery(window).scroll(function() {
+			var job_offset  = jQuery("#job-column").offset().top-jQuery(window).scrollTop();
+			var form_offset = jQuery("#form-section").offset().top-jQuery(window).scrollTop();
+
+			if( job_offset>=91 )
+				jQuery("#float-column").css("top", "0px");
+			else if( form_offset>531 )
+				jQuery("#float-column").css("top", jQuery(window).scrollTop()-363 + "px");
+		}).scroll();
+	});
+	
+	var scroll_to_form = function() { jQuery("html, body").animate({"scrollTop":jQuery("#form-section").offset().top-151}, 500); };
+</script>

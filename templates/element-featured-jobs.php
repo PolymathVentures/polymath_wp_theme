@@ -1,8 +1,12 @@
 <ul>
+<?php $jobs = array_slice(greenhouse_jobs(), 0, 10); ?>
+<?php foreach ( $jobs as $job ): ?>
 
-<?php foreach ($jobs as $job): ?>
-
-<li><a href="<?php echo get_job_url($job, $jobs_page_id); ?>"><?php echo $job['title']; ?> - <?php echo get_the_title($ventures[$job['company_id']]); ?></a>
+<li>
+	<a href="<?=get_job_url($job)?>">
+		<?=$job['title']?> - <?=$job['offices'][0]['name']?>
+	</a>
+</li>
 
 <?php endforeach; ?>
 </ul>
