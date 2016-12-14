@@ -10,7 +10,10 @@
 
 <style type="text/css">
 	#form-section hr { margin-top:0px; } #form-section .app-field { margin-bottom:15px; }
+	#form-section .app-field label i { font-size:12px; font-weight:normal; color:gray; }
 	#form-section .app-field textarea { height:100px; resize:none; }
+	#form-section .form-control { color:black; }
+	#form-section .form-control:focus { border-color:#49c3b1; -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(73,195,177,0.6); box-shadow:inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(73,195,177,0.6); }
 	#form-section input[type=submit] { width:250px; font-weight:bold; }
 	#form-section input[type=file] { width:0.1px; height:0.1px; opacity:0; overflow:hidden; position:absolute; z-index:-1; }
 	#form-section .file-label img { width:25px; height:25px; margin:10px; cursor:pointer; }
@@ -63,37 +66,30 @@
 	});
 </script>
 <form method="POST" action="<?=$green_url?>" enctype="multipart/form-data">
-	<div class="row">
-		<div class="col-xs-6 text-left">
-			<h3 class="text-bold" style="margin:0px 0px 25px;">Apply for this job</h3>
-		</div>
-		<div class="col-xs-6 text-right">
-			<b style="float:right;"><span class="text-red">*</span>&nbsp;Required</b>
-		</div>
-	</div>
+	<h3 class="text-bold" style="margin:0px 0px 25px;">Apply for this job</h3>
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 app-field">
-			<label>First Name <span class="text-red">*</span></label>
+			<label>First Name</label>
 			<input type="text" class="form-control" required>
 		</div>
 		<div class="col-xs-12 col-sm-6 app-field">
-			<label>Last Name <span class="text-red">*</span></label>
+			<label>Last Name</label>
 			<input type="text" class="form-control" required>
 		</div>
 		<div class="col-xs-12 col-sm-6 app-field">
-			<label>Email <span class="text-red">*</span></label>
+			<label>Email</label>
 			<input type="email" class="form-control" required>
 		</div>
 		<div class="col-xs-12 col-sm-6 app-field">
-			<label>Phone <?=($phone["required"] ? "<span class=\"text-red\">*</span>" : "")?></label>
+			<label>Phone <?=($phone["required"] ? "" : "&nbsp;&nbsp;<i>Optional</i>")?></label>
 			<input type="text" class="form-control" <?=($phone["required"] ? "required" : "")?>>
 		</div>
 		<div class="col-xs-12 app-field">
-			<label>LinkedIn Profile <?=($linkedin["required"] ? "<span class=\"text-red\">*</span>" : "")?></label>
+			<label>LinkedIn Profile <?=($linkedin["required"] ? "" : "&nbsp;&nbsp;<i>Optional</i>")?></label>
 			<input type="text" class="form-control" <?=($linkedin["required"] ? "required" : "")?>>
 		</div>
 		<div class="col-xs-12 col-sm-6 app-field">
-			<label>Resume / CV <?=($resume["required"] ? "<span class=\"text-red\">*</span>" : "")?></label><br>
+			<label>Resume / CV <?=($resume["required"] ? "" : "&nbsp;&nbsp;<i>Optional</i>")?></label><br>
 			<span class="file-option">
 				<!-- FILE ATTACHMENT -->
 				<input type="file" name="file-cv" id="file-cv" accept=".pdf, .doc, .docx, .txt, .rtf">
@@ -115,7 +111,7 @@
 			</span>
 		</div>
 		<div class="col-xs-12 col-sm-6 app-field">
-			<label>Cover Letter <?=($cover["required"] ? "<span class=\"text-red\">*</span>" : "")?></label><br>
+			<label>Cover Letter <?=($cover["required"] ? "" : "&nbsp;&nbsp;<i>Optional</i>")?></label><br>
 			<span class="file-option">
 				<!-- FILE ATTACHMENT -->
 				<input type="file" name="file-cover" id="file-cover" accept=".pdf, .doc, .docx, .txt, .rtf">
@@ -141,7 +137,7 @@
 	<div class="row">
 		<?php foreach( $form as $field ) { if( in_array(strtolower($field["label"]), $main_fields) ) continue; ?>
 			<?php if( $field["type"]=="single_select" ) { ?><div class="col-xs-12 col-sm-6 app-field"><?php } else { ?><div class="col-xs-12 app-field"><?php } ?>
-				<label><?=$field["label"]?> <?=($field["required"] ? "<span class=\"text-red\">*</span>" : "")?></label>
+				<label><?=$field["label"]?> <?=($field["required"] ? "" : "&nbsp;&nbsp;<i>Optional</i>")?></label>
 				<?php if( $field["type"]=="single_select" ) { ?>
 					<select class="form-control" <?=($field["required"] ? "required" : "")?>>
 						<option value="">Please select</option>
