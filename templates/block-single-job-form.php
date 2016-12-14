@@ -14,14 +14,48 @@
 	#form-section input[type=submit] { width:250px; font-weight:bold; }
 	#form-section input[type=file] { width:0.1px; height:0.1px; opacity:0; overflow:hidden; position:absolute; z-index:-1; }
 	#form-section .file-label img { width:25px; height:25px; margin:10px; cursor:pointer; }
+	#form-section [id^=filename] { display:none; cursor:default; }
+	#form-section .attach-icon { width:18px; height:18px; position:relative; top:-2px; }
+	#form-section .file-clear { font-size:24px; line-height:18px; font-weight:bold; color:#49c3b1; position:relative; top:2px; right:5px; float:right; cursor:pointer; }
 </style>
 <script type="text/javascript">
 	jQuery(function() {
 		jQuery("[data-toggle=tooltip]").tooltip();
+
+		jQuery(".file-option input[type=file]").change(function(event) {
+			var field_id = jQuery(event.target).attr("id").replace("file-", "");
+			if( jQuery(event.target)[0].files.length!=1 ) {
+				jQuery("#filename-" + field_id + " .file-clear").click(); return;
+			}
+
+			var filename = jQuery(event.target)[0].files[0].name;
+			if( !/\.(pdf|doc|docx|txt|rtf)$/.test(filename) ) {
+				alert("Invalid file format selected!\n\nAllowed formats are: pdf, doc, docx, txt, rtf");
+				jQuery("#filename-" + field_id + " .file-clear").click(); return;
+			}
+
+			jQuery(event.target).parents(".app-field").find(".file-option").hide();
+			jQuery("label[for=file-" + field_id + "]").hide();
+			jQuery(event.target).parents(".file-option").show();
+			jQuery("#filename-" + field_id + " .filename").html( filename );
+			jQuery("#filename-" + field_id).show();
+		});
+
+		jQuery(".file-clear").click(function(event) {
+			var field_id = jQuery(event.target).parents(".file-option").find("input").attr("id").replace("file-", "");
+			jQuery("#file-" + field_id).wrap("<form>").closest("form").get(0).reset(); jQuery("#file-" + field_id).unwrap();
+
+			jQuery("#filename-" + field_id).hide();
+			jQuery("label[for=file-" + field_id + "]").show();
+			jQuery(event.target).parents(".app-field").find(".file-option").show();
+
+			event.stopPropagation(); event.preventDefault();
+		});
+
 		jQuery(".paste-option").click(function(event) {
 			var field = jQuery(event.target).parents(".file-option").find("textarea");
 			if( field.css("display")==="none" ) {
-				field.show(250);
+				field.show(250, function() { field.focus(); });
 			} else {
 				field.hide(250);
 			}
@@ -62,10 +96,15 @@
 			<label>Resume / CV <?=($resume["required"] ? "<span class=\"text-red\">*</span>" : "")?></label><br>
 			<span class="file-option">
 				<!-- FILE ATTACHMENT -->
-				<input type="file" name="file-cv" id="file-cv">
+				<input type="file" name="file-cv" id="file-cv" accept=".pdf, .doc, .docx, .txt, .rtf">
 				<label for="file-cv" class="file-label" data-toggle="tooltip" data-placement="bottom" title="Attach">
-					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-attach.png">
+					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-attach.png" class="attach-option">
 				</label>
+				<span id="filename-cv">
+					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-attach.png" class="attach-icon">&nbsp;
+					<span class="filename"></span>&nbsp;
+					<span class="file-clear">&times;</span>
+				</span>
 			</span>
 			<span class="file-option">
 				<!-- PASTE ATTACHMENT -->
@@ -79,10 +118,15 @@
 			<label>Cover Letter <?=($cover["required"] ? "<span class=\"text-red\">*</span>" : "")?></label><br>
 			<span class="file-option">
 				<!-- FILE ATTACHMENT -->
-				<input type="file" name="file-cover" id="file-cover">
+				<input type="file" name="file-cover" id="file-cover" accept=".pdf, .doc, .docx, .txt, .rtf">
 				<label for="file-cover" class="file-label" data-toggle="tooltip" data-placement="bottom" title="Attach">
-					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-attach.png">
+					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-attach.png" class="attach-option">
 				</label>
+				<span id="filename-cover">
+					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-attach.png" class="attach-icon">&nbsp;
+					<span class="filename"></span>&nbsp;
+					<span class="file-clear">&times;</span>
+				</span>
 			</span>
 			<span class="file-option">
 				<!-- PASTE ATTACHMENT -->
