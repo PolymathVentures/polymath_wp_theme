@@ -27,13 +27,20 @@ include(locate_template("templates/element-matrix-filter.php"));
 <div class="post-list mixitup-container row" data-start-filter="<?=($_GET['start_filter'] ? '.'.$_GET['start_filter'] : 'all')?>">
 
 <?php foreach( $jobs as $job ): ?>
-  <div class="col-md-3 mix col-sm-6 col-xs-12 post-list-item adjust-height calc-height margin-bottom <?=$job['departments'][0]['id']?> <?=$ventures[$job['offices'][0]['name']]?>" data-height-group="jobs">
+  <?php
+    if( substr(strtolower($job["offices"][0]["name"]), 0, strlen("polymath")) === "polymath" ) {
+      $venture_name = "Polymath";
+    } else {
+      $venture_name = $job["offices"][0]["name"];
+    }
+  ?>
+  <div class="col-md-3 mix col-sm-6 col-xs-12 post-list-item adjust-height calc-height margin-bottom <?=$job['departments'][0]['id']?> <?=$ventures[$venture_name]?>" data-height-group="jobs">
     <div class="white">
       <a href="<?=get_job_url($job)?>" class="text-dark">
-        <div class="venture-logo" style="border-bottom: 4px solid <?php the_field('brand_color', $ventures[$job['offices'][0]['name']]);?>;">
-          <img src="<?=get_field('logo', $ventures[$job['offices'][0]['name']])['sizes']['post_list_thumb']?>"
-            width="<?=get_field('logo', $ventures[$job['offices'][0]['name']])['sizes']['post_list_thumb-width']?>"
-            height="<?=get_field('logo', $ventures[$job['offices'][0]['name']])['sizes']['post_list_thumb-height']?>">
+        <div class="venture-logo" style="border-bottom: 4px solid <?php the_field('brand_color', $ventures[$venture_name]);?>;">
+          <img src="<?=get_field('logo', $ventures[$venture_name])['sizes']['post_list_thumb']?>"
+          width="<?=get_field('logo', $ventures[$venture_name])['sizes']['post_list_thumb-width']?>"
+          height="<?=get_field('logo', $ventures[$venture_name])['sizes']['post_list_thumb-height']?>">
           <div class="blog-post-more-button"><span class="plus text-center">+</span></div>
         </div>
         <article class="content-padding-wrapper">

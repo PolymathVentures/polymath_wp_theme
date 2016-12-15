@@ -8,9 +8,9 @@ function greenhouse_jobs() {
   usort($jobs, function($a, $b) {
     if( $a["offices"][0]["name"]==$b["offices"][0]["name"] )
       return strcmp($a["title"], $b["title"]);
-    if( $a["offices"][0]["name"]=="Polymath" )
+    if( substr(strtolower($a["offices"][0]["name"]), 0, strlen("polymath")) === "polymath" )
       return -1;
-    if( $b["offices"][0]["name"]=="Polymath" )
+    if( substr(strtolower($b["offices"][0]["name"]), 0, strlen("polymath")) === "polymath" )
       return 1;
     return strcmp($a["offices"][0]["name"], $b["offices"][0]["name"]);
   });

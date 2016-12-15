@@ -4,8 +4,14 @@ $job = get_greenhouse_job( $wp_query->query_vars['job_id'] );
 $job['content'] = str_replace('<strong>', '<h3>', $job['content']);
 $job['content'] = str_replace('</strong>', '</h3>', $job['content']);
 
+if( substr(strtolower($job["offices"][0]["name"]), 0, strlen("polymath")) === "polymath" ) {
+	$venture_name = "Polymath";
+} else {
+	$venture_name = $job["offices"][0]["name"];
+}
+
 $args = array(
-	'name'           => $job['offices'][0]['name'],
+	'name'           => $venture_name,
 	'posts_per_page' => 1,
 	'post_type'      => 'ventures',
 	'post_status'    => array('publish', 'pending'),
@@ -44,7 +50,7 @@ $params = array(
 							<?php echo $job['title']; ?>
 						</h2>
 						<h3>
-							<?php echo $venture['post_title']; ?><br/>
+							<?php echo $job["offices"][0]["name"]; ?><br/>
 							<span class="small"><?=$job['location']['name']?></span>
 						</h3>
 					</div>
