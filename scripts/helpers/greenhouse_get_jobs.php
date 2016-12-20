@@ -1,11 +1,9 @@
 <?php
-$JB_URL = "https://api.greenhouse.io/v1/boards/polymathventures";
-$HV_URL = "https://harvest.greenhouse.io/v1";
-$HV_TKN = "dae0b039e8d803e0ff1ccf222fbab861-1";
+$GH_URL = "https://api.greenhouse.io/v1/boards/polymathventures";
 
 function greenhouse_jobs() {
-  global $JB_URL, $HV_URL, $HV_TKN;
-  $curl = curl_init( $JB_URL."/jobs?content=true" );
+  global $GH_URL;
+  $curl = curl_init( $GH_URL."/jobs?content=true" );
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
   $resp = curl_exec( $curl ); curl_close( $curl );
   $jobs = json_decode($resp, true)["jobs"];
@@ -47,22 +45,11 @@ function get_greenhouse_job( $id ) {
 }
 
 function get_greenhouse_form( $id ) {
-  global $JB_URL, $HV_URL, $HV_TKN;
-
-  // GET JOB INTERNAL ID
-  $curl = curl_init( $JB_URL."/jobs/".$id );
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  $resp  = curl_exec( $curl ); curl_close( $curl );
-  
-  $jobid = json_decode($resp, true)["internal_job_id"];
-
-  // GET JOB FORM QUESTIONS
-  $curl = curl_init( $HV_URL."/jobs/".$jobid."/job_posts");
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_USERPWD, $HV_TKN.":");
-  $resp  = curl_exec( $curl ); curl_close( $curl );
-
-  return json_decode($resp, true)[0]["questions"];
+  global $GH_URL;
+  $curl = curl_init( $GH_URL."/jobs/".$id."?questions=true" );
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
+  $resp = curl_exec( $curl ); curl_close( $curl );
+  return json_decode($resp, true)["questions"];
 }
 
 function greenhouse_rewrite_templates() {

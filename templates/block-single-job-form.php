@@ -1,11 +1,11 @@
 <?php
 	$form     = get_greenhouse_form( $wp_query->query_vars['job_id'] );
 	$phone    = array_values(array_filter($form, function($field) { return strcasecmp($field["label"], "Phone")===0; }))[0];
-	$resume   = array_values(array_filter($form, function($field) { return strcasecmp($field["label"], "Resume")===0; }))[0];
+	$resume   = array_values(array_filter($form, function($field) { return strcasecmp($field["label"], "Resume/CV")===0; }))[0];
 	$cover    = array_values(array_filter($form, function($field) { return strcasecmp($field["label"], "Cover Letter")===0; }))[0];
 	$linkedin = array_values(array_filter($form, function($field) { return strcasecmp($field["label"], "LinkedIn Profile")===0; }))[0];
 
-	$main_fields = ["first name", "last name", "email", "phone", "linkedin profile", "resume", "cover letter"];
+	$main_fields = ["first name", "last name", "email", "phone", "linkedin profile", "resume/cv", "cover letter"];
 ?>
 
 <style type="text/css">
@@ -135,19 +135,25 @@
 	</div>
 	<hr>
 	<div class="row">
-		<?php foreach( $form as $field ) { if( in_array(strtolower($field["label"]), $main_fields) ) continue; ?>
-			<?php if( $field["type"]=="single_select" ) { ?><div class="col-xs-12 col-sm-6 app-field"><?php } else { ?><div class="col-xs-12 app-field"><?php } ?>
+		<?php foreach( $form as $field ) { ?>
+			<?php if( in_array(strtolower($field["label"]), $main_fields) ) continue; ?>
+			<?php
+				if( $field["fields"][0]["type"]=="multi_value_single_select" ) { ?>
+					<div class="col-xs-12 col-sm-6 app-field">
+				<?php } else { ?>
+					<div class="col-xs-12 app-field">
+				<?php } ?>
 				<label><?=$field["label"]?> <?=($field["required"] ? "" : "&nbsp;&nbsp;<i>Optional</i>")?></label>
-				<?php if( $field["type"]=="single_select" ) { ?>
+				<?php if( $field["fields"][0]["type"]=="multi_value_single_select" ) { ?>
 					<select class="form-control" <?=($field["required"] ? "required" : "")?>>
 						<option value="">Please select</option>
-						<?php foreach( $field["values"] as $option ) { ?>
+						<?php foreach( $field["fields"][0]["values"] as $option ) { ?>
 							<option value="<?=$option["value"]?>"><?=$option["label"]?></option>
 						<?php } ?>
 					</select>
-				<?php } else if( $field["type"]=="long_text" ) { ?>
+				<?php } else if( $field["fields"][0]["type"]=="textarea" ) { ?>
 					<textarea class="form-control" <?=($field["required"] ? "required" : "")?>></textarea>
-				<?php } else if( $field["type"]=="short_text" ) { ?>
+				<?php } else if( $field["fields"][0]["type"]=="input_text" ) { ?>
 					<input type="text" class="form-control" <?=($field["required"] ? "required" : "")?>>
 				<?php } ?>
 			</div>
