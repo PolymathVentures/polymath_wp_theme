@@ -70,29 +70,29 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 app-field">
 			<label>First Name</label>
-			<input type="text" class="form-control" required>
+			<input type="text" name="first_name" class="form-control" required>
 		</div>
 		<div class="col-xs-12 col-sm-6 app-field">
 			<label>Last Name</label>
-			<input type="text" class="form-control" required>
+			<input type="text" name="last_name" class="form-control" required>
 		</div>
 		<div class="col-xs-12 col-sm-6 app-field">
 			<label>Email</label>
-			<input type="email" class="form-control" required>
+			<input type="email" name="email" class="form-control" required>
 		</div>
 		<div class="col-xs-12 col-sm-6 app-field">
 			<label>Phone <?=($phone["required"] ? "" : "&nbsp;&nbsp;<i>Optional</i>")?></label>
-			<input type="text" class="form-control" <?=($phone["required"] ? "required" : "")?>>
+			<input type="text" name="phone" class="form-control" <?=($phone["required"] ? "required" : "")?>>
 		</div>
 		<div class="col-xs-12 app-field">
 			<label>LinkedIn Profile <?=($linkedin["required"] ? "" : "&nbsp;&nbsp;<i>Optional</i>")?></label>
-			<input type="text" class="form-control" <?=($linkedin["required"] ? "required" : "")?>>
+			<input type="text" name="<?=$linkedin["fields"][0]["name"]?>" class="form-control" <?=($linkedin["required"] ? "required" : "")?>>
 		</div>
 		<div class="col-xs-12 col-sm-6 app-field">
 			<label>Resume / CV <?=($resume["required"] ? "" : "&nbsp;&nbsp;<i>Optional</i>")?></label><br>
 			<span class="file-option">
 				<!-- FILE ATTACHMENT -->
-				<input type="file" name="file-cv" id="file-cv" accept=".pdf, .doc, .docx, .txt, .rtf">
+				<input type="file" name="resume" id="file-cv" accept=".pdf, .doc, .docx, .txt, .rtf">
 				<label for="file-cv" class="file-label" data-toggle="tooltip" data-placement="bottom" title="Attach">
 					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-attach.png" class="attach-option">
 				</label>
@@ -107,14 +107,14 @@
 				<label class="file-label" data-toggle="tooltip" data-placement="bottom" title="Paste">
 					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-paste.png" class="paste-option">
 				</label>
-				<textarea class="form-control" style="display:none;"></textarea>
+				<textarea name="resume_text" class="form-control" style="display:none;"></textarea>
 			</span>
 		</div>
 		<div class="col-xs-12 col-sm-6 app-field">
 			<label>Cover Letter <?=($cover["required"] ? "" : "&nbsp;&nbsp;<i>Optional</i>")?></label><br>
 			<span class="file-option">
 				<!-- FILE ATTACHMENT -->
-				<input type="file" name="file-cover" id="file-cover" accept=".pdf, .doc, .docx, .txt, .rtf">
+				<input type="file" name="cover_letter" id="file-cover" accept=".pdf, .doc, .docx, .txt, .rtf">
 				<label for="file-cover" class="file-label" data-toggle="tooltip" data-placement="bottom" title="Attach">
 					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-attach.png" class="attach-option">
 				</label>
@@ -129,7 +129,7 @@
 				<label class="file-label" data-toggle="tooltip" data-placement="bottom" title="Paste">
 					<img src="<?php echo get_template_directory_uri(); ?>/dist/images/file-paste.png" class="paste-option">
 				</label>
-				<textarea class="form-control" style="display:none;"></textarea>
+				<textarea name="cover_letter_text" class="form-control" style="display:none;"></textarea>
 			</span>
 		</div>
 	</div>
@@ -145,16 +145,16 @@
 				<?php } ?>
 				<label><?=$field["label"]?> <?=($field["required"] ? "" : "&nbsp;&nbsp;<i>Optional</i>")?></label>
 				<?php if( $field["fields"][0]["type"]=="multi_value_single_select" ) { ?>
-					<select class="form-control" <?=($field["required"] ? "required" : "")?>>
+					<select name="<?=$field["fields"][0]["name"]?>" class="form-control" <?=($field["required"] ? "required" : "")?>>
 						<option value="">Please select</option>
 						<?php foreach( $field["fields"][0]["values"] as $option ) { ?>
 							<option value="<?=$option["value"]?>"><?=$option["label"]?></option>
 						<?php } ?>
 					</select>
 				<?php } else if( $field["fields"][0]["type"]=="textarea" ) { ?>
-					<textarea class="form-control" <?=($field["required"] ? "required" : "")?>></textarea>
+					<textarea name="<?=$field["fields"][0]["name"]?>" class="form-control" <?=($field["required"] ? "required" : "")?>></textarea>
 				<?php } else if( $field["fields"][0]["type"]=="input_text" ) { ?>
-					<input type="text" class="form-control" <?=($field["required"] ? "required" : "")?>>
+					<input type="text" name="<?=$field["fields"][0]["name"]?>" class="form-control" <?=($field["required"] ? "required" : "")?>>
 				<?php } ?>
 			</div>
 		<?php } ?>
