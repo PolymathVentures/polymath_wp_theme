@@ -13,8 +13,8 @@
 	#form-section .app-field label i { font-size:12px; font-weight:normal; color:gray; }
 	#form-section .app-field textarea { height:100px; resize:none; }
 	#form-section .form-control { color:black; }
-	#form-section .form-control:focus { border-color:#49c3b1; -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(73,195,177,0.6); box-shadow:inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(73,195,177,0.6); }
-	#form-section input[type=submit] { width:250px; font-weight:bold; }
+	#form-section .app-field:not(.has-error) .form-control:focus { border-color:#49c3b1; -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(73,195,177,0.6); box-shadow:inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(73,195,177,0.6); }
+	#form-section #btn-submit { width:250px; font-weight:bold; }
 	#form-section input[type=file] { width:0.1px; height:0.1px; opacity:0; overflow:hidden; position:absolute; z-index:-1; }
 	#form-section .file-label img { width:25px; height:25px; margin:10px; cursor:pointer; }
 	#form-section [id^=filename] { display:none; cursor:default; }
@@ -63,9 +63,21 @@
 				field.hide(250);
 			}
 		});
+
+		jQuery("#application-form #btn-submit").click(function(event) {
+			var invalid = false;
+			jQuery("#application-form").find("input[required], textarea[required], select[required]").each(function(idx, element) {
+				if( !jQuery(element).val() ) {
+					jQuery(element).parents(".app-field").addClass("has-error");
+					if( !invalid ) jQuery(element).focus();
+					invalid = true;
+				}
+			});
+			if( invalid ) { event.preventDefault(); return; }
+		});
 	});
 </script>
-<form method="POST" action="//scripts.polymathv.com/apply" enctype="multipart/form-data">
+<form id="application-form" method="POST" action="//scripts.polymathv.com/apply" enctype="multipart/form-data">
 	<input type="hidden" name="jobid" value="<?=$wp_query->query_vars['job_id']?>">
 	<h3 class="text-bold" style="margin:0px 0px 25px;">Apply for this job</h3>
 	<div class="row">
@@ -162,7 +174,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12 text-right" style="margin-top:25px;">
-			<input type="submit" class="btn btn-danger" value="SUBMIT APPLICATION">
+			<button class="btn btn-danger" id="btn-submit">SUBMIT APPLICATION</button>
 		</div>
 	</div>
 </form>
