@@ -1,6 +1,9 @@
 <?php
+$GH_URL = "https://api.greenhouse.io/v1/boards/polymathventures";
+
 function greenhouse_jobs() {
-  $curl = curl_init("https://api.greenhouse.io/v1/boards/polymathventures/jobs?content=true");
+  global $GH_URL;
+  $curl = curl_init( $GH_URL."/jobs?content=true" );
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
   $resp = curl_exec( $curl ); curl_close( $curl );
   $jobs = json_decode($resp, true)["jobs"];
@@ -39,6 +42,14 @@ function get_greenhouse_job( $id ) {
       return $job;
     }
   }
+}
+
+function get_greenhouse_form( $id ) {
+  global $GH_URL;
+  $curl = curl_init( $GH_URL."/jobs/".$id."?questions=true" );
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
+  $resp = curl_exec( $curl ); curl_close( $curl );
+  return json_decode($resp, true)["questions"];
 }
 
 function greenhouse_rewrite_templates() {
