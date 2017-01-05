@@ -9,17 +9,44 @@
 ?>
 
 <style type="text/css">
-	#form-section hr { margin-top:0px; } #form-section .app-field { margin-bottom:15px; }
-	#form-section .app-field label i { font-size:12px; font-weight:normal; color:gray; }
-	#form-section .app-field textarea { height:100px; resize:none; }
-	#form-section .form-control { color:black; }
-	#form-section .app-field:not(.has-error) .form-control:focus { border-color:#49c3b1; -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(73,195,177,0.6); box-shadow:inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(73,195,177,0.6); }
-	#form-section #btn-submit { width:250px; font-weight:bold; }
-	#form-section input[type=file] { width:0.1px; height:0.1px; opacity:0; overflow:hidden; position:absolute; z-index:-1; }
-	#form-section .file-label img { width:25px; height:25px; margin:10px; cursor:pointer; }
-	#form-section [id^=filename] { display:none; cursor:default; }
-	#form-section .attach-icon { width:18px; height:18px; position:relative; top:-2px; }
-	#form-section .file-clear { font-size:24px; line-height:18px; font-weight:bold; color:#49c3b1; position:relative; top:2px; right:5px; float:right; cursor:pointer; }
+	#form-section hr {
+		margin-top:0px;
+	}
+	#form-section .app-field {
+		margin-bottom:15px;
+	}
+	#form-section .app-field label i {
+		font-size:12px; font-weight:normal; color:gray;
+	}
+	#form-section .app-field textarea {
+		height:100px; resize:none;
+	}
+	#form-section .form-control {
+		color:black;
+	}
+	#form-section .app-field:not(.has-error) .form-control:focus {
+		border-color:#49c3b1;
+		box-shadow:inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(73,195,177,0.6);
+		-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(73,195,177,0.6);
+		}
+	#form-section #btn-submit {
+		width:250px; font-weight:bold;
+	}
+	#form-section input[type=file] {
+		width:0.1px; height:0.1px; opacity:0; overflow:hidden; position:absolute; z-index:-1;
+	}
+	#form-section .file-label img {
+		width:25px; height:25px; margin:10px; cursor:pointer;
+	}
+	#form-section [id^=filename] {
+		display:none; cursor:default;
+	}
+	#form-section .attach-icon {
+		width:18px; height:18px; position:relative; top:-2px;
+	}
+	#form-section .file-clear {
+		font-size:24px; line-height:18px; font-weight:bold; color:#49c3b1; position:relative; top:2px; right:5px; float:right; cursor:pointer;
+	}
 </style>
 <script type="text/javascript">
 	jQuery(function() {
@@ -65,7 +92,7 @@
 		});
 
 		jQuery("#application-form #btn-submit").click(function(event) {
-			var invalid = false;
+			var invalid = false; jQuery(".app-field").removeClass("has-error");
 			jQuery("#application-form").find("input[required], textarea[required], select[required]").each(function(idx, element) {
 				if( !jQuery(element).val() ) {
 					jQuery(element).parents(".app-field").addClass("has-error");
