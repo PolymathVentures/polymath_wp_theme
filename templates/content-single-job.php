@@ -118,43 +118,6 @@ $params = array(
 	</div>
 </div>
 
-<div class="white">
-	<div class="container text-center">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="block-content">
-					<h2 class="text-bold text-center"><?php echo $venture['post_title']; ?> management team</h2>
-					<div class="extra-padding-vertical">
-						<?php
-							$params = array(
-								'type' => 'team',
-								'category' => get_post($venture['ID']),
-								'role' => (object) array('taxonomy' => 'job_role', 'term_id' => '19'),
-								'arrows' => true,
-								'arrow_background_color' => 'dark-blue text-white',
-								'slides_in_view' => 4,
-								'height' => 350,
-								'caption_background_color' => 'none text-white',
-								'people' => $venture['people']
-							);
-						?>
-						<?php include(locate_template('templates/block-slider.php')); ?>
-
-						<div class="block-content">
-							<h2 class="text-bold text-center">Come work with us!</h2><br/><br/>
-							<a class="btn btn-danger" target="_blank"
-								onclick="__gaTracker('send', 'event', 'outbound-article', '<?php echo $green_url; ?>', '<?php echo $job['title']; ?>');"
-								href="javascript:scroll_to_form();">
-								Apply
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
 <script type="text/javascript">
 	jQuery(function() {
 		jQuery(window).scroll(function() {
