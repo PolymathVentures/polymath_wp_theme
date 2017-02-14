@@ -55,7 +55,7 @@ function load_select_options( $field ) {
 }
 add_filter('acf/load_field', 'load_select_options');
 
-
+/*
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
@@ -4688,3 +4688,4 @@ acf_add_local_field_group(array (
 ));
 
 endif;
+/**/
