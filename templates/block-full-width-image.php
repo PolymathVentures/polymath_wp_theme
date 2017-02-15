@@ -7,7 +7,7 @@
                 <div class="<?php echo $params['alignment']; ?>">
                     <div class="extra-padding-horizontal extra-padding-vertical">
                         <?php if($params['title']): ?>
-                            <h1 class="<?php echo $params['title_text_size']; ?> extra-letter-spacing"><?php echo $params['title']; ?></h1>
+                            <h1 class="<?php echo $params['title_size']; ?> extra-letter-spacing"><?php echo $params['title']; ?></h1>
                         <?php endif; ?>
 
                         <?php if($params['text']): ?>
