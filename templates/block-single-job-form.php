@@ -50,8 +50,16 @@
 </style>
 <script type="text/javascript">
 	jQuery(function() {
+		if( /#(.*)$/.test(window.location.href) ) {
+			var utm   = window.location.href.match(/#(.*)$/)[1];
+			var input = "<input type=\"hidden\" name=\"mapped_url_token\" value=\"" + utm + "\">";
+			jQuery("#application-form").prepend( input );
+		}
+
+		// File fields tooltips
 		jQuery("[data-toggle=tooltip]").tooltip();
 
+		// File fields change event
 		jQuery(".file-option input[type=file]").change(function(event) {
 			var field_id = jQuery(event.target).attr("id").replace("file-", "");
 			if( jQuery(event.target)[0].files.length!=1 ) {
@@ -71,6 +79,7 @@
 			jQuery("#filename-" + field_id).show();
 		});
 
+		// File fields clear event
 		jQuery(".file-clear").click(function(event) {
 			var field_id = jQuery(event.target).parents(".file-option").find("input").attr("id").replace("file-", "");
 			jQuery("#file-" + field_id).wrap("<form>").closest("form").get(0).reset(); jQuery("#file-" + field_id).unwrap();
@@ -82,6 +91,7 @@
 			event.stopPropagation(); event.preventDefault();
 		});
 
+		// File fields paste event
 		jQuery(".paste-option").click(function(event) {
 			var field = jQuery(event.target).parents(".file-option").find("textarea");
 			if( field.css("display")==="none" ) {
@@ -91,6 +101,7 @@
 			}
 		});
 
+		// Form submit event
 		jQuery("#application-form #btn-submit").click(function(event) {
 			var invalid = false; jQuery(".app-field").removeClass("has-error");
 			jQuery("#application-form").find("input[required], textarea[required], select[required]").each(function(idx, element) {

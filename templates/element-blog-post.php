@@ -5,7 +5,8 @@
             <?php get_template_part('templates/entry-meta'); ?>
             <hr/>
             <div class="blog-image responsive-bg"
-                 data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'>
+                 data-bg-json='<?php echo json_encode(format_attachment_sizes_array(get_post_thumbnail_id())); ?>'
+                 style="height:300px !important;">
             </div>
             <br/>
             <br/>

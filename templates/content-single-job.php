@@ -6,6 +6,8 @@ $job['content'] = str_replace('</strong>', '</h3>', $job['content']);
 
 if( substr(strtolower($job["offices"][0]["name"]), 0, strlen("polymath")) === "polymath" ) {
 	$venture_name = "Polymath";
+} else if( $job["offices"][0]["name"]==="Táximo" ) {
+	$venture_name = "Taximo";
 } else {
 	$venture_name = $job["offices"][0]["name"];
 }
