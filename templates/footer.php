@@ -1,4 +1,8 @@
 <footer class="content-info purple text-center">
+  <style type="text/css">
+    @media (min-width: 768px) { footer .text-2 { border-right: 1px solid; } }
+    footer .text-2 { height:300px; }
+  </style>
   <div class="container">
       <div class="extra-padding-vertical">
         <?php dynamic_sidebar('sidebar-footer'); ?>

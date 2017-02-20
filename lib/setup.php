@@ -73,7 +73,7 @@ function widgets_init() {
   register_sidebar([
     'name'          => __('Footer', 'sage'),
     'id'            => 'sidebar-footer',
-    'before_widget' => '<section class="widget %1$s %2$s col-sm-4 extra-padding-horizontal">',
+    'before_widget' => '<section class="widget %1$s %2$s col-sm-3 extra-padding-horizontal">',
     'after_widget'  => '</section>',
     'before_title'  => '<h5 class="text-bold">',
     'after_title'   => '</h5>'
