@@ -3,7 +3,7 @@
 <?php foreach ( $jobs as $job ): ?>
 
 <li>
-	<a href="<?=get_job_url($job)?>">
+	<a href="//polymathv.com/join-us/<?=$job['id']?>/<?=urlencode($job['title'])?>">
 		<?=$job['title']?> - <?=$job['offices'][0]['name']?>
 	</a>
 </li>
