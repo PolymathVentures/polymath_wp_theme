@@ -2,7 +2,27 @@
 $jobs     = greenhouse_jobs();
 $result   = get_ventures();
 $ventures = get_greenhouse_venture_map($result);
+?>
 
+<?php
+$countries = []; $classes = [];
+foreach( $jobs as $job ) {
+	if( strpos($job["offices"][0]["name"], "México")!==false and !in_array("México", $countries) ) {
+		$countries[] = "México";
+		$classes[]   = "mexico";
+	} else if(  !in_array("Colombia", $countries) ) {
+		$countries[] = "Colombia";
+		$classes[]   = "colombia";
+	}
+}
+$items = array_combine($classes, $countries);
+$items["button_text"] = "Countries";
+include(locate_template("templates/element-matrix-filter.php"));
+?>
+
+<span class="custom-button">&middot;</span>
+
+<?
 $items    = $result->posts;
 $items[0]->button_text = "Venture";
 include(locate_template("templates/element-matrix-filter.php"));
@@ -33,8 +53,14 @@ include(locate_template("templates/element-matrix-filter.php"));
     } else {
       $venture_name = $job["offices"][0]["name"];
     }
+
+    if( strpos($job["offices"][0]["name"], "México")!==false ) {
+    	$country = "mexico";
+    } else {
+    	$country = "colombia";
+    }
   ?>
-  <div class="col-md-3 mix col-sm-6 col-xs-12 post-list-item adjust-height calc-height margin-bottom <?=$job['departments'][0]['id']?> <?=$ventures[$venture_name]?>" data-height-group="jobs">
+  <div class="col-md-3 mix col-sm-6 col-xs-12 post-list-item adjust-height calc-height margin-bottom <?=$job['departments'][0]['id']?> <?=$ventures[$venture_name]?> <?=$country?>" data-height-group="jobs">
     <div class="white">
       <a href="<?=get_job_url($job)?>" class="text-dark">
         <div class="venture-logo" style="border-bottom: 4px solid <?php the_field('brand_color', $ventures[$venture_name]);?>;">
