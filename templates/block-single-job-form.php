@@ -115,7 +115,7 @@
 		});
 	});
 </script>
-<form id="application-form" method="POST" action="//scripts.polymathv.com/apply" enctype="multipart/form-data">
+<form id="application-form" method="POST" action="//jobs.polymathv.com/apply.php" enctype="multipart/form-data">
 	<input type="hidden" name="jobid" value="<?=$wp_query->query_vars['job_id']?>">
 	<h3 class="text-bold" style="margin:0px 0px 25px;">Apply for this job</h3>
 	<div class="row">
