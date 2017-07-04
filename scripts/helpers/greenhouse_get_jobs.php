@@ -9,6 +9,14 @@ function greenhouse_jobs() {
   $jobs = json_decode($resp, true)["jobs"];
 
   usort($jobs, function($a, $b) {
+    if( substr(strtolower($a["title"]), 0, strlen("partner")) === "partner" )
+      return -1;
+    if( substr(strtolower($b["title"]), 0, strlen("partner")) === "partner" )
+      return 1;
+    if( substr(strtolower($a["title"]), 0, strlen("principal")) === "principal" )
+      return -1;
+    if( substr(strtolower($b["title"]), 0, strlen("principal")) === "principal" )
+      return 1;
     if( $a["offices"][0]["name"]==$b["offices"][0]["name"] )
       return strcmp($a["title"], $b["title"]);
     if( substr(strtolower($a["offices"][0]["name"]), 0, strlen("polymath")) === "polymath" )
