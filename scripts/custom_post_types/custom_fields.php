@@ -2756,10 +2756,6 @@ acf_add_local_field_group(array (
 					'min' => '',
 					'max' => '',
 				),
-
-
-
-
 				array (
 					'key' => "a0s9dfn1w9efh",
 					'name' => 'story_telling',
@@ -3148,10 +3144,6 @@ acf_add_local_field_group(array (
 					'min' => '',
 					'max' => '',
 				),
-
-
-
-
 				array (
 					'key' => '5762cacc8207f',
 					'name' => 'blog',
