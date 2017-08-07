@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-mc-newsletter" tabindex="-1" role="dialog" data-backdrop="false">
+<div class="modal fade" id="modal-mc-newsletter" tabindex="-1" role="dialog" data-backdrop="false" data-keyboard="false">
 	<style type="text/css">
 		.modal#modal-mc-newsletter {
 			text-align:center;
@@ -126,12 +126,19 @@
 				}
 			});
 			var timeout = 30;
-			if( mc_newsletter && mc_newsletter!=="infinite" && Date.now()>=mc_newsletter )
-				timeout = 1;
-			setTimeout(function() {
-				jQuery("html").css("overflow", "hidden");
-				jQuery(".modal#modal-mc-newsletter").modal();
-			}, timeout*1000);
+			if( mc_newsletter ) {
+				if( mc_newsletter!=="infinite" && Date.now()>=mc_newsletter ) {
+					timeout = 1;
+				} else {
+					timeout = null;
+				}
+			}
+			if( timeout ) {
+				setTimeout(function() {
+					jQuery("html").css("overflow", "hidden");
+					jQuery(".modal#modal-mc-newsletter").modal();
+				}, timeout*1000);
+			}
 
 			jQuery(".modal#modal-mc-newsletter .modal-dismiss").click(function() {
 				var d = new Date(); d.setTime(d.getTime() + 7*24*60*60*1000);
@@ -147,7 +154,7 @@
 
 				var URL = "http://scripts.polymathv.com/helpers/mailchimp.php?subscribe=newsletter";
 				jQuery.post(URL, {"email":EMAIL}, function(response) {
-					document.cookie = "mc_newsletter=" + Date.now() + ";expires=Tue, 19 Jan 2038 00:00:00 GMT;"
+					document.cookie = "mc_newsletter=infinite;expires=Tue, 01 Jan 2038 00:00:00 GMT;"
 					jQuery(".modal#modal-mc-newsletter").modal("hide");
 					jQuery("html").css("overflow", "");
 				});
