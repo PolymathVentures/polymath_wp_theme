@@ -221,8 +221,23 @@
 		<?php } ?>
 	</div>
 	<div class="row">
-		<div class="col-xs-12 text-right" style="margin-top:25px;">
-			<button class="btn btn-danger" id="btn-submit">SUBMIT APPLICATION</button>
+		<div class="col-xs-6 text-left" style="margin-top:25px; font-size:13.5px;">
+			<input type="checkbox" id="data-policy-checkbox">&nbsp;
+			Autorizo el tratamiento de mis datos personales,<br>
+			conforme a la <a href="//polymathv.com/datos-personales.pdf" target="_blank">Política de Tratamiento de Datos Personales</a>
+			<script type="text/javascript">
+				jQuery(function() {
+					jQuery("input#data-policy-checkbox").change(function() {
+						if( jQuery(this).is(":checked") )
+							jQuery("button#btn-submit").removeAttr("disabled");
+						else
+							jQuery("button#btn-submit").attr("disabled", "disabled");
+					});
+				});
+			</script>
+		</div>
+		<div class="col-xs-6 text-right" style="margin-top:25px;">
+			<button class="btn btn-danger" id="btn-submit" disabled>SUBMIT APPLICATION</button>
 		</div>
 	</div>
 </form>
