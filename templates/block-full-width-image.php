@@ -6,11 +6,15 @@
 			<div class="row">
 				<div class="<?php echo $params['alignment']; ?>">
 					<div class="extra-padding-horizontal extra-padding-vertical">
+						<?php if($params['text'] and $params['text_position']=='above'): ?>
+							<p class="big"><?php echo $params['text']; ?></p>
+						<?php endif; ?>
+
 						<?php if($params['title']): ?>
 							<h1 class="<?php echo $params['title_text_size']; ?> extra-letter-spacing"><?php echo $params['title']; ?></h1>
 						<?php endif; ?>
 
-						<?php if($params['text']): ?>
+						<?php if($params['text'] and $params['text_position']=='below'): ?>
 							<p class="big"><?php echo $params['text']; ?></p>
 						<?php endif; ?>
 
