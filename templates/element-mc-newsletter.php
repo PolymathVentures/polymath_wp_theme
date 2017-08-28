@@ -74,6 +74,9 @@
 			bottom:2.5vh;
 		}
 		@media(min-width:768px) {
+			.modal-dialog {
+				width:60%;
+			}
 			.modal#modal-mc-newsletter .modal-body {
 				padding:7.5vh 10vh;
 			}
@@ -85,7 +88,7 @@
 				border-bottom:1px solid #201b3d;
 			}
 			.modal#modal-mc-newsletter #mc-form input {
-				width:65%;
+				width:calc(65% - 0.5vh);
 				margin:0px;
 				text-align:left;
 				font-size:3vh;
@@ -135,6 +138,16 @@
 			}
 			if( timeout ) {
 				setTimeout(function() {
+					// Anonymize Google Analytics popup event
+					(function() {
+						(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+						(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+						m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+						})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+						ga("create", "UA-XXXXXXXX-Y", "auto"); ga("send", "event", "popup_show", "newsletter");
+					})();
+
 					jQuery("html").css("overflow", "hidden");
 					jQuery(".modal#modal-mc-newsletter").modal();
 				}, timeout*1000);
@@ -142,7 +155,7 @@
 
 			jQuery(".modal#modal-mc-newsletter .modal-dismiss").click(function() {
 				var d = new Date(); d.setTime(d.getTime() + 7*24*60*60*1000);
-				document.cookie = "mc_newsletter=" + d.getTime() + ";expires=" + d.toUTCString();
+				document.cookie = "mc_newsletter=" + d.getTime() + ";expires=" + d.toUTCString() + ";path=/";
 				jQuery(".modal#modal-mc-newsletter").modal("hide");
 				jQuery("html").css("overflow", "");
 			});
@@ -154,7 +167,7 @@
 
 				var URL = "http://scripts.polymathv.com/helpers/mailchimp.php?subscribe=newsletter";
 				jQuery.post(URL, {"email":EMAIL}, function(response) {
-					document.cookie = "mc_newsletter=infinite;expires=Tue, 01 Jan 2038 00:00:00 GMT;"
+					document.cookie = "mc_newsletter=infinite;expires=Tue, 01 Jan 2038 00:00:00 GMT;path=/";
 					jQuery(".modal#modal-mc-newsletter").modal("hide");
 					jQuery("html").css("overflow", "");
 				});
