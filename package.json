@@ -42,6 +42,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-rev": "^7.1.2",
+    "gulp-rsync": "0.0.8",
     "gulp-sass": "^2.0.1",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^2.0.0",

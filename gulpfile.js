@@ -297,3 +297,25 @@ gulp.task('wiredep', function() {
 gulp.task('default', ['clean'], function() {
   gulp.start('build');
 });
+
+// ### Deploy
+// `gulp deploy` - Deploy to GoDaddy with RSync, run after `gulp --production`
+gulp.task('deploy', function() {
+  var config = {
+    hostname: '',
+    username: '',
+    destination: '',
+    dryrun: argv.dryrun || false,
+    exclude: [
+      '/.git*', '/assets', '/bower_components', '/node_modules', '/vendor',
+      'composer.lock', 'npm-debug.log', 'package-lock.json'
+    ],
+    incremental: true,
+    archive: true,
+    compress: true,
+    recursive: true,
+    silent: false,
+  };
+  
+  return gulp.src('.').pipe(require('gulp-rsync')(config));
+});
