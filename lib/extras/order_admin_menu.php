@@ -5,10 +5,13 @@ namespace Roots\Sage\Extras;
 /**
  * Reorder the menu items in the WP Admin site
  *
+ * @param  mixed $menu_order
  * @return null
  */
-function custom_admin_menu_order($menu_ord) {
-  if( !$menu_ord )
+add_filter('custom_menu_order', __NAMESPACE__ . '\\custom_admin_menu_order');
+add_filter('menu_order', __NAMESPACE__ . '\\custom_admin_menu_order');
+function custom_admin_menu_order( $menu_order ) {
+  if( !$menu_order )
     return true;
 
   return [
@@ -26,15 +29,13 @@ function custom_admin_menu_order($menu_ord) {
     'separator-last',           // Last separator
   ];
 }
-add_filter('custom_menu_order', __NAMESPACE__ . '\\custom_admin_menu_order');
-add_filter('menu_order', __NAMESPACE__ . '\\custom_admin_menu_order');
 
 /**
  * Edit and remove menu items in the WP Admin site
  *
  * @return null
  */
+add_action('admin_menu', __NAMESPACE__ . '\\edit_admin_menu');
 function edit_admin_menu() {
   remove_menu_page('edit-comments.php');
 }
-add_action('admin_menu', __NAMESPACE__ . '\\edit_admin_menu');

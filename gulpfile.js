@@ -315,6 +315,7 @@ gulp.task('deploy', function() {
     compress: true,
     recursive: true,
     silent: false,
+    clean: true,
   };
   
   return gulp.src('.').pipe(require('gulp-rsync')(config));
