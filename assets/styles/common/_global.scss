@@ -1,1 +1,29 @@
+// Global styles
+* {
+    cursor: default;
+}
+a, a *,
+a:focus, a:focus *,
+a:hover, a:hover *,
+a:active, a:active * {
+    color: $pv-green;
+    text-decoration: none;
+    cursor: pointer;
+}
+input[type=text], input[type=password], textarea {
+    cursor: text;
+}
 
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    overflow: hidden;
+}
