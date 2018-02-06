@@ -17,7 +17,7 @@ function post_author_meta_box( $metaboxes ) {
     'title'      => esc_html__('Author', 'post_author_meta_box'),
     'post_types' => ['post'],
     'context'    => 'side',
-    'priority'   => 'high',
+    'priority'   => 'default',
     'autosave'   => false,
     'fields'     => [
       [

@@ -15,18 +15,21 @@ function custom_admin_menu_order( $menu_order ) {
     return true;
 
   return [
-    'index.php',                // Dashboard
-    'separator1',               // First separator
-    'edit.php?post_type=page',  // Pages
-    'edit.php',                 // Posts
-    'upload.php',               // Media
-    'separator2',               // Second separator
-    'themes.php',               // Appearance
-    'plugins.php',              // Plugins
-    'users.php',                // Users
-    'tools.php',                // Tools
-    'options-general.php',      // Settings
-    'separator-last',           // Last separator
+    'index.php',                       // Dashboard
+    'separator1',                      // First separator
+    'edit.php?post_type=page',         // Pages
+    'edit.php',                        // Posts
+    'edit.php?post_type=seeds',        // Seeds
+    'edit.php?post_type=ventures',     // Ventures
+    'edit.php?post_type=team-members', // Team members
+    'upload.php',                      // Media
+    'separator2',                      // Second separator
+    'themes.php',                      // Appearance
+    'plugins.php',                     // Plugins
+    'users.php',                       // Users
+    'tools.php',                       // Tools
+    'options-general.php',             // Settings
+    'separator-last',                  // Last separator
   ];
 }
 
