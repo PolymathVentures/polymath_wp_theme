@@ -17,7 +17,8 @@ $sage_includes = [
   'lib/wrapper.php',    // Theme wrapper class
   'lib/customizer.php', // Theme customizer
 
-  'lib/extras/move_post_excerpt_metabox.php'     // Move Post excerpt below Post title
+  'lib/extras/move_post_excerpt_metabox.php',    // Move Post excerpt below Post title
+  'lib/extras/order_admin_menu.php'              // Reorder the menu items in the WP Admin site
 ];
 
 foreach ($sage_includes as $file) {
