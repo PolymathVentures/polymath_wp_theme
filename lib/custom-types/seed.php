@@ -57,3 +57,33 @@ function register_seed_post_type() {
   ];
   register_post_type('seeds', $args);
 }
+
+/**
+ * Display the 'Year' column header
+ *
+ * @param  mixed $defaults
+ * @return string
+ */
+add_filter('manage_seeds_posts_columns', __NAMESPACE__ . '\\seed_columns_head');
+function seed_columns_head( $defaults ) {
+  unset($defaults['date']);
+  $defaults['year'] = 'Year';
+
+  $defaults['date'] = 'Date';
+  return $defaults;
+}
+
+/**
+ * Display the 'Year' column value
+ *
+ * @param  string $column
+ * @param  intenger $post_id
+ * @return string
+ */
+add_action('manage_seeds_posts_custom_column', __NAMESPACE__ . '\\seed_columns_content', 10, 2);
+function seed_columns_content( $column, $post_id ) {
+  if( $column=='year' ) {
+    $year = get_post_meta($post_id, 'seed_additional_info_year');
+    echo count($year)==1 ? $year[0] : "-";
+  }
+}
