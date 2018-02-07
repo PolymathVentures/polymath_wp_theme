@@ -23,3 +23,25 @@ foreach( $sage_includes as $file ) {
   require_once $filepath;
 }
 unset($file, $filepath);
+
+/**
+ * Remove plugin capabilities
+ *
+ * @return null
+ */
+add_action('init', 'remove_plugin_capabilities');
+function remove_plugin_capabilities() {
+  global $wp_roles;
+  $capabilities = [
+    'upload_plugins',
+    'delete_plugins',
+    'edit_plugins',
+    'install_plugins',
+  ];
+
+  foreach( array_keys($wp_roles->roles) as $role ) {
+    $role = get_role($role);
+    foreach( $capabilities as $cap )
+      $role->remove_cap($cap);
+  }
+}
