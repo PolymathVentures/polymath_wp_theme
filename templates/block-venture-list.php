@@ -15,11 +15,14 @@
 	<div class="post-list">
 	<?php $i = 0; while( $ventures->have_posts() ) : $ventures->the_post(); ?>
 		<?php if($current_id == get_the_ID()) continue; ?>
+		<?php if( get_the_title() == "Polymath" ) continue; ?>
 		<?php
 			if( isset($params) and isset($params["filter_by"]) ) {
 				if( $params["filter_by"]=="Active" and get_field("month_stopped")!=="" )
 					continue;
 				else if( $params["filter_by"]=="Stopped" and get_field("month_stopped")==="" )
+					continue;
+				else if( in_array(get_the_title(), explode(",", $params["exclude"])) )
 					continue;
 			}
 		?>

@@ -39,7 +39,19 @@ $params = array(
 ?>
 
 <?php include(locate_template('templates/block-full-width-image.php')); ?>
+<?php if( in_array($wp_query->query_vars['job_id'], [968389, 968394, 968358, 968396, 512126, 542353, 466943, 486156]) ) { ?>
+	<script type="text/javascript">
+		// Anonymize Google Analytics Goal #4
+		(function() {
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+			ga("create", "UA-81628194-1", "auto"); ga("send", "event", "founder_visit", "view");
+		})();
+	</script>
+<?php } ?>
 <div class="container">
 	<div class="row">
 		<div class="extra-padding-vertical">

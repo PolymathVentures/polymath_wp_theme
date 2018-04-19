@@ -1,6 +1,6 @@
 <div class="featured-image responsive-bg"
 	data-bg-json='<?php echo json_encode($params['background_image']['sizes']); ?>'
-	style="height:<?php echo $params['height']; ?>px;">
+	style="height:<?php echo $params['height']; ?>">
 	<div class="featured-image-inner <?php echo $params['overlay_color']; ?>">
 		<div class="container">
 			<div class="row">
@@ -21,9 +21,26 @@
 						<?php if($params['button_link']): ?>
 							<p class="big extra-padding-vertical">
 								<a class="btn btn-primary" href="<?php echo $params['button_link']; ?>">
-								   <?php echo $params['button_text']; ?>
+									<?php echo $params['button_text']; ?>
 								</a>
-						   </p>
+							</p>
+						<?php elseif($params['button_text']): ?>
+							<p class="big extra-padding-vertical">
+								<a class="btn btn-primary" href="<?= explode(',', $params['button_text'])[1] ?>"
+									<?php
+										if($params['button_color'] or $params['button_border_color'])
+											echo 'style="';
+										if($params['button_color'])
+											echo 'background:'.$params['button_color'].';';
+										if($params['button_border_color'])
+											echo 'border-color:'.$params['button_border_color'].';';
+										else
+											echo 'border:none;';
+										echo '"'
+									?>>
+									<?= explode(',', $params['button_text'])[0] ?>
+								</a>
+							</p>
 						<?php endif; ?>
 					</div>
 				</div>

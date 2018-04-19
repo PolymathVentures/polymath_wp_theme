@@ -58,9 +58,15 @@ if( have_rows('content') ):
                         <?php if(get_sub_field('button_text')): ?>
                             <div class="extra-padding-vertical">
                                 <p>
-                                    <a href="<?php the_sub_field('button_link'); ?><?php the_sub_field('button_link_extras'); ?>" class="btn btn-primary">
-                                        <?php the_sub_field('button_text'); ?>
-                                    </a>
+                                    <?php if(get_sub_field('button_link')): ?>
+                                        <a href="<?php the_sub_field('button_link'); ?><?php the_sub_field('button_link_extras'); ?>" class="btn btn-primary">
+                                            <?php the_sub_field('button_text'); ?>
+                                        </a>
+                                    <?php else: ?>
+                                        <a href="<?= explode(',', get_sub_field('button_text'))[1] ?>" class="btn btn-primary">
+                                            <?= explode(',', get_sub_field('button_text'))[0] ?>
+                                        </a>
+                                    <?php endif; ?>
                                 </p>
                             </div>
                         <? endif; ?>

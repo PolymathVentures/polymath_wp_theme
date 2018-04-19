@@ -120,13 +120,24 @@
 				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-				ga("create", "UA-XXXXXXXX-Y", "auto"); ga("send", "event", "new_application", "sent");
+				ga("create", "UA-81628194-1", "auto"); ga("send", "event", "new_application", "sent");
 			})();
+			<?php if( in_array($wp_query->query_vars['job_id'], [968389, 968394, 968358, 968396, 512126, 542353, 466943, 486156]) ) { ?>
+				// Anonymize Google Analytics Goal #5
+				(function() {
+					(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+					})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	
+					ga("create", "UA-81628194-1", "auto"); ga("send", "event", "founder_application", "sent");
+				})();
+			<?php } ?>
 		});
 	});
 </script>
-<form id="application-form" method="POST" action="//jobs.polymathv.com/apply.php" enctype="multipart/form-data">
-	<input type="hidden" name="jobid" value="<?=$wp_query->query_vars['job_id']?>">
+<form id="application-form" method="POST" action="//jobs.polymathv.com/apply" enctype="multipart/form-data">
+	<input type="hidden" name="job_id" value="<?=$wp_query->query_vars['job_id']?>">
 	<h3 class="text-bold" style="margin:0px 0px 25px;">Apply for this job</h3>
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 app-field">

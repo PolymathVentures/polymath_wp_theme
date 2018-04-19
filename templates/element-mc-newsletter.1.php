@@ -160,13 +160,23 @@
 			}
 			if( timeout ) {
 				setTimeout(function() {
+					// Anonymize Google Analytics popup event
+					(function() {
+						(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+						(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+						m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+						})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+						ga("create", "UA-81628194-1", "auto"); ga("send", "event", "popup_show", "newsletter");
+					})();
+
 					jQuery("html").css("overflow", "hidden");
 					jQuery(".modal#modal-mc-newsletter").modal();
 				}, timeout*1000);
 			}
 
 			jQuery(".modal#modal-mc-newsletter .modal-dismiss").click(function() {
-				var d = new Date(); d.setTime(d.getTime() + 2*24*60*60*1000);
+				var d = new Date(); d.setTime(d.getTime() + 7*24*60*60*1000);
 				document.cookie = "mc_newsletter=" + d.getTime() + ";expires=" + d.toUTCString() + ";path=/";
 				jQuery(".modal#modal-mc-newsletter").modal("hide");
 				jQuery("html").css("overflow", "");
@@ -176,10 +186,10 @@
 				if( !/(\w|-|\.)+@(\w+\.)+[a-z]+/.test(EMAIL) ) {
 					alert("Invalid email!"); return;
 				}
-				
-				jQuery(".modal[id^=modal-mc] input, .modal[id^=modal-mc] button").attr("disabled", "disabled");
-				var URL = "https://scripts.polymathv.com/helpers/mailchimp.php?subscribe=newsletter";
-				jQuery.post(URL, {"email": EMAIL}, function(response) {
+
+				jQuery(".modal#modal-mc-newsletter input, .modal#modal-mc-newsletter button").attr("disabled", "disabled");
+				var URL = "https://scripts-dev.polymathv.com/helpers/mailchimp.php?subscribe=newsletter";
+				jQuery.post(URL, {"email":EMAIL}, function(response) {
 					document.cookie = "mc_newsletter=infinite;expires=Tue, 01 Jan 2038 00:00:00 GMT;path=/";
 					jQuery(".modal#modal-mc-newsletter input").val("Successfully subscribed!");
 					jQuery(".modal#modal-mc-newsletter button i").show();
@@ -187,19 +197,8 @@
 					setTimeout(function() {
 						jQuery(".modal#modal-mc-newsletter").modal("hide");
 						jQuery("html").css("overflow", "");
-					}, 5000);
+					}, 1000);
 				});
-				/**
-				jQuery("html").css("overflow", "hidden");
-				jQuery(".modal#modal-mc-newsletter").on("hidden.bs.modal", function() {
-					var email = jQuery(".modal#modal-mc-newsletter #mc-form input").val();
-					if( !/(\w|-|\.)+@(\w+\.)+[a-z]+/.test(email) ) {
-						alert("Invalid email!"); return;
-					}
-					
-					
-				}).modal("hide");
-				/**/
 			});
 		});
 	</script>

@@ -41,6 +41,11 @@
 			<a class = "btn btn-primary" href="<?php echo $promo['link']; ?>">
 				<?php echo $promo['button_text']; ?>
 			</a>
+		<?php elseif($promo['button_text']): ?>
+			<br>
+			<a class="btn btn-primary" href="<?= explode(',', $promo['button_text'])[1] ?>">
+				<?= explode(',', $promo['button_text'])[0] ?>
+			</a>
 		<?php endif; ?>
 	</div>
 </div>
